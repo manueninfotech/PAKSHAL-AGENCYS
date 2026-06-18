@@ -53,7 +53,7 @@ export const About = ({ onNavigate }) => {
           <div className="lg:col-span-5 relative group">
             <div className="absolute inset-0 bg-emerald-500 rounded-2xl rotate-3 scale-98 opacity-5 group-hover:rotate-2 transition-transform duration-300" />
             <img
-              src="/about-warehouse.png"
+              src={`${import.meta.env.BASE_URL}about-warehouse.png`}
               alt="Forklift in Timber warehouse"
               className="relative z-10 w-full h-[450px] object-cover rounded-2xl shadow-xl border border-slate-100"
             />

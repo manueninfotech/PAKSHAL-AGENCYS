@@ -70,7 +70,7 @@ export const AboutPage = ({ onNavigateHome }) => {
         {/* RIGHT SIDE: Full-Bleed Immersive Showroom Visual (60% Width) */}
         <div className="w-full lg:w-[60%] relative min-h-[400px] lg:h-screen z-0">
           <img
-            src="/showroom-reception.png"
+            src={`${import.meta.env.BASE_URL}showroom-reception.png`}
             alt="Pakshal Agencies modern Experience Centre reception with wooden slats, black stone wall, and gold branding"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -120,7 +120,7 @@ export const AboutPage = ({ onNavigateHome }) => {
           {/* Sketch Image Container (contained and padded to increase its size) */}
           <div className="flex-1 flex items-start justify-center bg-[#FAF8F5] p-0 overflow-hidden">
             <img
-              src="/showroom-sketch1.png"
+              src={`${import.meta.env.BASE_URL}showroom-sketch1.png`}
               alt="Pakshal Agencies Building Concept Sketch"
               className="max-h-[500px] sm:max-h-[600px] lg:max-h-[780px] w-full h-auto object-contain"
             />
@@ -409,7 +409,7 @@ export const AboutPage = ({ onNavigateHome }) => {
         {/* Decorative Stack of wood veneers on the right background */}
         <div className="absolute right-0 bottom-0 top-0 w-[40%] opacity-70 z-0 select-none pointer-events-none">
           <img
-            src="/plywood-bottom-stack.png"
+            src={`${import.meta.env.BASE_URL}plywood-bottom-stack.png`}
             alt="Plywood veneer stacks"
             className="w-full h-full object-cover object-right"
           />

@@ -80,7 +80,7 @@ export const AboutPage = ({ onNavigateHome }) => {
             <div className="lg:col-span-5 relative group">
               <div className="absolute inset-0 bg-[#38a12c] rounded-3xl rotate-2 opacity-5 group-hover:rotate-1 transition-transform duration-300" />
               <img 
-                src="/about-warehouse.png" 
+                src={`${import.meta.env.BASE_URL}about-warehouse.png`} 
                 alt="Central Timber Warehouse" 
                 className="relative z-10 w-full h-[400px] object-cover rounded-3xl border border-[#ebd8a1]/30 shadow-lg"
               />

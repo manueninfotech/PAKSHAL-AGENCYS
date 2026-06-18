@@ -535,3 +535,11 @@ export const GalleryPage = () => {
     </div>
   );
 };
+
+
+
+
+
+
+
+

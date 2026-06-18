@@ -13,7 +13,7 @@ export const FeaturedProducts = () => {
     { title: 'Marine Plywood', desc: 'Premium Quality', img: marinePlywoodImg },
     { title: 'Decorative Laminates', desc: 'High Pressure Laminates', img: decorativeLaminatesImg },
     { title: 'Designer Door', desc: 'Premium Finish', img: designerDoorImg },
-    { title: 'Soft Close Hinges', desc: 'Smooth Performance', img: '/hardware-hinge.png' },
+    { title: 'Soft Close Hinges', desc: 'Smooth Performance', img: `${import.meta.env.BASE_URL}hardware-hinge.png` },
     { title: 'Drawer Channel', desc: 'Heavy Duty', img: drawerChannelImg },
     { title: 'Kitchen Basket', desc: 'Stainless Steel', img: kitchenBasketImg },
     { title: 'Tandem Box', desc: 'Premium Drawer', img: tandemBoxImg }

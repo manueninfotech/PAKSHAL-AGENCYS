@@ -9,7 +9,7 @@ export const Hero = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/hero-image.png')" }}
+        style={{ backgroundImage: `url('${import.meta.env.BASE_URL}hero-image.png')` }}
       />
 
       {/* Ultra Soft Luxury Overlay */}
