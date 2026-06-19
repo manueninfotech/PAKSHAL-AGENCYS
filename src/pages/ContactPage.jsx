@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 // ==========================================
 // 1. HELPER COMPONENTS
@@ -69,6 +70,11 @@ const ContactInfoCard = ({ label, icon, children, href }) => {
 // ==========================================
 
 export const ContactPage = () => {
+  useDocumentMetadata(
+    "Contact Pakshal Agencies | Showroom Location & Dealership Inquiry",
+    "Visit our experience center at Goshamahal, Hyderabad. Register as a dealer, request direct wholesale quotes, or call us at 92464 84452."
+  );
+
   const [formData, setFormData] = useState({
     fullName: '', phone: '', email: '', subject: '', message: ''
   });

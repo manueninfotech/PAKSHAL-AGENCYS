@@ -3,8 +3,14 @@ import plywoodImg from '../assets/plywood-image.png';
 import laminatesImg from '../assets/laminates.png';
 import hardwareImg from '../assets/hardwarefittings.png';
 import accessoriesImg from '../assets/kitchenaccessories.png';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export const AboutPage = ({ onNavigateHome }) => {
+  useDocumentMetadata(
+    "About Pakshal Agencies | Hyderabad's Premier Plywood & Hardware Distributor",
+    "Learn about Pakshal Agencies, a trusted distributor of premium plywood, veneers, decorative laminates, and luxury furniture fittings in Hyderabad since 2011."
+  );
+
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });

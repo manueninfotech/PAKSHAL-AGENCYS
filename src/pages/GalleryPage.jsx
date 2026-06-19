@@ -28,6 +28,7 @@ import acrylicPanels3Img from '../assets/acrylicpanels3.png';
 import acrylicPanels4Img from '../assets/acrylicpanels4.png';
 import acrylicPanels5Img from '../assets/acrylicpanels5.png';
 import acrylicPanels6Img from '../assets/acrylicpanels6.png';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 const GALLERY_ITEMS = [
   {
@@ -208,6 +209,11 @@ const GalleryCard = ({ item, onClick }) => {
 };
 
 export const GalleryPage = () => {
+  useDocumentMetadata(
+    "Interior Design Inspiration & Experience Centre Gallery | Pakshal Agencies",
+    "Get inspired by our showroom gallery featuring custom modular wardrobes, luxury kitchens, slatted wall panels, and high-gloss acrylic sheet selections."
+  );
+
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeItem, setActiveItem] = useState(null);
   const [activeImageIdx, setActiveImageIdx] = useState(0);

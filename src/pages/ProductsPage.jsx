@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 import {
   Trees,
   FlaskConical,
@@ -1000,6 +1001,11 @@ const SPREADS = [
 ];
 
 export const ProductsPage = ({ onNavigate, search }) => {
+  useDocumentMetadata(
+    "Modular Kitchen Fittings, Cabinet Hardware & Plywood Range | Pakshal Agencies",
+    "Explore our extensive catalog of Hettich, Ebco, Dorset, and Hafele modular kitchen accessories, drawer channels, tandem boxes, and premium doors."
+  );
+
   const renderHeroTagIcon = (iconName) => {
     switch (iconName) {
       case 'wood':
