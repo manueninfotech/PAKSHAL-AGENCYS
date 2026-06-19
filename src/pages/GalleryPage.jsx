@@ -318,7 +318,7 @@ export const GalleryPage = () => {
 
               {/* Row 2, Col 2 */}
               <div className="relative rounded-[12px] overflow-hidden group">
-                <img src="/showroom-reception.png" alt="Showroom Lounge" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={`${import.meta.env.BASE_URL}showroom-reception.png`} alt="Showroom Lounge" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
               {/* Row 2, Col 3: OUR EXPERIENCE CENTRE Card */}

@@ -104,7 +104,7 @@ export const ContactPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const mapsUrl = "https://maps.google.com/?q=Jubilee+Hills+Hyderabad+500033";
+  const mapsUrl = "https://maps.google.com/?q=5-5-755,+Hindi+Nagar,+Goshamahal,+Hyderabad+500012";
 
   return (
     <div className="w-full min-h-screen pt-24 pb-16 font-sans bg-[#FAF8F4] relative overflow-hidden">
@@ -181,7 +181,7 @@ export const ContactPage = () => {
                   </svg>
                 }
               >
-                Plot No. 8-2-293/82/A/1130, Jubilee Hills, Hyd
+                5-5-755, Hindi Nagar, Goshamahal, Hyderabad 500012. Ts
               </ContactInfoCard>
 
               <ContactInfoCard
@@ -202,7 +202,7 @@ export const ContactPage = () => {
               
               <div className="space-y-1">
                 <div className="text-[9px] font-bold text-[#C6961A] tracking-[0.25em] uppercase">Experience Centre</div>
-                <h3 className="text-xl font-bold font-serif tracking-wide">JUBILEE HILLS SHOWROOM</h3>
+                <h3 className="text-xl font-bold font-serif tracking-wide">GOSHAMAHAL SHOWROOM</h3>
                 <p className="text-xs text-stone-400 font-medium leading-relaxed mt-2">
                   Come explore Hyderabad's finest collection of premium plywood, hardware fittings, designer doors, and custom kitchen accessories.
                 </p>

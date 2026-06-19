@@ -89,8 +89,6 @@ export const Navbar = ({ currentPage, onNavigate }) => {
               )}
             </div>
 
-
-
             <a
               href="/contact"
               onClick={(e) => handleLinkClick(e, 'contact')}

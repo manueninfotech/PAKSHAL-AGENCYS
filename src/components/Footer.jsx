@@ -233,7 +233,7 @@ export const Footer = ({ onNavigate }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z" />
                   </svg>
                 </div>
-                <span className="text-[#E6DFD5]/80 font-semibold text-xs sm:text-[13px] mt-0.5">Hyderabad, Telangana, India</span>
+                <span className="text-[#E6DFD5]/80 font-semibold text-xs sm:text-[13px] mt-0.5">5-5-755, Hindi Nagar, Goshamahal, Hyderabad 500012. TS</span>
               </div>
             </div>
           </div>
