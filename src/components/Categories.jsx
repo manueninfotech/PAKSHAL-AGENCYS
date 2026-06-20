@@ -128,6 +128,7 @@ export const Categories = ({ onNavigate }) => {
               <a
                 key={idx}
                 href={`${basePrefix}/products?category=${query}`}
+                rel="nofollow"
                 onClick={(e) => {
                   e.preventDefault();
                   if (onNavigate) {

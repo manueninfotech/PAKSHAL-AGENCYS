@@ -88,6 +88,7 @@ export const DetailedContent = ({ onNavigate }) => {
             <div className="flex flex-col gap-2.5 pt-4 border-t border-slate-100">
               <a 
                 href="/products?category=plywood" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=plywood')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
@@ -96,6 +97,7 @@ export const DetailedContent = ({ onNavigate }) => {
               </a>
               <a 
                 href="/products?category=veneers" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=veneers')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
@@ -104,6 +106,7 @@ export const DetailedContent = ({ onNavigate }) => {
               </a>
               <a 
                 href="/products?category=fancy-doors" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=fancy-doors')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
@@ -128,6 +131,7 @@ export const DetailedContent = ({ onNavigate }) => {
             <div className="flex flex-col gap-2.5 pt-4 border-t border-slate-100">
               <a 
                 href="/products?category=laminates" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=laminates')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
@@ -136,6 +140,7 @@ export const DetailedContent = ({ onNavigate }) => {
               </a>
               <a 
                 href="/products?category=acrylic-panels" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=acrylic-panels')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
@@ -168,6 +173,7 @@ export const DetailedContent = ({ onNavigate }) => {
             <div className="flex flex-col gap-2.5 pt-4 border-t border-slate-100">
               <a 
                 href="/products?category=hardware" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=hardware')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
@@ -176,6 +182,7 @@ export const DetailedContent = ({ onNavigate }) => {
               </a>
               <a 
                 href="/products?category=kitchen-accessories" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=kitchen-accessories')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
@@ -184,6 +191,7 @@ export const DetailedContent = ({ onNavigate }) => {
               </a>
               <a 
                 href="/products?category=sliding-channels" 
+                rel="nofollow"
                 onClick={(e) => handleLinkClick(e, 'products', '?category=sliding-channels')}
                 className="inline-flex items-center text-xs font-black uppercase text-[#a88634] hover:text-[#38a12c] tracking-widest transition-colors duration-200"
               >
