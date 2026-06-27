@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { LogIn } from 'lucide-react';
+import pakshallogo from '../assets/pakshallogo.png';
 
 export const Navbar = ({ currentPage, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,16 +21,13 @@ export const Navbar = ({ currentPage, onNavigate }) => {
           <a
             href={`${basePrefix}/`}
             onClick={(e) => handleLinkClick(e, 'home')}
-            className="flex-shrink-0 flex items-center gap-2.5 group"
+            className="flex-shrink-0 flex items-center group relative h-14 w-48 sm:w-56 md:w-64"
           >
-            <svg className="w-9 h-9 text-[#38a12c] transition-transform duration-300 group-hover:scale-105" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 20V8a4 4 0 014-4h4a5 5 0 015 5v0a5 5 0 01-5 5H8" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8 16V10a2 2 0 012-2h2a3 3 0 013 3v0a3 3 0 01-3 3h-4" />
-            </svg>
-            <div className="flex flex-col text-left">
-              <span className="text-2xl font-black tracking-tight text-slate-900 leading-none font-sans">PAKSHAL</span>
-              <span className="text-[10px] text-slate-800 font-extrabold uppercase tracking-[0.25em] mt-1.5 leading-none">AGENCIES</span>
-            </div>
+            <img 
+              src={pakshallogo} 
+              alt="Pakshal Agencies Logo" 
+              className="absolute left-0 top-1/2 -translate-y-1/2 h-16 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]" 
+            />
           </a>
 
           {/* Desktop Nav Links */}
@@ -111,6 +110,14 @@ export const Navbar = ({ currentPage, onNavigate }) => {
               </svg>
               92464 84452
             </a>
+
+            <button
+              onClick={() => onNavigate('login')}
+              className="px-4 py-2 bg-[#0F5C3B] hover:bg-[#0b472e] text-white rounded-xl text-[11px] font-extrabold uppercase tracking-wider transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
+            >
+              <LogIn className="w-3.5 h-3.5 text-[#C9A44C]" />
+              Login
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -180,8 +187,21 @@ export const Navbar = ({ currentPage, onNavigate }) => {
             </svg>
             <span>92464 84452</span>
           </a>
+
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              onNavigate('login');
+            }}
+            className="w-full mt-1.5 py-2.5 bg-[#0F5C3B] hover:bg-[#0b472e] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
+          >
+            <LogIn className="w-4 h-4 text-[#C9A44C]" />
+            Login
+          </button>
         </div>
       )}
     </nav>
   );
 };
+
+

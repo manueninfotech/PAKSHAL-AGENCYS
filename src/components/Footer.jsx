@@ -1,4 +1,4 @@
-import React from 'react';
+import pakshallogo from '../assets/pakshallogo.png';
 
 export const Footer = ({ onNavigate }) => {
   const basePrefix = window.location.pathname.startsWith('/PAKSHAL-AGENCYS') ? '/PAKSHAL-AGENCYS' : '';
@@ -11,28 +11,25 @@ export const Footer = ({ onNavigate }) => {
 
   return (
     <footer className="relative bg-gradient-to-b from-[#1C120C] to-[#120A05] text-[#E6DFD5]/70 pt-10 sm:pt-12 pb-0 select-none text-left overflow-hidden border-t border-[#C9A44C]/25">
-      
+
       <div className="max-w-[98.5%] xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
-          
+
           {/* Column 1 - Brand Info */}
           <div className="flex flex-col gap-5 lg:col-span-3 text-left">
             {/* Logo & Title */}
-            <div className="flex items-center gap-3 group">
-              <svg className="w-9 h-9 text-[#38a12c] transition-transform duration-300 group-hover:scale-105" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 20V8a4 4 0 014-4h4a5 5 0 015 5v0a5 5 0 01-5 5H8" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 16V10a2 2 0 012-2h2a3 3 0 013 3v0a3 3 0 01-3 3h-4" />
-              </svg>
-              <div className="flex flex-col text-left">
-                <span className="text-xl font-black tracking-tight text-[#FAF8F5] leading-none">PAKSHAL</span>
-                <span className="text-[10px] text-[#C9A44C] font-extrabold uppercase tracking-[0.25em] mt-1.5">AGENCIES</span>
-              </div>
+            <div className="flex items-center group">
+              <img 
+                src={pakshallogo} 
+                alt="Pakshal Agencies Logo" 
+                className="h-48 sm:h-52 lg:h-56 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03] -ml-2" 
+              />
             </div>
-            
+
             <p className="text-[#E6DFD5]/80 text-xs sm:text-[13px] leading-relaxed max-w-[95%] font-medium">
               Authorized distributor of premium plywood, hardware & interior solutions.
             </p>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-3 mt-0.5">
               {[
@@ -73,9 +70,9 @@ export const Footer = ({ onNavigate }) => {
                   )
                 }
               ].map((social) => (
-                <a 
+                <a
                   key={social.name}
-                  href={social.href} 
+                  href={social.href}
                   onClick={(e) => {
                     if (social.href.startsWith('#')) handleLinkClick(e, social.href);
                   }}
@@ -107,8 +104,8 @@ export const Footer = ({ onNavigate }) => {
                 { name: 'All Products', href: `${basePrefix}/products` }
               ].map((link) => (
                 <li key={link.name}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
                     className="group flex items-center text-[#E6DFD5]/75 hover:text-[#C9A44C] font-semibold transition-all duration-300"
                   >
@@ -132,8 +129,8 @@ export const Footer = ({ onNavigate }) => {
             <ul className="flex flex-col gap-2.5 text-xs sm:text-[13px]">
               {['Ebco', 'Hettich', 'Godrej', 'Dorset', 'Hafele'].map((link) => (
                 <li key={link}>
-                  <a 
-                    href={`${basePrefix}/#brands`} 
+                  <a
+                    href={`${basePrefix}/#brands`}
                     onClick={(e) => handleLinkClick(e, '/#brands')}
                     className="group flex items-center text-[#E6DFD5]/75 hover:text-[#C9A44C] font-semibold transition-all duration-300"
                   >
@@ -163,8 +160,8 @@ export const Footer = ({ onNavigate }) => {
                 { name: 'Contact Us', href: `${basePrefix}/contact`, page: 'contact' }
               ].map((link) => (
                 <li key={link.name}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     onClick={(e) => {
                       if (link.page === 'about') {
                         e.preventDefault();
@@ -201,7 +198,7 @@ export const Footer = ({ onNavigate }) => {
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#C9A44C]/20" />
             </div>
-            
+
             <div className="flex flex-col gap-4">
               {/* Phone Card */}
               <div className="flex gap-3 items-start py-1">

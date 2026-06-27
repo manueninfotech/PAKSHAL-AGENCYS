@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
@@ -7,6 +7,8 @@ import { AboutPage } from './pages/AboutPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminPage } from './pages/AdminPage';
+import { LoginForm } from './pages/LoginForm';
 
 
 const getNormalizedPage = (pathname) => {
@@ -18,6 +20,8 @@ const getNormalizedPage = (pathname) => {
   if (cleanPath === '/gallery') return 'gallery';
   if (cleanPath === '/products') return 'products';
   if (cleanPath === '/contact') return 'contact';
+  if (cleanPath === '/admin') return 'admin';
+  if (cleanPath === '/login') return 'login';
   return 'home';
 };
 
@@ -42,11 +46,18 @@ function App() {
     setCurrentSearch(search);
 
     // Update path
-    const pathMap = { about: '/about', gallery: '/gallery', products: '/products', contact: '/contact' };
+    const pathMap = { 
+      about: '/about', 
+      gallery: '/gallery', 
+      products: '/products', 
+      contact: '/contact',
+      admin: '/admin',
+      login: '/login'
+    };
     const cleanPath = pathMap[page] || '/';
     const basePrefix = window.location.pathname.startsWith('/PAKSHAL-AGENCYS') ? '/PAKSHAL-AGENCYS' : '';
     const newPath = basePrefix + cleanPath + search;
-    
+
     if (window.location.pathname + window.location.search !== newPath) {
       window.history.pushState({}, '', newPath);
     }
@@ -85,6 +96,14 @@ function App() {
 
       {currentPage === 'contact' && (
         <ContactPage />
+      )}
+
+      {currentPage === 'admin' && (
+        <AdminPage onNavigate={handleNavigate} />
+      )}
+
+      {currentPage === 'login' && (
+        <LoginForm onNavigate={handleNavigate} />
       )}
 
       <Footer onNavigate={(hash, page) => handleNavigate(page || 'home', hash)} />

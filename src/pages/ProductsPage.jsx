@@ -34,6 +34,7 @@ import acrylicPanels6Img from '../assets/acrylicpanels6.png';
 import hardwareImg from '../assets/hardwarefittings.png';
 import accessoriesImg from '../assets/kitchenaccessories.png';
 import slidingChannelsImg from '../assets/slidingchannels.png';
+import gurjanStarImg from '../assets/gurjanstar.jpg';
 import tandemBoxImg from '../assets/tandembox.png';
 import fancyDoorsImg from '../assets/fancydoors.png';
 import doorFittingsImg from '../assets/door_fittings.png';
@@ -45,9 +46,13 @@ import wardrobesCardImg from '../assets/wardrobes-card.jpg';
 import officefurniture from '../assets/officefurniture.png';
 import interiorpanels from '../assets/interiorpanels.png';
 import hardwareFittings1 from '../assets/productspage-hardware&fittings.png';
+import hydraulicHingeImg from '../assets/hydraulichinge.png';
 import hardwareFittings2 from '../assets/productspage-hardware&fittings2.png';
+import drawerChannelImg from '../assets/drawerchannel.jpg';
 import hardwareFittings3 from '../assets/productspage-hardware&fittings3.png';
+import kitchenBasketImg from '../assets/kitchenbasket.jpg';
 import hardwareFittings4 from '../assets/productspage-hardware&fittings4.png';
+import tandemBoxNewImg from '../assets/tandembox.jpg';
 import hardwareFittings5 from '../assets/productspage-hardware&fittings5.png';
 
 const SPREADS = [
@@ -785,7 +790,7 @@ const SPREADS = [
     badge: 'Soft-Close Mechanism',
     title: 'Silent\nMovement.',
     tagline: 'Premium auto-close hydraulic hinges',
-    image: hardwareFittings1,
+    image: hydraulicHingeImg,
     brandName: 'Hydraulic Hinge',
     desc: 'Premium grade auto-close hydraulic hinges crafted with high-strength stainless steel. Designed for silent cushioning and durable cabinetry operation.',
     thicknesses: ['Standard', 'Heavy Duty'],
@@ -822,7 +827,7 @@ const SPREADS = [
     badge: 'Precision Slides',
     title: 'Smooth\nGlide.',
     tagline: 'Telescopic ball-bearing drawer slides',
-    image: hardwareFittings2,
+    image: drawerChannelImg,
     brandName: 'Drawer Channel',
     desc: 'Heavy-duty telescopic drawer runners with precision ball-bearings, soft-close cushioning, and full extension travel for heavy drawers.',
     thicknesses: ['35kg Rating', '45kg Rating'],
@@ -859,7 +864,7 @@ const SPREADS = [
     badge: 'Modular Kitchen',
     title: 'Organized\nSpaces.',
     tagline: 'Stainless steel modular wire basket systems',
-    image: hardwareFittings3,
+    image: kitchenBasketImg,
     brandName: 'Kitchen Basket',
     desc: 'Premium food-grade stainless steel modular kitchen baskets designed for plate storage, cup-saucer organization, and utensil load distribution.',
     thicknesses: ['Wire Basket', 'Perforated Sheet'],
@@ -896,7 +901,7 @@ const SPREADS = [
     badge: 'Double-wall System',
     title: 'Luxury\nDrawers.',
     tagline: 'Premium double-wall modular drawer system',
-    image: hardwareFittings4,
+    image: tandemBoxNewImg,
     brandName: 'Tandem Box',
     desc: 'German-engineered double-wall metal drawer systems with synchronized smooth action runners, built-in soft-close dampeners, and sleek modern side profile walls.',
     thicknesses: ['Slimline Wall', 'Standard Metal Wall'],
@@ -970,7 +975,7 @@ const SPREADS = [
     badge: 'Flexible Design',
     title: 'Flexible\nSolutions.',
     tagline: 'Specially formulated bendable plywood for curved counters',
-    image: slidingChannelsImg,
+    image: gurjanStarImg,
     brandName: 'Gurjan Star',
     desc: 'Specially formulated bendable plywood designed for creating curved shapes, round counters, and architectural arches.',
     thicknesses: ['4mm', '6mm', '12mm'],
@@ -1422,14 +1427,22 @@ export const ProductsPage = ({ onNavigate, search }) => {
   };
 
   const handlePrev = () => {
-    if (currentSpreadIdx > 0 && flipState === 'idle') {
-      triggerFlip(currentSpreadIdx - 1, 'prev');
+    if (activeCatIdx > 0 && flipState === 'idle') {
+      const prevSpread = activeCategorySpreads[activeCatIdx - 1];
+      const prevGlobalIdx = SPREADS.findIndex(s => s === prevSpread);
+      if (prevGlobalIdx !== -1) {
+        triggerFlip(prevGlobalIdx, 'prev');
+      }
     }
   };
 
   const handleNext = () => {
-    if (currentSpreadIdx < SPREADS.length - 1 && flipState === 'idle') {
-      triggerFlip(currentSpreadIdx + 1, 'next');
+    if (activeCatIdx < activeCategorySpreads.length - 1 && flipState === 'idle') {
+      const nextSpread = activeCategorySpreads[activeCatIdx + 1];
+      const nextGlobalIdx = SPREADS.findIndex(s => s === nextSpread);
+      if (nextGlobalIdx !== -1) {
+        triggerFlip(nextGlobalIdx, 'next');
+      }
     }
   };
 
@@ -1462,7 +1475,10 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
   const renderLeftPage = (idx) => {
     const spread = SPREADS[idx];
-    const canGoPrev = idx > 0 && flipState === 'idle';
+    if (!spread) return null;
+    const catSpreads = SPREADS.filter(s => s.category === spread.category);
+    const catIdx = catSpreads.findIndex(s => s === spread);
+    const canGoPrev = catIdx > 0 && flipState === 'idle';
     return (
       <div
         onClick={() => {
@@ -1505,8 +1521,11 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
   const renderRightPage = (idx) => {
     const spread = SPREADS[idx];
+    if (!spread) return null;
     const thickness = selectedThicknesses[idx] || spread.defaultThickness;
-    const canGoNext = idx < SPREADS.length - 1 && flipState === 'idle';
+    const catSpreads = SPREADS.filter(s => s.category === spread.category);
+    const catIdx = catSpreads.findIndex(s => s === spread);
+    const canGoNext = catIdx !== -1 && catIdx < catSpreads.length - 1 && flipState === 'idle';
     return (
       <div
         onClick={() => {
@@ -1833,7 +1852,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
           <div className="flex items-center justify-center gap-6 mt-8">
             <button
               onClick={handlePrev}
-              disabled={currentSpreadIdx === 0 || flipState !== 'idle'}
+              disabled={activeCatIdx === 0 || flipState !== 'idle'}
               className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
@@ -1850,7 +1869,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
             <button
               onClick={handleNext}
-              disabled={currentSpreadIdx === SPREADS.length - 1 || flipState !== 'idle'}
+              disabled={activeCatIdx === activeCategorySpreads.length - 1 || flipState !== 'idle'}
               className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <span className="hidden sm:inline tracking-tight">Next Spread</span>
@@ -2388,33 +2407,33 @@ export const ProductsPage = ({ onNavigate, search }) => {
                     return (
                       <div
                         key={index}
-                        className={`${style.bg} ${gridClass} rounded-[20px] border border-slate-200/50 shadow-sm overflow-hidden flex flex-col justify-between pt-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative h-fit`}
+                        className={`${style.bg} ${gridClass} rounded-[20px] border border-slate-200/50 shadow-sm overflow-hidden flex flex-col justify-between pt-6 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative h-fit sm:h-[268px]`}
                       >
-                        <div>
+                        <div className="flex flex-col items-center justify-center flex-grow">
                           {/* Icon Container */}
-                          <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center border border-slate-100 shadow-[0_6px_15px_-3px_rgba(0,0,0,0.06)] mx-auto relative">
+                          <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center border border-slate-100 shadow-[0_6px_15px_-3px_rgba(0,0,0,0.06)] mx-auto relative mb-3">
                             <div className="scale-90 flex items-center justify-center">
                               {renderHighlightIcon(item.icon)}
                             </div>
                           </div>
 
-                          {/* Green Underline Line */}
-                          <div className="w-7 h-[2px] bg-[#006e2f] rounded-full mx-auto my-2" />
-
                           {/* Title */}
-                          <h4 className="text-[17px] sm:text-[18.5px] font-black text-slate-900 leading-tight tracking-tight text-center px-2">
+                          <h4 className="text-[17px] sm:text-[18px] font-black text-slate-900 leading-tight tracking-tight text-center px-2">
                             {item.title}
                           </h4>
 
+                          {/* Green Underline Line */}
+                          <div className="w-7 h-[2px] bg-[#006e2f] rounded-full mx-auto my-2.5" />
+
                           {/* Description */}
-                          <p className="text-[12px] sm:text-[13px] font-bold text-slate-500 mt-1 leading-normal text-center px-4 pb-3.5 max-w-[170px] mx-auto">
+                          <p className="text-[12px] sm:text-[13px] font-bold text-slate-500 leading-normal text-center px-4 max-w-[170px] mx-auto">
                             {item.desc}
                           </p>
                         </div>
 
                         {/* Plywood bottom layered wood strip */}
                         <div
-                          className="w-full h-4 border-t border-amber-900/10"
+                          className="w-full h-4 border-t border-amber-900/10 mt-4"
                           style={{
                             background: 'repeating-linear-gradient(to bottom, #bd9265 0px, #bd9265 2.5px, #865732 2.5px, #865732 5px, #caa175 5px, #caa175 7.5px, #623a1a 7.5px, #623a1a 10px, #bd9265 10px, #bd9265 12.5px)'
                           }}
