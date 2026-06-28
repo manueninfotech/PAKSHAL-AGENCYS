@@ -20,7 +20,7 @@ import homepageMarinePlywoodImg from '../assets/homepage-marineplywood.png';
 import hingesImg from '../assets/hinges.png';
 import kitchensCardImg from '../assets/kitchens-card.jpg';
 import wardrobesCardImg from '../assets/wardrobes-card.jpg';
-import officeFurnitureImg from '../assets/officefurniture.png';
+import officeFurnitureImg from '../assets/officefurniture.jpg';
 import interiorPanelsImg from '../assets/interiorpanels.png';
 import acrylicPanelsImg from '../assets/acrylicpanels.png';
 import acrylicPanels2Img from '../assets/acrylicpanels2.png';
@@ -303,32 +303,32 @@ export const GalleryPage = () => {
           <div className="w-full lg:w-[65%]">
             <div className="grid grid-cols-3 grid-rows-2 gap-2 sm:gap-4 h-[350px] sm:h-[450px] lg:h-[550px] w-full">
               {/* Row 1, Col 1 */}
-              <div className="relative rounded-tl-[48px] sm:rounded-tl-[80px] rounded-tr-[12px] rounded-bl-[12px] rounded-br-[12px] overflow-hidden group">
+              <div className="relative rounded-tl-[48px] sm:rounded-tl-[80px] rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden group">
                 <img src={laminatesImg} alt="Veneer panel stack" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
               {/* Row 1, Col 2 */}
-              <div className="relative rounded-tr-[48px] sm:rounded-tr-[80px] rounded-tl-[12px] rounded-bl-[12px] rounded-br-[12px] overflow-hidden group">
+              <div className="relative rounded-2xl overflow-hidden group">
                 <img src={doorFittingsImg} alt="Hardware fittings grid" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
               {/* Row 1, Col 3 */}
-              <div className="relative rounded-tl-none rounded-tr-xl rounded-bl-xl rounded-br-xl overflow-hidden group">
+              <div className="relative rounded-tr-[48px] sm:rounded-tr-[80px] rounded-tl-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden group">
                 <img src={accessoriesImg} alt="Kitchen drawers" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
               {/* Row 2, Col 1 */}
-              <div className="relative rounded-tl-[48px] sm:rounded-tl-[80px] rounded-tr-[12px] rounded-bl-[12px] rounded-br-[12px] overflow-hidden group">
+              <div className="relative rounded-bl-[48px] sm:rounded-bl-[80px] rounded-tl-2xl rounded-tr-2xl rounded-br-2xl overflow-hidden group">
                 <img src={hardwareImg} alt="Metal Hinge" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
               {/* Row 2, Col 2 */}
-              <div className="relative rounded-[12px] overflow-hidden group">
+              <div className="relative rounded-2xl overflow-hidden group">
                 <img src={`${import.meta.env.BASE_URL}showroom-reception.png`} alt="Showroom Lounge" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
               {/* Row 2, Col 3: OUR EXPERIENCE CENTRE Card */}
-              <div className="relative rounded-br-[48px] sm:rounded-br-[80px] rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] overflow-hidden bg-gradient-to-br from-neutral-900 to-black p-4 sm:p-6 flex flex-col justify-between text-left group select-none">
+              <div className="relative rounded-br-[48px] sm:rounded-br-[80px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl overflow-hidden bg-gradient-to-br from-neutral-900 to-black p-4 sm:p-6 flex flex-col justify-between text-left group select-none">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-800/20 via-transparent to-transparent opacity-50 pointer-events-none" />
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
@@ -376,51 +376,11 @@ export const GalleryPage = () => {
           </div>
         </div>
 
-        {/* SUB-HEADER / TOOLBAR */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mt-16 mb-8 border-b border-stone-200 pb-4">
-          <div className="flex items-baseline gap-2">
-            <h2 className="text-base sm:text-lg font-black tracking-tight text-stone-900 uppercase font-sans">
-              {selectedCategory === 'All' ? 'ALL COLLECTIONS' : selectedCategory}
-            </h2>
-            <span className="text-[10px] sm:text-xs text-stone-400 font-bold font-sans">
-              ({filteredItems.length * 10}+ Images)
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-            {/* Sort Dropdown */}
-            <div className="relative">
-              <select className="appearance-none bg-white border border-stone-200 rounded-lg px-4 py-2 pr-10 text-[10px] sm:text-xs font-black text-stone-700 focus:outline-none focus:border-[#C9A44C] cursor-pointer">
-                <option>Sort by: Latest</option>
-                <option>Sort by: Popular</option>
-                <option>Sort by: Alphabetical</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-stone-500">
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Layout Toggles */}
-            <div className="flex items-center bg-stone-100 rounded-lg p-0.5 border border-stone-200">
-              <button className="p-1.5 sm:p-2 rounded-md bg-[#C9A44C] text-white shadow-sm cursor-pointer">
-                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <rect x="3" y="3" width="7" height="7" rx="0.5" />
-                  <rect x="14" y="3" width="7" height="7" rx="0.5" />
-                  <rect x="3" y="14" width="7" height="7" rx="0.5" />
-                  <rect x="14" y="14" width="7" height="7" rx="0.5" />
-                </svg>
-              </button>
-              <button className="p-1.5 sm:p-2 rounded-md text-stone-400 hover:text-stone-700 cursor-pointer">
-                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              </button>
-            </div>
-          </div>
+        {/* CATEGORY TITLE */}
+        <div className="mt-16 mb-8 border-b border-stone-200 pb-4 text-left">
+          <h2 className="text-base sm:text-lg font-black tracking-tight text-stone-900 uppercase font-sans">
+            {selectedCategory === 'All' ? 'ALL COLLECTIONS' : selectedCategory}
+          </h2>
         </div>
 
         {/* DYNAMIC GRID LAYOUT */}

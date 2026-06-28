@@ -13,7 +13,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#ebd8a1] via-[#f5ecd0] to-[#ebd8a1] py-3.5 shadow-md border-b border-black/5 select-none text-slate-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#f5ecd0] via-[#ebd8a1] to-[#f5ecd0] py-3.5 shadow-md border-b border-black/5 select-none text-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
 
@@ -23,10 +23,10 @@ export const Navbar = ({ currentPage, onNavigate }) => {
             onClick={(e) => handleLinkClick(e, 'home')}
             className="flex-shrink-0 flex items-center group relative h-14 w-48 sm:w-56 md:w-64"
           >
-            <img 
-              src={pakshallogo} 
-              alt="Pakshal Agencies Logo" 
-              className="absolute left-0 top-1/2 -translate-y-1/2 h-16 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]" 
+            <img
+              src={pakshallogo}
+              alt="Pakshal Agencies Logo"
+              className="absolute left-0 top-1/2 -translate-y-1/2 h-16 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
             />
           </a>
 
@@ -140,7 +140,7 @@ export const Navbar = ({ currentPage, onNavigate }) => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="xl:hidden bg-gradient-to-b from-[#ebd8a1] to-[#e6d19c] border-t border-black/5 py-4 px-6 flex flex-col gap-3.5 animate-fade-in text-left">
+        <div className="xl:hidden bg-[#ebd8a1] border-t border-black/5 py-4 px-6 flex flex-col gap-3.5 animate-fade-in text-left">
           <a
             href={`${basePrefix}/`}
             onClick={(e) => handleLinkClick(e, 'home')}

@@ -119,8 +119,8 @@ export const Categories = ({ onNavigate }) => {
           </h2>
         </div>
 
-        {/* Categories Grid - 4 Columns on Large Screens */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Categories Grid - 3 Columns on Large Screens, Centered Last Row */}
+        <div className="flex flex-wrap gap-4 sm:gap-6 justify-center">
           {categoriesList.map((cat, idx) => {
             const query = getCategoryQuery(cat.title);
             const basePrefix = window.location.pathname.startsWith('/PAKSHAL-AGENCYS') ? '/PAKSHAL-AGENCYS' : '';
@@ -135,7 +135,7 @@ export const Categories = ({ onNavigate }) => {
                     onNavigate('products', '', `?category=${query}`);
                   }
                 }}
-                className="group relative rounded-2xl overflow-hidden border border-[#C9A44C]/25 h-36 sm:h-42 flex items-center p-5 sm:p-6 bg-[#f5ecd0] shadow-[0_4px_20px_rgba(201,164,76,0.08)] cursor-pointer select-none block"
+                className="group relative rounded-2xl overflow-hidden border border-[#C9A44C]/25 h-48 sm:h-60 flex items-center p-5 sm:p-6 bg-[#f5ecd0] shadow-[0_4px_20px_rgba(201,164,76,0.08)] cursor-pointer select-none w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
               >
                 {/* Background Image on Right Half */}
                 <div

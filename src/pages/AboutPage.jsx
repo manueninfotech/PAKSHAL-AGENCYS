@@ -93,22 +93,22 @@ export const AboutPage = ({ onNavigateHome }) => {
       <div className="w-full min-h-[85vh] lg:h-screen bg-[#FAF8F5] flex flex-col lg:flex-row-reverse items-stretch overflow-hidden border-b border-[#C9A44C]/15 relative">
 
         {/* RIGHT SIDE: Elegant Editorial Brand Story (40% Width) */}
-        <div className="w-full lg:w-[40%] flex flex-col justify-start gap-8 py-12 px-6 sm:px-12 lg:pt-20 lg:pb-12 lg:pl-12 lg:pr-24 bg-[#FAF8F5] min-h-[450px] lg:min-h-screen z-10">
+        <div className="w-full lg:w-[40%] flex flex-col justify-start gap-8 py-12 px-6 sm:px-12 lg:pt-20 lg:pb-36 lg:pl-12 lg:pr-24 bg-[#FAF8F5] min-h-[450px] lg:min-h-screen z-10">
 
           {/* Top Info Area */}
-          <div className="flex items-center gap-3 text-[#C9A44C] font-bold text-[10px] tracking-[0.3em] uppercase self-start">
+          <div className="flex items-center gap-4 text-[#C9A44C] font-black text-xs sm:text-sm tracking-[0.3em] uppercase self-start">
             OUR STORY
-            <span className="w-12 h-[1.5px] bg-[#C9A44C]" />
+            <span className="w-20 h-[2px] bg-[#C9A44C]" />
           </div>
 
           {/* Central Magazine-Style Editorial Block */}
           <div className="flex flex-col gap-6 max-w-md">
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-sans font-black tracking-tight text-[#1C1917] leading-[1.15]">
               From a Vision<br />
-              to a <span className="text-[#C9A44C] italic font-sans font-extrabold">Trusted</span> Name
+              to a <span className="text-[#C9A44C] italic font-sans font-extrabold mr-2">Trusted</span> Name
             </h2>
 
-            <div className="flex flex-col gap-4 text-sm sm:text-base lg:text-[17px] text-[#1C1917] leading-relaxed font-semibold tracking-wide">
+            <div className="flex flex-col gap-4 text-sm sm:text-base lg:text-[17px] text-stone-600 leading-relaxed font-normal tracking-wide">
               <p>
                 What began as a small step with a big vision has today grown into a trusted partnership with thousands of satisfied customers. Our journey is built on hard work, honesty and a passion for quality.
               </p>
@@ -121,46 +121,46 @@ export const AboutPage = ({ onNavigateHome }) => {
         </div>
 
         {/* LEFT SIDE: Full-Bleed Container but Contained Visual (60% Width) */}
-        <div className="w-full lg:w-[60%] flex flex-col justify-between bg-[#FAF8F5] py-12 px-6 sm:px-12 lg:pt-20 lg:pb-12 lg:pl-16 lg:pr-8 min-h-[400px] lg:h-screen z-0">
+        <div className="w-full lg:w-[60%] flex flex-col justify-between bg-[#FAF8F5] py-12 px-6 sm:px-12 lg:pt-20 lg:pb-36 lg:pl-16 lg:pr-8 min-h-[400px] lg:h-screen z-0">
 
           {/* Sketch Image Container (contained and padded to increase its size) */}
           <div className="flex-1 flex items-start justify-center bg-[#FAF8F5] p-0 overflow-hidden">
             <img
               src={`${import.meta.env.BASE_URL}showroom-sketch1.png`}
               alt="Pakshal Agencies Building Concept Sketch"
-              className="max-h-[500px] sm:max-h-[600px] lg:max-h-[780px] w-full h-auto object-contain"
+              className="max-h-[550px] sm:max-h-[650px] lg:max-h-[850px] w-full h-auto object-contain transform hover:scale-[1.02] transition-transform duration-700"
             />
           </div>
 
-          {/* Timeline Bar (positioned under the container) */}
-          <div className="relative w-full px-2 pt-10 pb-2 bg-[#FAF8F5] z-10">
-            {/* Horizontal line */}
-            <div className="absolute left-[12.5%] right-[12.5%] top-[45px] h-[1.5px] bg-[#C9A44C]/35 z-0" />
+        </div>
 
-            {/* Timeline Items */}
-            <div className="relative z-10 flex justify-between items-start">
-              {[
-                { title: ['Our', 'Beginning'], sub: 'Early Years' },
-                { title: ['Expanding', 'Our Range'], sub: 'Growth' },
-                { title: ['Building', 'Strong Relationships'], sub: 'Trust' },
-                { title: ['Continuing', 'to Serve Better'], sub: 'Today' }
-              ].map((milestone, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center flex-1">
-                  {/* Node point */}
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#8E7640] border-2 border-white shadow-sm mb-3.5 z-10" />
+        {/* Timeline Bar (positioned absolutely at the bottom across the entire width of both columns) */}
+        <div className="absolute bottom-0 left-0 right-0 w-full px-8 sm:px-16 lg:px-32 pb-8 pt-8 bg-[#FAF8F5]/90 backdrop-blur-sm z-20">
+          {/* Horizontal line */}
+          <div className="absolute left-[12.5%] right-[12.5%] top-[40px] h-[2px] bg-[#C9A44C]/35 z-0" />
 
-                  {/* Label */}
-                  <h4 className="text-[11px] sm:text-xs font-sans font-bold text-slate-800 leading-snug">
-                    {milestone.title[0]}<br />{milestone.title[1]}
-                  </h4>
-                  <span className="text-[9px] text-slate-400 font-medium mt-1 tracking-wider uppercase font-sans">
-                    ( {milestone.sub} )
-                  </span>
-                </div>
-              ))}
-            </div>
+          {/* Timeline Items */}
+          <div className="relative z-10 flex justify-between items-start">
+            {[
+              { title: ['Our', 'Beginning'], sub: 'Early Years' },
+              { title: ['Expanding', 'Our Range'], sub: 'Growth' },
+              { title: ['Building', 'Strong Relationships'], sub: 'Trust' },
+              { title: ['Continuing', 'to Serve Better'], sub: 'Today' }
+            ].map((milestone, idx) => (
+              <div key={idx} className="flex flex-col items-center text-center flex-1">
+                {/* Node point */}
+                <div className="w-4 h-4 rounded-full bg-[#8E7640] border-2 border-white shadow-md mb-3 z-10" />
+
+                {/* Label */}
+                <h4 className="text-xs sm:text-sm font-sans font-extrabold text-slate-900 leading-snug">
+                  {milestone.title[0]}<br />{milestone.title[1]}
+                </h4>
+                <span className="text-[10px] sm:text-xs text-slate-500 font-bold mt-1 tracking-wider uppercase font-sans">
+                  ( {milestone.sub} )
+                </span>
+              </div>
+            ))}
           </div>
-
         </div>
 
       </div>
@@ -170,10 +170,10 @@ export const AboutPage = ({ onNavigateHome }) => {
         <div className="max-w-7xl mx-auto flex flex-col gap-4 text-center items-center">
 
           <div className="flex flex-col items-center gap-3">
-            <div className="flex items-center justify-center gap-2 text-[#C9A44C] font-bold text-[10px] tracking-[0.3em] uppercase">
-              <span className="w-6 h-[1.5px] bg-[#C9A44C]" />
+            <div className="flex items-center justify-center gap-3 text-[#C9A44C] font-black text-xs sm:text-sm tracking-[0.3em] uppercase">
+              <span className="w-12 h-[2px] bg-[#C9A44C]" />
               WHAT DRIVES US
-              <span className="w-6 h-[1.5px] bg-[#C9A44C]" />
+              <span className="w-12 h-[2px] bg-[#C9A44C]" />
             </div>
             <h2 className="text-3xl sm:text-4xl font-sans font-black tracking-tight text-[#1C1917] leading-tight">
               Values That Define Us
@@ -289,9 +289,9 @@ export const AboutPage = ({ onNavigateHome }) => {
                     <img
                       src={item.img}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-[0.7]"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 brightness-[0.7] group-hover:brightness-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent group-hover:opacity-45 transition-opacity duration-500" />
                     <div className="absolute bottom-4 left-0 right-0 text-center px-2">
                       <span className="text-[8px] text-[#C9A44C] tracking-widest font-extrabold uppercase block mb-0.5">Pakshal</span>
                       <h3 className="text-xs font-sans font-bold text-white uppercase">{item.title}</h3>
@@ -316,10 +316,10 @@ export const AboutPage = ({ onNavigateHome }) => {
                     <img
                       src={item.img}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.7] group-hover:brightness-[0.82]"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 brightness-[0.7] group-hover:brightness-100"
                     />
                     {/* Shadow overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent group-hover:opacity-45 transition-opacity duration-500" />
 
                     {/* Label */}
                     <div className={`absolute bottom-6 ${item.textLeft} -translate-x-1/2 text-center w-[120px] pointer-events-none transition-transform duration-500`}>

@@ -77,19 +77,17 @@ export const DetailedContent = ({ onNavigate }) => {
         {/* Section Header */}
         <div className="flex flex-col items-center text-center gap-3 mb-16">
           <div className="flex items-center gap-3 w-full justify-center">
-            <span className="w-12 sm:w-20 h-[1.5px] bg-[#38a12c]/60 rounded-full" />
             <div className="flex items-center gap-2">
-              <span className="text-[#38a12c] font-black uppercase tracking-[0.25em] text-[11px] sm:text-xs font-sans">
+              <span className="text-[#a88634] font-black uppercase tracking-[0.25em] text-[11px] sm:text-xs font-sans">
                 RESOURCES
               </span>
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#38a12c]/10 text-[#38a12c]">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#38a12c]" />
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#a88634]/10 text-[#a88634]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#a88634]" />
               </span>
-              <span className="text-[#38a12c] font-black uppercase tracking-[0.25em] text-[11px] sm:text-xs font-sans">
+              <span className="text-[#a88634] font-black uppercase tracking-[0.25em] text-[11px] sm:text-xs font-sans">
                 INSIGHTS
               </span>
             </div>
-            <span className="w-12 sm:w-20 h-[1.5px] bg-[#38a12c]/60 rounded-full" />
           </div>
           <h2 className="text-3xl sm:text-4.5xl font-extrabold tracking-tight text-slate-955 font-sans mt-1">
             Detailed Materials &amp; Supply Information
@@ -103,7 +101,7 @@ export const DetailedContent = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
 
           {/* Card 1: Plywood & Structural */}
-          <div className="bg-white rounded-[28px] border border-slate-200/60 border-b-4 border-b-[#2e7d32] shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between group overflow-hidden hover:shadow-lg transition-all duration-300">
+          <div className="bg-white rounded-[28px] border border-slate-200/60 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between group overflow-hidden hover:shadow-lg transition-all duration-300">
             <div>
               {/* Image with slanted separator and floating badge */}
               <div className="relative w-full h-[180px] overflow-hidden bg-slate-100">
@@ -180,7 +178,7 @@ export const DetailedContent = ({ onNavigate }) => {
           </div>
 
           {/* Card 2: Surface Finishes */}
-          <div className="bg-white rounded-[28px] border border-slate-200/60 border-b-4 border-b-[#a88634] shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between group overflow-hidden hover:shadow-lg transition-all duration-300">
+          <div className="bg-white rounded-[28px] border border-slate-200/60 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between group overflow-hidden hover:shadow-lg transition-all duration-300">
             <div>
               {/* Image with slanted separator and floating badge */}
               <div className="relative w-full h-[180px] overflow-hidden bg-slate-100">
@@ -257,7 +255,7 @@ export const DetailedContent = ({ onNavigate }) => {
           </div>
 
           {/* Card 3: Architectural Hardware */}
-          <div className="bg-white rounded-[28px] border border-slate-200/60 border-b-4 border-b-[#0c2340] shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between group overflow-hidden hover:shadow-lg transition-all duration-300">
+          <div className="bg-white rounded-[28px] border border-slate-200/60 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between group overflow-hidden hover:shadow-lg transition-all duration-300">
             <div>
               {/* Image with slanted separator and floating badge */}
               <div className="relative w-full h-[180px] overflow-hidden bg-slate-100">
@@ -341,7 +339,6 @@ export const DetailedContent = ({ onNavigate }) => {
           {/* Left Column: Official Brand Partners */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="flex items-center gap-2.5">
-              <span className="w-1.5 h-5.5 rounded-full bg-[#38a12c]" />
               <h3 className="text-lg font-black text-slate-900 tracking-wider font-sans leading-none">OFFICIAL BRAND PARTNERS</h3>
             </div>
 
@@ -359,10 +356,10 @@ export const DetailedContent = ({ onNavigate }) => {
                   className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-2xl hover:border-[#a88634]/30 hover:shadow-sm transition-all duration-300 group"
                 >
                   <div>
-                    <h4 className="font-extrabold text-[15px] text-slate-900 leading-snug group-hover:text-[#38a12c] transition-colors">{brand.name}</h4>
+                    <h4 className="font-extrabold text-[15px] text-slate-900 leading-snug group-hover:text-[#a88634] transition-colors">{brand.name}</h4>
                     <p className="text-xs text-slate-500 font-semibold mt-0.5">{brand.desc}</p>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-[#38a12c] transition-colors shrink-0 ml-3" />
+                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-[#a88634] transition-colors shrink-0 ml-3" />
                 </a>
               ))}
             </div>
@@ -371,7 +368,6 @@ export const DetailedContent = ({ onNavigate }) => {
           {/* Right Column: FAQs Accordion */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div className="flex items-center gap-2.5">
-              <span className="w-1.5 h-5.5 rounded-full bg-[#38a12c]" />
               <h3 className="text-lg font-black text-slate-900 tracking-wider font-sans leading-none">FREQUENTLY ASKED QUESTIONS</h3>
             </div>
 
@@ -385,7 +381,7 @@ export const DetailedContent = ({ onNavigate }) => {
                   >
                     <button
                       onClick={() => toggleFaq(idx)}
-                      className="w-full flex items-center justify-between p-5 text-left font-extrabold text-[15px] sm:text-base text-slate-900 hover:text-[#38a12c] focus:outline-none transition-colors duration-200"
+                      className="w-full flex items-center justify-between p-5 text-left font-extrabold text-[15px] sm:text-base text-slate-900 hover:text-[#a88634] focus:outline-none transition-colors duration-200"
                     >
                       <span className="flex items-center gap-2.5">
                         <HelpCircle className="w-4.5 h-4.5 text-[#a88634] shrink-0" />

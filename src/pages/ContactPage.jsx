@@ -8,11 +8,10 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 // Custom Premium Toast / Notification Banner
 const StatusBanner = ({ message, type, onClose }) => {
   return (
-    <div className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-4 rounded-xl shadow-xl border backdrop-blur-md transition-all duration-300 animate-slide-in ${
-      type === 'success'
-        ? 'bg-emerald-500/95 border-emerald-400 text-white'
-        : 'bg-rose-500/95 border-rose-400 text-white'
-    }`}>
+    <div className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-4 rounded-xl shadow-xl border backdrop-blur-md transition-all duration-300 animate-slide-in ${type === 'success'
+      ? 'bg-emerald-500/95 border-emerald-400 text-white'
+      : 'bg-rose-500/95 border-rose-400 text-white'
+      }`}>
       <div className="shrink-0">
         {type === 'success' ? (
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -114,7 +113,7 @@ export const ContactPage = () => {
 
   return (
     <div className="w-full min-h-screen pt-24 pb-16 font-sans bg-[#FAF8F4] relative overflow-hidden">
-      
+
       {/* Decorative Radial Gradients for visual premiumness without heavy images */}
       <div className="absolute top-0 right-0 w-[40vw] h-[40vw] rounded-full bg-[#C6961A]/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-[30vw] h-[30vw] rounded-full bg-[#C6961A]/4 blur-[100px] pointer-events-none" />
@@ -130,7 +129,7 @@ export const ContactPage = () => {
 
       {/* Main Page Layout Container */}
       <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col gap-12">
-        
+
         {/* ── HEADER SECTION ── */}
         <div className="text-center space-y-4 max-w-2xl mx-auto mt-6 animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-[#C6961A]/10 border border-[#C6961A]/20 text-[#C6961A] text-[10px] font-black tracking-[0.25em] uppercase px-4 py-2 rounded-full">
@@ -148,10 +147,10 @@ export const ContactPage = () => {
 
         {/* ── TWO-COLUMN GRID CONTENT ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* LEFT SIDE: Contact details + Quick info */}
           <div className="lg:col-span-5 space-y-6">
-            
+
             <div className="space-y-4">
               <ContactInfoCard
                 label="Phone Number"
@@ -203,23 +202,31 @@ export const ContactPage = () => {
             </div>
 
             {/* Premium Dynamic Location Card */}
-            <div className="bg-[#1a1714] text-white p-6 rounded-3xl border border-white/5 space-y-4 shadow-xl relative overflow-hidden group">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,150,26,0.15),transparent_60%)] pointer-events-none" />
-              
-              <div className="space-y-1">
-                <div className="text-[9px] font-bold text-[#C6961A] tracking-[0.25em] uppercase">Experience Centre</div>
-                <h3 className="text-xl font-bold font-serif tracking-wide">GOSHAMAHAL SHOWROOM</h3>
-                <p className="text-xs text-stone-400 font-medium leading-relaxed mt-2">
+            <div 
+              className="text-white p-6 rounded-3xl border border-[#C9A44C]/35 space-y-4 shadow-xl relative overflow-hidden group"
+              style={{ 
+                backgroundImage: `url(${import.meta.env.BASE_URL}wood-grain-clean.jpg)`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              {/* Soft overlay to darken the wood texture slightly for good text contrast */}
+              <div className="absolute inset-0 bg-black/45 pointer-events-none" />
+
+              <div className="space-y-1 relative z-10">
+                <div className="text-[9px] font-black text-[#C9A44C] tracking-[0.25em] uppercase">Experience Centre</div>
+                <h3 className="text-xl font-bold font-serif tracking-wide text-white">GOSHAMAHAL SHOWROOM</h3>
+                <p className="text-xs text-stone-100/95 font-medium leading-relaxed mt-2">
                   Come explore Hyderabad's finest collection of premium plywood, hardware fittings, designer doors, and custom kitchen accessories.
                 </p>
               </div>
 
-              <div className="pt-2 flex items-center justify-between">
+              <div className="pt-2 flex items-center justify-between relative z-10">
                 <a
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#C6961A] hover:text-[#a87e14] transition-colors group/btn"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#C9A44C] hover:text-white border border-[#C9A44C]/35 hover:bg-[#C9A44C] px-4 py-2 rounded-xl transition-all duration-300 group/btn cursor-pointer"
                 >
                   <span>Open Directions in Maps</span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="transform group-hover/btn:translate-x-1 transition-transform">
@@ -234,10 +241,9 @@ export const ContactPage = () => {
           {/* RIGHT SIDE: Gorgeous Centered Inquiry Form */}
           <div className="lg:col-span-7">
             <div className="bg-white border border-stone-200/80 rounded-3xl p-6 md:p-8 shadow-xl shadow-stone-200/40 relative">
-              <div className="absolute top-0 inset-x-0 h-1.5 bg-[#C6961A] rounded-t-3xl" />
-              
+
               <div className="border-b border-stone-100 pb-5 mb-6">
-                <h3 className="text-xl font-black text-stone-800 tracking-wide uppercase">Send Inquiry</h3>
+                <h3 className="text-xl font-black text-stone-800 tracking-wide uppercase">SEND ENQUIRY</h3>
                 <p className="text-xs text-stone-400 font-medium mt-1">Our customer service representatives will contact you shortly.</p>
               </div>
 
@@ -293,7 +299,7 @@ export const ContactPage = () => {
                           backgroundPosition: 'right 14px center',
                         }}
                       >
-                        <option value="">Select a topic</option>
+                        <option value="">Select Category</option>
                         <option value="product">Product Specification Enquiry</option>
                         <option value="dealership">Dealership / Partner Zone Request</option>
                         <option value="quote">Pricing &amp; Custom Quote Request</option>

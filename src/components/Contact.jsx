@@ -76,7 +76,6 @@ export const Contact = () => {
           {/* Right Column - Enquiry Form */}
           <div className="lg:col-span-6 bg-white p-8 sm:p-10 lg:p-12 flex flex-col gap-6 justify-center">
             <div className="flex items-center gap-2.5">
-              <span className="w-1.5 h-5.5 rounded-full bg-[#38a12c]" />
               <h3 className="text-lg font-black text-slate-900 tracking-wider font-sans leading-none">ENQUIRE NOW</h3>
             </div>
 

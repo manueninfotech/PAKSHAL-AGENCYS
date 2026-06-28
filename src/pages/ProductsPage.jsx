@@ -43,7 +43,7 @@ import veneer3Img from '../assets/veneer3.png';
 import veneer4Img from '../assets/veneer4.png';
 import kitchensCardImg from '../assets/kitchens-card.jpg';
 import wardrobesCardImg from '../assets/wardrobes-card.jpg';
-import officefurniture from '../assets/officefurniture.png';
+import officefurniture from '../assets/officefurniture.jpg';
 import interiorpanels from '../assets/interiorpanels.png';
 import hardwareFittings1 from '../assets/productspage-hardware&fittings.png';
 import hydraulicHingeImg from '../assets/hydraulichinge.png';
@@ -1555,24 +1555,14 @@ export const ProductsPage = ({ onNavigate, search }) => {
           <div>
             <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Available Thickness</h3>
             <div className="flex flex-wrap gap-2">
-              {spread.thicknesses.map(thick => {
-                const isSelected = thickness === thick;
-                return (
-                  <button
-                    key={thick}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleThicknessSelect(thick);
-                    }}
-                    className={`px-3 py-1.5 text-xs font-bold rounded-lg border transition-all cursor-pointer ${isSelected
-                      ? 'bg-slate-900 border-slate-900 text-white shadow-md'
-                      : 'bg-white border-slate-200 text-slate-700 hover:border-slate-400'
-                      }`}
-                  >
-                    {thick}
-                  </button>
-                );
-              })}
+              {spread.thicknesses.map(thick => (
+                <span
+                  key={thick}
+                  className="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white text-slate-700 select-none"
+                >
+                  {thick}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -1669,9 +1659,9 @@ export const ProductsPage = ({ onNavigate, search }) => {
                         handleThumbnailClick(idx);
                         setShowSidebar(false);
                       }}
-                      className={`w-full text-left py-2 px-3 rounded-lg text-[11px] transition-all flex items-center justify-between border-l-4 cursor-pointer ${isActive
-                        ? 'bg-green-50 text-[#006e2f] font-black border-[#006e2f]'
-                        : 'bg-transparent border-transparent text-slate-600 hover:bg-slate-50/50 hover:text-slate-900'
+                      className={`w-full text-left py-2 px-3 rounded-lg text-[11px] transition-all flex items-center justify-between cursor-pointer ${isActive
+                        ? 'bg-[#C9A44C]/10 text-[#C9A44C] font-black'
+                        : 'bg-transparent text-slate-600 hover:bg-slate-50/50 hover:text-slate-900'
                         }`}
                     >
                       <span className="truncate pr-1">{spread.brandName}</span>
@@ -1702,19 +1692,19 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
 
       {/* Dynamic Catalog Hero Banner (Full Bleed) */}
-      <div className="w-full bg-[#1c1815] text-white relative min-h-[260px] flex items-stretch border-b border-white/5 animate-fade-in mb-12">
+      <div className="w-full bg-[#F5EDE0] text-slate-800 relative min-h-[260px] flex items-stretch border-b border-[#FAF2DF] animate-fade-in mb-12 shadow-xs">
         {/* Centered layout container to align contents with page grid */}
         <div className="max-w-[1280px] mx-auto w-full px-6 flex flex-col md:flex-row items-stretch relative">
 
-          {/* Left side text contents */}
-          <div className="flex-1 py-10 md:py-14 flex flex-col justify-center text-left relative z-20 bg-gradient-to-r from-[#1c1815] via-[#1c1815] to-transparent md:max-w-[65%]">
-            <span className="text-[10px] text-[#C9A44C] tracking-[0.25em] font-extrabold uppercase mb-2 block animate-pulse">
+          {/* Left side text contents - solid background is defined on parent wrapper */}
+          <div className="flex-1 py-10 md:py-14 flex flex-col justify-center text-left relative z-20 md:max-w-[42%] lg:max-w-[45%]">
+            <span className="text-[10px] text-[#8c6d23] tracking-[0.25em] font-black uppercase mb-2 block animate-pulse">
               {activeSpread.heroSub || 'PREMIUM QUALITY. TIMELESS STRENGTH.'}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-white leading-tight uppercase tracking-tight font-sans">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-900 leading-tight uppercase tracking-tight font-sans">
               {activeSpread.heroTitle || activeSpread.brandName}
             </h2>
-            <p className="text-stone-300 font-medium text-xs sm:text-sm leading-relaxed mt-4 max-w-xl">
+            <p className="text-slate-650 font-medium text-xs sm:text-sm leading-relaxed mt-4 max-w-xl">
               {activeSpread.heroDesc || activeSpread.desc}
             </p>
 
@@ -1722,10 +1712,10 @@ export const ProductsPage = ({ onNavigate, search }) => {
             <div className="flex flex-wrap gap-4 mt-6">
               {(activeSpread.heroTags || []).map((tag, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-stone-900/60 border border-[#C9A44C]/30 flex items-center justify-center shrink-0">
+                  <div className="w-7 h-7 rounded-full bg-white border border-[#C9A44C]/35 flex items-center justify-center shrink-0 shadow-xs">
                     {renderHeroTagIcon(tag.icon)}
                   </div>
-                  <span className="text-[11px] font-bold text-stone-200 tracking-wide">{tag.text}</span>
+                  <span className="text-[11px] font-bold text-slate-700 tracking-wide">{tag.text}</span>
                 </div>
               ))}
             </div>
@@ -1741,8 +1731,6 @@ export const ProductsPage = ({ onNavigate, search }) => {
               className="w-full h-full object-cover object-center transform hover:scale-[1.03] transition-transform duration-10000"
               alt={activeSpread.brandName}
             />
-            {/* Soft shadow overlay */}
-            <div className="absolute inset-0 bg-[#1c1815]/10 pointer-events-none" />
           </div>
 
         </div>
@@ -1769,7 +1757,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
         <aside className="hidden lg:block w-72 sticky top-32 flex-shrink-0 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-slate-200/40 shadow-sm max-h-[calc(100vh-160px)] flex flex-col overflow-hidden" style={{ transform: 'translateX(-72px)' }}>
           {/* Desktop Title Header */}
           <div className="mb-5 pb-3 border-b border-slate-200/60 flex-shrink-0 text-left">
-            <h3 className="text-xs font-black uppercase tracking-widest text-[#006e2f]">
+            <h3 className="text-xs font-black uppercase tracking-widest text-[#C9A44C]">
               Catalogue Index
             </h3>
             <p className="text-[9px] text-slate-400 font-bold uppercase mt-0.5">
@@ -1937,7 +1925,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
                   >
                     Whatsapp Us
                     <svg className="w-4 h-4 fill-current text-[#006e2f]" viewBox="0 0 24 24">
-                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zM12.008 1.83c-5.592 0-10.133 4.54-10.137 10.134-.001 2.213.722 4.301 2.052 6.012L2.73 21.98l4.084-1.071c1.644.897 3.51 1.372 5.188 1.373h.005c5.592 0 10.132-4.542 10.136-10.136.002-2.709-1.051-5.257-2.966-7.172C17.26 2.88 14.717 1.83 12.008 1.83z" />
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.493 4.904 1.495 5.182 0 9.4-4.216 9.403-9.397.001-2.51-1-4.87-2.817-6.649-1.817-1.778-4.23-2.757-6.79-2.758-5.186 0-9.409 4.217-9.412 9.4-.002 1.942.506 3.843 1.472 5.513L2.26 21.53l4.387-1.376zM18.04 14.99c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.51-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.95-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.15-.14.32-.32.48-.48.16-.16.21-.27.32-.48.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.38-.26-.64-.53-.55-.72-.56l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.12 1.1-1.12 2.68s1.15 3.1 1.31 3.32c.16.22 2.27 3.46 5.5 4.86.76.33 1.36.53 1.83.68.77.24 1.47.21 2.03.12.62-.09 1.89-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.3-.21-.62-.37z" />
                     </svg>
                   </a>
                 </div>
@@ -2255,7 +2243,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
               <div className="mt-8 pt-8 border-t border-gray-100">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {(activeSpread.overviewFeatures || []).slice(0, 4).map((feature, i) => (
-                    <div key={i} className="bg-gray-50/50 hover:bg-white p-5 rounded-2xl border border-gray-100/80 hover:shadow-md transition-all duration-300 flex items-start space-x-4">
+                    <div key={i} className="bg-white p-5 rounded-2xl border border-gray-100/80 flex items-start space-x-4">
                       <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-inner">
                         {renderOverviewTagIcon(feature.icon)}
                       </div>
@@ -2492,7 +2480,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
           title="WhatsApp Support"
         >
           <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24z" />
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.493 4.904 1.495 5.182 0 9.4-4.216 9.403-9.397.001-2.51-1-4.87-2.817-6.649-1.817-1.778-4.23-2.757-6.79-2.758-5.186 0-9.409 4.217-9.412 9.4-.002 1.942.506 3.843 1.472 5.513L2.26 21.53l4.387-1.376zM18.04 14.99c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.51-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.15-.14.32-.32.48-.48.16-.16.21-.27.32-.48.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.38-.26-.64-.53-.55-.72-.56l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.12 1.1-1.12 2.68s1.15 3.1 1.31 3.32c.16.22 2.27 3.46 5.5 4.86.76.33 1.36.53 1.83.68.77.24 1.47.21 2.03.12.62-.09 1.89-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.3-.21-.62-.37z" />
           </svg>
         </a>
         <a
@@ -2527,7 +2515,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
           <div className="absolute top-0 bottom-0 left-0 w-80 bg-[#FAF8F5] shadow-2xl p-6 flex flex-col animate-fade-in text-left border-r border-slate-200/50">
             <div className="flex justify-between items-center mb-5 border-b border-slate-200/60 pb-3 flex-shrink-0">
               <div className="flex flex-col text-left">
-                <span className="text-xs font-black uppercase tracking-widest text-[#006e2f]">Catalogue Index</span>
+                <span className="text-xs font-black uppercase tracking-widest text-[#C9A44C]">Catalogue Index</span>
                 <span className="text-[9px] text-slate-400 font-bold uppercase mt-0.5">Select Brand to View Page</span>
               </div>
               <button

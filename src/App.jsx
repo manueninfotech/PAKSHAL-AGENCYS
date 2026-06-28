@@ -107,7 +107,7 @@ function App() {
       )}
 
       <Footer onNavigate={(hash, page) => handleNavigate(page || 'home', hash)} />
-      <WhatsAppButton />
+      {currentPage !== 'products' && <WhatsAppButton />}
     </div>
   );
 }

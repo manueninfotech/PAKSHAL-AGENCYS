@@ -49,18 +49,8 @@ export const About = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
-          {/* Left Panel: Warehouse Image */}
-          <div className="lg:col-span-5 relative group">
-            <div className="absolute inset-0 bg-emerald-500 rounded-2xl rotate-3 scale-98 opacity-5 group-hover:rotate-2 transition-transform duration-300" />
-            <img
-              src={`${import.meta.env.BASE_URL}about-warehouse.png`}
-              alt="Forklift in Timber warehouse"
-              className="relative z-10 w-full h-[450px] object-cover rounded-2xl shadow-xl border border-slate-100"
-            />
-          </div>
-
-          {/* Right Panel: Content Details */}
-          <div className="lg:col-span-7 flex flex-col gap-6 text-left">
+          {/* Left Panel: Content Details */}
+          <div className="lg:col-span-6 flex flex-col gap-6 text-left">
             <div className="text-emerald-600 font-extrabold uppercase tracking-wider text-[10px]">
               About Pakshal Agencies
             </div>
@@ -101,7 +91,16 @@ export const About = ({ onNavigate }) => {
                 </svg>
               </button>
             </div>
+          </div>
 
+          {/* Right Panel: Warehouse Image */}
+          <div className="lg:col-span-6 relative group">
+            <div className="absolute inset-0 bg-emerald-500 rounded-2xl rotate-3 scale-98 opacity-5 group-hover:rotate-2 transition-transform duration-300" />
+            <img
+              src={`${import.meta.env.BASE_URL}about-warehouse.png`}
+              alt="Forklift in Timber warehouse"
+              className="relative z-10 w-full h-[500px] object-cover rounded-2xl shadow-xl border border-slate-100"
+            />
           </div>
         </div>
       </div>

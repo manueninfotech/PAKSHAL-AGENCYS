@@ -46,8 +46,6 @@ export const PremiumCollections = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-
-
   const handleDotClick = (index) => {
     setActiveIndex(index);
   };
@@ -72,7 +70,7 @@ export const PremiumCollections = () => {
 
   return (
     <section className="pt-6 pb-16 px-4 bg-[#FAF8F5] overflow-hidden select-none text-center font-sans border-b border-[#C9A44C]/10">
-      
+
       {/* Title block matching user screenshot */}
       <div className="max-w-7xl mx-auto mb-10 text-center flex flex-col items-center">
         <span className="text-[10.5px] font-black uppercase tracking-[0.25em] text-[#C9A44C] block leading-none">
@@ -81,7 +79,7 @@ export const PremiumCollections = () => {
         <h2 className="text-3xl sm:text-4xl font-sans font-black tracking-tight text-[#1C1917] leading-tight mt-3">
           PREMIUM COLLECTIONS
         </h2>
-        
+
         {/* Horizontal Gold Line flourishes on subtitle */}
         <div className="flex items-center gap-4 mt-3 max-w-lg w-full justify-center">
           <div className="w-12 sm:w-20 h-[1.5px] bg-[#C9A44C]/45" />
@@ -94,11 +92,11 @@ export const PremiumCollections = () => {
 
       {/* 3D Coverflow Container */}
       <div className="relative max-w-7xl mx-auto h-[460px] flex items-center justify-center">
-        
+
 
 
         {/* 3D Perspective Card Wrapper */}
-        <div 
+        <div
           className="relative w-full max-w-[90%] md:max-w-4xl h-[380px] flex items-center justify-center"
           style={{
             perspective: '1200px',
@@ -134,7 +132,7 @@ export const PremiumCollections = () => {
                 key={idx}
                 onClick={() => handleCardClick(idx)}
                 style={style}
-                className={`absolute w-[280px] sm:w-[380px] md:w-[440px] h-[220px] sm:h-[260px] md:h-[300px] rounded-[1.8rem] border border-[#C9A44C]/25 bg-stone-900 overflow-hidden shadow-2xl transition-all cursor-pointer flex flex-col justify-end p-5 md:p-6 group select-none`}
+                className="absolute w-[280px] sm:w-[380px] md:w-[440px] h-[220px] sm:h-[260px] md:h-[300px] rounded-[1.8rem] border border-[#C9A44C]/25 bg-stone-900 overflow-hidden shadow-2xl transition-all cursor-pointer flex flex-col justify-end p-5 md:p-6 group select-none"
               >
                 {/* Background Full-Cover Image */}
                 <img
@@ -146,7 +144,7 @@ export const PremiumCollections = () => {
                 {/* Dynamic Bottom Overlay Fade */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent z-0 pointer-events-none" />
 
-                {/* Text and Button Layer */}
+                {/* Text Layer */}
                 <div className="relative z-10 text-left flex flex-col gap-1 sm:gap-2">
                   <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white leading-tight uppercase font-sans tracking-tight">
                     {item.title}
@@ -154,14 +152,6 @@ export const PremiumCollections = () => {
                   <p className="text-[10px] sm:text-xs text-stone-300 font-bold uppercase tracking-wider leading-snug">
                     {item.subtitle}
                   </p>
-                  
-                  {/* Explore Button */}
-                  <div className="mt-3">
-                    <button className="px-4.5 py-2 bg-gradient-to-r from-[#ebd8a1] to-[#C9A44C] hover:from-[#FAF2DF] hover:to-[#ebd8a1] text-slate-900 font-black text-[9px] uppercase tracking-wider rounded-lg transition-all flex items-center gap-1.5 shadow">
-                      Explore
-                      <span className="font-extrabold text-[10px]">&rarr;</span>
-                    </button>
-                  </div>
                 </div>
               </div>
             );
@@ -176,11 +166,10 @@ export const PremiumCollections = () => {
             key={idx}
             onClick={() => handleDotClick(idx)}
             aria-label={`Go to slide ${idx + 1}`}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === activeIndex 
-                ? 'bg-[#C9A44C] scale-125' 
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex
+                ? 'bg-[#C9A44C] scale-125'
                 : 'bg-stone-300 hover:bg-[#ebd8a1]/60'
-            }`}
+              }`}
           />
         ))}
       </div>

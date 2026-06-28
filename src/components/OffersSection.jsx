@@ -140,22 +140,7 @@ export const OffersSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch gap-6 lg:gap-3 bg-[#FAF7F2] rounded-[2.2rem] overflow-hidden">
           
           {/* Left Dark Emerald Green Card (#0F5C3B) (Cols: 3) */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0F5C3B] via-[#0b472e] to-[#072d1d] p-8 flex flex-col justify-between relative overflow-hidden text-left min-h-[400px]">
-            {/* Wavy golden divider SVG with drop-shadow gold glow filter */}
-            <svg 
-              className="absolute top-0 right-[-1px] h-full w-12 text-[#FAF7F2] pointer-events-none hidden lg:block" 
-              viewBox="0 0 100 800" 
-              preserveAspectRatio="none"
-            >
-              <defs>
-                <filter id="gold-glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-              <path d="M0,0 L40,0 C70,180 15,360 85,540 C115,640 85,800 85,800 L0,800 Z" fill="currentColor" />
-              <path d="M40,0 C70,180 15,360 85,540 C115,640 85,800 85,800" fill="none" stroke="#C9A44C" strokeWidth="3" filter="url(#gold-glow)" />
-            </svg>
+          <div className="lg:col-span-3 bg-gradient-to-br from-[#0F5C3B] via-[#0b472e] to-[#072d1d] p-8 flex flex-col justify-between relative overflow-hidden text-left min-h-[400px] rounded-[2.2rem]">
 
             {/* Subtle abstract gold wave lines in the background */}
             <svg 
@@ -223,17 +208,17 @@ export const OffersSection = () => {
               return (
                 <div 
                   key={offer.id} 
-                  className={`bg-gradient-to-b ${theme.bgClass} rounded-[2rem] border border-[#ebd8a1]/30 flex flex-col items-center justify-between text-center pt-16 pb-4 px-4 relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 min-h-[380px] group`}
+                  className={`bg-gradient-to-b ${theme.bgClass} rounded-[2rem] border border-[#ebd8a1]/30 flex flex-col items-center justify-between text-center pt-20 pb-4 px-4 relative overflow-hidden shadow-sm min-h-[380px]`}
                 >
                   {/* Clean, opaque overlay background image at the bottom */}
                   <img 
                     src={theme.bgOverlay} 
-                    className="absolute bottom-0 left-0 right-0 h-[44%] w-full object-cover z-0 select-none pointer-events-none group-hover:scale-[1.04] transition-transform duration-700 rounded-b-[1.9rem]" 
+                    className="absolute bottom-0 left-0 right-0 h-[44%] w-full object-cover z-0 select-none pointer-events-none rounded-b-[1.9rem]" 
                     alt="" 
                   />
 
                   {/* Overlapping Round Circle Icon with golden metallic outline glow */}
-                  <div className={`absolute top-4 left-1/2 transform -translate-x-1/2 w-14 h-14 rounded-full ${theme.circleBg} border-2 border-[#C9A44C] flex items-center justify-center shadow-[0_0_12px_rgba(201,164,76,0.45)] hover:scale-105 transition-transform duration-300 z-10`}>
+                  <div className={`absolute top-4 left-1/2 transform -translate-x-1/2 w-14 h-14 rounded-full ${theme.circleBg} border-2 border-[#C9A44C] flex items-center justify-center shadow-[0_0_12px_rgba(201,164,76,0.45)] z-10`}>
                     {theme.icon}
                   </div>
 
@@ -267,7 +252,7 @@ export const OffersSection = () => {
           </div>
 
           {/* Right Charcoal Black Card (#111111) (Cols: 3) */}
-          <div className="lg:col-span-3 bg-[#111111] border-t border-b lg:border-t-0 lg:border-b-0 lg:border-l border-[#C9A44C]/35 p-6 flex flex-col justify-between text-left relative overflow-hidden min-h-[400px] shadow-inner rounded-[2.2rem] lg:rounded-l-none lg:rounded-r-[2.2rem]">
+          <div className="lg:col-span-3 bg-[#111111] p-6 flex flex-col justify-between text-left relative overflow-hidden min-h-[400px] shadow-inner rounded-[2.2rem]">
             {/* Exclusive gold ribbon */}
             <div className="absolute top-4 -right-9 w-32 bg-[#C9A44C] py-1 rotate-45 text-[8px] font-black uppercase text-[#111111] tracking-widest text-center shadow-md">
               👑 EXCLUSIVE

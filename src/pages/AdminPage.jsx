@@ -142,8 +142,14 @@ export const AdminPage = ({ onNavigate }) => {
         setShowOfferForm(false);
         fetchOffers();
       } else {
-        const errData = await res.json();
-        showNotification('error', errData.error || 'Failed to save the offer.');
+        let errorMessage = 'Failed to save the offer.';
+        try {
+          const errData = await res.json();
+          errorMessage = errData.error || errorMessage;
+        } catch (e) {
+          errorMessage = `Server error (${res.status}): ${res.statusText || 'Bad Gateway'}`;
+        }
+        showNotification('error', errorMessage);
       }
     } catch (err) {
       showNotification('error', 'Network error. Failed to save offer.');
@@ -199,8 +205,14 @@ export const AdminPage = ({ onNavigate }) => {
           setCurrentOffer(prev => ({ ...prev, image: data.imageUrl }));
         }
       } else {
-        const errData = await res.json();
-        showNotification('error', errData.error || 'Failed to upload image.');
+        let errorMessage = 'Failed to upload image.';
+        try {
+          const errData = await res.json();
+          errorMessage = errData.error || errorMessage;
+        } catch (e) {
+          errorMessage = `Server error (${res.status}): ${res.statusText || 'Bad Gateway'}`;
+        }
+        showNotification('error', errorMessage);
       }
     } catch (err) {
       showNotification('error', 'Network error uploading image.');
@@ -743,7 +755,7 @@ export const AdminPage = ({ onNavigate }) => {
       {/* CREATE/EDIT OFFER MODAL FORM */}
       {showOfferForm && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-[2.5rem] border border-[#C9A44C]/25 max-w-xl w-full p-6 sm:p-8 relative shadow-2xl text-left overflow-y-auto max-h-[90vh]">
+          <div className="bg-white rounded-[2.5rem] border border-[#C9A44C]/25 max-w-xl w-full p-6 sm:p-8 relative shadow-2xl text-left overflow-y-auto max-h-[90vh] no-scrollbar">
             <button 
               onClick={() => setShowOfferForm(false)}
               className="absolute top-5 right-5 text-stone-400 hover:text-stone-600 transition-colors p-1 cursor-pointer"
