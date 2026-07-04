@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pakshal Agencies</title>
+    <script>
+      // Single Page App fallback routing for GitHub Pages
+      var path = window.location.pathname;
+      // Automatically detect base path (e.g., /PAKSHAL-AGENCYS or root /)
+      var base = window.location.pathname.startsWith('/PAKSHAL-AGENCYS') ? '/PAKSHAL-AGENCYS' : '';
+      var cleanPath = base ? path.slice(base.length) : path;
+      if (cleanPath === '/login' || cleanPath === '/admin') {
+        window.location.replace(window.location.origin + base + '/?page=' + cleanPath.slice(1));
+      } else {
+        window.location.replace(window.location.origin + base + '/');
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
