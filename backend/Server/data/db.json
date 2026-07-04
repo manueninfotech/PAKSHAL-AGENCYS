@@ -8,7 +8,41 @@
       "badge": "Limited Time",
       "validUntil": "5/7/2026",
       "terms": "conditons apply",
-      "image": ""
+      "image": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783074425/pakshal_agencies/da7mwxgcwavju2onu9uy.png",
+      "enabled": false
+    },
+    {
+      "id": "1783074310347",
+      "title": "summer offer",
+      "description": "limited offer",
+      "category": "General",
+      "badge": "Limited Time",
+      "validUntil": "5/7/2025",
+      "terms": "conditions apply",
+      "image": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783147701/pakshal_agencies/nqonfwyiatevlzhvkqol.png",
+      "enabled": false
+    },
+    {
+      "id": "1783075182980",
+      "title": "winter offer",
+      "description": "visit store and get offer",
+      "category": "Laminates",
+      "badge": "Limited Time",
+      "validUntil": "10/7/2026",
+      "terms": "conditions apply",
+      "image": "blob:http://localhost:5173/75bc9b0a-f556-47a8-9150-6c9da62a2ed0",
+      "enabled": false
+    },
+    {
+      "id": "1783148896636",
+      "title": "winter sale",
+      "description": "get 10% on above 6000",
+      "category": "Kitchen Accessories",
+      "badge": "Limited Time",
+      "validUntil": "10/7/2026",
+      "terms": "only for first 50 members",
+      "image": "blob:http://localhost:5173/7141e90c-bc64-49cf-ad4f-7552800e2147",
+      "enabled": false
     }
   ],
   "collections": [
@@ -16,7 +50,7 @@
       "id": "col1",
       "title": "MARINE PLYWOOD",
       "subtitle": "Strong. Durable. Reliable.",
-      "image": ""
+      "image": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783148721/pakshal_agencies/er6esdnsa2kpkc1b5qqc.png"
     },
     {
       "id": "col2",
@@ -58,6 +92,34 @@
       "name": "file-1782989391430-548199405.png",
       "url": "https://res.cloudinary.com/dddmskp5o/image/upload/v1782989400/pakshal_agencies/v6wqaaxqb92m5lomzhcj.png",
       "uploadedAt": 1782989401806
+    },
+    {
+      "name": "file-1783074420197-955717516.png",
+      "url": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783074425/pakshal_agencies/da7mwxgcwavju2onu9uy.png",
+      "uploadedAt": 1783074426775
+    },
+    {
+      "name": "file-1783147699190-761055099.png",
+      "url": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783147701/pakshal_agencies/nqonfwyiatevlzhvkqol.png",
+      "uploadedAt": 1783147703214
+    },
+    {
+      "name": "file-1783147733893-272248281.png",
+      "url": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783147735/pakshal_agencies/rtewcqfpw9lgpwkmyqvb.png",
+      "uploadedAt": 1783147737054
+    },
+    {
+      "name": "file-1783148718573-224037497.png",
+      "url": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783148721/pakshal_agencies/er6esdnsa2kpkc1b5qqc.png",
+      "uploadedAt": 1783148723201
+    },
+    {
+      "name": "file-1783148894206-660484056.png",
+      "url": "https://res.cloudinary.com/dddmskp5o/image/upload/v1783148901/pakshal_agencies/snuweobwcez4ycvsq31m.png",
+      "uploadedAt": 1783148902916
     }
-  ]
+  ],
+  "settings": {
+    "offersEnabled": true
+  }
 }

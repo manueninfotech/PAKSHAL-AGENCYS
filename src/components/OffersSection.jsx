@@ -1,12 +1,9 @@
-import { useState, useEffect } from 'react';
-import { 
-  Flame, Layers, Gift, Settings, HardHat, ArrowUpRight, X, MessageCircle, Check 
+import { useState, useEffect, useRef } from 'react';
+import {
+  Flame, Layers, Gift, Settings, HardHat, ArrowUpRight, X, MessageCircle, Check
 } from 'lucide-react';
 
-// Local static fallback images for card background overlays
-import plywoodBg from '../assets/homepage-marineplywood.png';
-import laminatesBg from '../assets/laminates2.png';
-import hardwareBg from '../assets/hardwarefittings.png';
+// Local static fallback images for card background overlays (Removed unused fallback imports)
 
 const FALLBACK_OFFERS = [
   {
@@ -46,21 +43,133 @@ export const OffersSection = () => {
   const [loading, setLoading] = useState(true);
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [showQuoteModal, setShowQuoteModal] = useState(false);
+  const scrollContainerRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const dragStatus = useRef({ isDragging: false, startX: 0, startScrollLeft: 0 });
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || offers.length <= 1 || isHovered) return;
+
+    const speed = 1.2; // Scroll speed in pixels per frame
+    let animationFrameId;
+
+    const step = () => {
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 0) {
+        animationFrameId = requestAnimationFrame(step);
+        return;
+      }
+
+      let newScrollLeft = container.scrollLeft + speed;
+      // Scroll right-to-left: wrap back to 0 when reaching the end
+      if (newScrollLeft >= maxScroll) {
+        newScrollLeft = 0;
+      }
+      
+      container.scrollLeft = newScrollLeft;
+      animationFrameId = requestAnimationFrame(step);
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered, offers]);
+
+  const handleMouseDown = (e) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    dragStatus.current = {
+      isDragging: true,
+      startX: e.pageX - container.offsetLeft,
+      startScrollLeft: container.scrollLeft
+    };
+  };
+
+  const handleMouseMove = (e) => {
+    if (!dragStatus.current.isDragging) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - dragStatus.current.startX) * 1.5;
+    container.scrollLeft = dragStatus.current.startScrollLeft - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    dragStatus.current.isDragging = false;
+  };
+
+  const renderOfferCard = (offer, idx, suffix = '') => {
+    const theme = getCardTheme(idx, offer.category, offer.image);
+    return (
+      <div
+        key={`${offer.id}-${suffix}`}
+        className={`bg-gradient-to-b ${theme.bgClass} rounded-[2rem] border border-[#ebd8a1]/30 flex flex-col items-center pt-10 pb-5 px-5 relative overflow-hidden shadow-sm min-h-[380px] w-[260px] md:w-[280px] shrink-0`}
+      >
+        {/* Info Text */}
+        <div className="flex flex-col items-center gap-0.5 relative z-10 w-full mt-1">
+          <span className="text-[12px] font-black text-slate-800 tracking-wide uppercase font-sans">
+            {offer.category}
+          </span>
+          <span className="text-[8px] font-black bg-stone-200/60 px-2 py-0.5 rounded text-slate-700 uppercase tracking-widest leading-none mt-1.5">
+            {offer.badge}
+          </span>
+          <span className={`text-2xl font-black ${theme.textClass} tracking-tight mt-2.5 font-sans leading-none`}>
+            {offer.title}
+          </span>
+          <span className="text-[10px] font-extrabold text-slate-600 uppercase tracking-wider mt-3 leading-relaxed max-w-[90%] break-words">
+            {offer.description}
+          </span>
+        </div>
+
+        {/* Clean, rounded inline image (Only rendered if custom image exists) */}
+        {theme.bgOverlay && (
+          <div className="w-full h-32 mt-4 mb-4 rounded-2xl overflow-hidden border border-stone-200/40 shadow-inner relative z-10 shrink-0">
+            <img
+              src={theme.bgOverlay}
+              className="w-full h-full object-cover"
+              alt={offer.title}
+            />
+          </div>
+        )}
+
+        {/* View Details Button (Translucent Glassmorphism) */}
+        <button
+          onClick={() => setSelectedOffer(offer)}
+          className={`relative z-10 mt-auto w-full py-2.5 ${theme.buttonClass} active:scale-[0.98] font-extrabold text-[9px] uppercase tracking-wider rounded-xl transition-all shadow flex items-center justify-center gap-1.5 cursor-pointer`}
+        >
+          View Details
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </button>
+      </div>
+    );
+  };
+
+  const [offersEnabled, setOffersEnabled] = useState(true);
 
   useEffect(() => {
     const loadOffers = async () => {
       try {
+        // Fetch status config
+        const statusRes = await fetch('/api/offers/status');
+        if (statusRes.ok) {
+          const statusData = await statusRes.json();
+          setOffersEnabled(statusData.offersEnabled ?? true);
+        }
+
+        // Fetch offers list
         const res = await fetch('/api/offers');
         if (res.ok) {
           const data = await res.json();
-          // Map database categories to correct category naming if needed
-          setOffers(data.length > 0 ? data : FALLBACK_OFFERS);
+          setOffers(data);
         } else {
-          setOffers(FALLBACK_OFFERS);
+          setOffers([]);
         }
       } catch {
-        console.warn('Backend server not connected. Falling back to local promotions.');
-        setOffers(FALLBACK_OFFERS);
+        console.warn('Backend server not connected. Hiding offers section.');
+        setOffers([]);
+        setOffersEnabled(false);
       } finally {
         setLoading(false);
       }
@@ -72,15 +181,9 @@ export const OffersSection = () => {
   const getCardTheme = (index, category = '', offerImage = '') => {
     const cat = category.toLowerCase();
     const cycleIndex = index % 3;
-    
-    // Default fallback backgrounds
-    let bgOverlay = laminatesBg;
-    if (cycleIndex === 0 || cat.includes('plywood')) bgOverlay = plywoodBg;
-    else if (cycleIndex === 2 || cat.includes('hardware') || cat.includes('fitting')) bgOverlay = hardwareBg;
 
-    if (offerImage) {
-      bgOverlay = offerImage;
-    }
+    // Only use the custom offer image as background overlay, do not fall back to static background images
+    const bgOverlay = offerImage || null;
 
     if (cycleIndex === 0 || cat.includes('plywood')) {
       return {
@@ -131,41 +234,28 @@ export const OffersSection = () => {
     );
   }
 
-  const displayOffers = offers;
+  const displayOffers = offers.filter(offer => offer.enabled !== false);
   const offerCount = displayOffers.length;
 
-  let containerClasses = "lg:col-span-6 relative z-10 p-4 lg:py-6 lg:px-2 gap-4 items-stretch";
-  let cardWidthClass = "";
-
-  if (offerCount <= 3) {
-    containerClasses += " grid";
-    if (offerCount === 1) {
-      containerClasses += " grid-cols-1";
-    } else if (offerCount === 2) {
-      containerClasses += " grid-cols-1 md:grid-cols-2";
-    } else {
-      containerClasses += " grid-cols-1 md:grid-cols-3";
-    }
-    cardWidthClass = "w-full";
-  } else {
-    containerClasses += " flex overflow-x-auto flex-nowrap snap-x snap-mandatory pb-3 custom-scrollbar";
-    cardWidthClass = "w-[260px] md:w-[280px] shrink-0 snap-start";
+  // Hide the entire section if disabled in admin panel or if no active offers are configured
+  if (!offersEnabled || offerCount === 0) {
+    return null;
   }
 
   return (
     <section className="pt-12 pb-2 px-4 sm:px-6 lg:px-8 bg-white text-left select-none animate-fade-in">
-      
+
       {/* Outer Styled Card Box - Using exact Cream White (#FAF7F2) */}
       <div className="max-w-[97%] xl:max-w-[1280px] mx-auto bg-[#FAF7F2] border border-[#C9A44C]/30 rounded-[2.5rem] shadow-sm p-3">
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch gap-6 lg:gap-3 bg-[#FAF7F2] rounded-[2.2rem] overflow-hidden">
-          
+
           {/* Left Dark Emerald Green Card (#0F5C3B) (Cols: 3) */}
           <div className="lg:col-span-3 bg-gradient-to-br from-[#0F5C3B] via-[#0b472e] to-[#072d1d] p-8 flex flex-col justify-between relative overflow-hidden text-left min-h-[400px] rounded-[2.2rem]">
 
             {/* Subtle abstract gold wave lines in the background */}
-            <svg 
-              className="absolute inset-0 w-full h-full opacity-10 pointer-events-none z-0" 
-              viewBox="0 0 100 400" 
+            <svg
+              className="absolute inset-0 w-full h-full opacity-10 pointer-events-none z-0"
+              viewBox="0 0 100 400"
               preserveAspectRatio="none"
             >
               <path d="M0,60 C30,120 70,80 100,140" fill="none" stroke="#C9A44C" strokeWidth="0.75" />
@@ -183,17 +273,17 @@ export const OffersSection = () => {
                 <Flame className="w-3.5 h-3.5 fill-current text-[#C9A44C] animate-pulse" />
                 <span>LIMITED TIME ONLY</span>
               </div>
-              
+
               <h2 className="text-3xl font-black leading-none tracking-tight font-sans mt-4">
                 <span className="text-white font-sans uppercase">Special</span><br />
                 <span className="text-[#C9A44C] font-sans uppercase">Offers &</span><br />
                 <span className="text-[#C9A44C] font-sans uppercase">Deals</span>
               </h2>
-              
+
               <p className="text-stone-300 font-bold text-xs leading-relaxed mt-3 max-w-[200px]">
                 Premium Savings on Interior Materials
               </p>
-              
+
               {/* Gold divider line */}
               <div className="w-10 h-0.5 bg-[#C9A44C]/60 mt-4" />
             </div>
@@ -222,53 +312,27 @@ export const OffersSection = () => {
           </div>
 
           {/* Middle Offers Cards (Cols: 6) */}
-          <div className={containerClasses}>
-            {displayOffers.map((offer, idx) => {
-              const theme = getCardTheme(idx, offer.category, offer.image);
-              return (
-                <div 
-                  key={offer.id} 
-                  className={`bg-gradient-to-b ${theme.bgClass} rounded-[2rem] border border-[#ebd8a1]/30 flex flex-col items-center justify-between text-center pt-20 pb-4 px-4 relative overflow-hidden shadow-sm min-h-[380px] ${cardWidthClass}`}
-                >
-                  {/* Clean, opaque overlay background image at the bottom */}
-                  <img 
-                    src={theme.bgOverlay} 
-                    className="absolute bottom-0 left-0 right-0 h-[44%] w-full object-cover z-0 select-none pointer-events-none rounded-b-[1.9rem]" 
-                    alt="" 
-                  />
-
-                  {/* Overlapping Round Circle Icon with golden metallic outline glow */}
-                  <div className={`absolute top-4 left-1/2 transform -translate-x-1/2 w-14 h-14 rounded-full ${theme.circleBg} border-2 border-[#C9A44C] flex items-center justify-center shadow-[0_0_12px_rgba(201,164,76,0.45)] z-10`}>
-                    {theme.icon}
-                  </div>
-
-                  {/* Info Text */}
-                  <div className="flex flex-col items-center gap-0.5 flex-1 relative z-10 mt-1">
-                    <span className="text-[12px] font-black text-slate-800 tracking-wide uppercase font-sans">
-                      {offer.category}
-                    </span>
-                    <span className="text-[8px] font-black bg-stone-200/60 px-2 py-0.5 rounded text-slate-700 uppercase tracking-widest leading-none mt-1.5">
-                      {offer.badge}
-                    </span>
-                    <span className={`text-2xl font-black ${theme.textClass} tracking-tight mt-2.5 font-sans leading-none`}>
-                      {offer.title}
-                    </span>
-                    <span className="text-[9px] font-extrabold text-slate-500 uppercase tracking-wider mt-2.5 leading-snug">
-                      {offer.description}
-                    </span>
-                  </div>
-
-                  {/* View Details Button (Translucent Glassmorphism) */}
-                  <button
-                    onClick={() => setSelectedOffer(offer)}
-                    className={`relative z-10 mt-5 w-full py-2.5 ${theme.buttonClass} active:scale-[0.98] font-extrabold text-[9px] uppercase tracking-wider rounded-xl transition-all shadow flex items-center justify-center gap-1.5 cursor-pointer`}
-                  >
-                    View Details
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              );
-            })}
+          <div className="lg:col-span-6 relative z-10 p-4 lg:py-6 lg:px-2 overflow-hidden flex items-center">
+            {offerCount <= 1 ? (
+              <div className="w-full flex justify-center">
+                {displayOffers.map((offer, idx) => renderOfferCard(offer, idx, 'single'))}
+              </div>
+            ) : (
+              <div
+                ref={scrollContainerRef}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => {
+                  setIsHovered(false);
+                  handleMouseUpOrLeave();
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUpOrLeave}
+                className="flex overflow-x-auto flex-nowrap pb-3 no-scrollbar select-none cursor-grab active:cursor-grabbing w-full gap-4"
+              >
+                {displayOffers.map((offer, idx) => renderOfferCard(offer, idx, 'card'))}
+              </div>
+            )}
           </div>
 
           {/* Right Charcoal Black Card (#111111) (Cols: 3) */}
@@ -290,7 +354,7 @@ export const OffersSection = () => {
               <h3 className="text-[15px] font-black text-[#C9A44C] tracking-wider uppercase leading-snug font-sans">
                 Builder & Contractor<br />Special Deal
               </h3>
-              
+
               <p className="text-stone-400 font-bold text-[11px] leading-relaxed mt-2.5">
                 Large Project? Get The Best Prices & Priority Support.
               </p>
@@ -329,7 +393,7 @@ export const OffersSection = () => {
       {selectedOffer && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 relative border border-slate-100 shadow-2xl text-left">
-            <button 
+            <button
               onClick={() => setSelectedOffer(null)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 transition-colors p-1"
             >
@@ -339,11 +403,11 @@ export const OffersSection = () => {
             <span className="px-2.5 py-1 bg-[#0F5C3B]/10 text-[#0F5C3B] rounded-full text-[9px] font-black uppercase tracking-wider border border-[#0F5C3B]/20">
               {selectedOffer.category} - {selectedOffer.badge}
             </span>
-            
+
             <h3 className="text-xl font-black text-[#0F5C3B] tracking-tight uppercase mt-3 mb-2 font-sans">
               {selectedOffer.title}
             </h3>
-            
+
             <p className="text-slate-650 font-bold text-xs leading-relaxed mb-4">
               {selectedOffer.description}
             </p>
@@ -376,7 +440,7 @@ export const OffersSection = () => {
       {showQuoteModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 relative border border-slate-100 shadow-2xl text-left">
-            <button 
+            <button
               onClick={() => setShowQuoteModal(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 transition-colors p-1"
             >
@@ -386,11 +450,11 @@ export const OffersSection = () => {
             <span className="px-2.5 py-1 bg-[#ebd8a1] text-[#614920] rounded-full text-[9px] font-black uppercase tracking-wider border border-[#C9A44C]/25">
               Bulk Deals
             </span>
-            
+
             <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase mt-3 mb-2 font-sans">
               Request B2B Quote
             </h3>
-            
+
             <p className="text-slate-550 font-bold text-xs leading-relaxed mb-6">
               Connect with our wholesale sales desk for custom pricing, shipping lead times, and builder credit accounts.
             </p>

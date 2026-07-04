@@ -32,13 +32,12 @@ export const AdminPage = ({ onNavigate }) => {
   const [authError, setAuthError] = useState('');
 
   // Dashboard content states
-  const [activeTab, setActiveTab] = useState('offers'); // 'offers' | 'media' | 'collections'
+  const [activeTab, setActiveTab] = useState('offers'); // 'offers' | 'collections'
   const [offers, setOffers] = useState([]);
-  const [images, setImages] = useState([]);
   const [collections, setCollections] = useState([]);
   const [loadingOffers, setLoadingOffers] = useState(false);
-  const [loadingImages, setLoadingImages] = useState(false);
   const [loadingCollections, setLoadingCollections] = useState(false);
+  const [offersEnabled, setOffersEnabled] = useState(true);
 
   // Form states
   const [showOfferForm, setShowOfferForm] = useState(false);
@@ -68,7 +67,6 @@ export const AdminPage = ({ onNavigate }) => {
   const [isSavingCollection, setIsSavingCollection] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [deleteConfirmId, setDeleteConfirmId] = useState(null); // For offers deletion
-  const [deleteImageConfirmName, setDeleteImageConfirmName] = useState(null); // For images deletion
 
   // Passcode verification
   const handleLogin = (e) => {
@@ -117,24 +115,7 @@ export const AdminPage = ({ onNavigate }) => {
     }
   }, []);
 
-  // Fetch media library
-  const fetchImages = useCallback(async () => {
-    setLoadingImages(true);
-    try {
-      const res = await fetch('/api/images');
-      if (res.ok) {
-        const data = await res.json();
-        setImages(data);
-      } else {
-        showNotification('error', 'Failed to load media library.');
-      }
-    } catch (err) {
-      showNotification('error', 'Error connecting to media server.');
-      console.error(err);
-    } finally {
-      setLoadingImages(false);
-    }
-  }, []);
+
 
   // Fetch collections (homepage carousel)
   const fetchCollections = useCallback(async () => {
@@ -155,17 +136,51 @@ export const AdminPage = ({ onNavigate }) => {
     }
   }, []);
 
+  // Fetch offers visibility status
+  const fetchOffersStatus = useCallback(async () => {
+    try {
+      const res = await fetch('/api/offers/status');
+      if (res.ok) {
+        const data = await res.json();
+        setOffersEnabled(data.offersEnabled ?? true);
+      }
+    } catch (err) {
+      console.error('Error fetching offers status:', err);
+    }
+  }, []);
+
+  // Toggle offers visibility status
+  const toggleOffersEnabled = async (newValue) => {
+    try {
+      const res = await fetch('/api/offers/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ offersEnabled: newValue })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setOffersEnabled(data.offersEnabled);
+        showNotification('success', `Homepage Offers Section ${data.offersEnabled ? 'enabled' : 'disabled'} successfully.`);
+      } else {
+        showNotification('error', 'Failed to update offers section status.');
+      }
+    } catch (err) {
+      showNotification('error', 'Failed to connect to backend.');
+      console.error(err);
+    }
+  };
+
   // Load dashboard data if authenticated
   useEffect(() => {
     if (isAuthenticated) {
       const timer = setTimeout(() => {
         fetchOffers();
-        fetchImages();
         fetchCollections();
+        fetchOffersStatus();
       }, 0);
       return () => clearTimeout(timer);
     }
-  }, [isAuthenticated, fetchOffers, fetchImages, fetchCollections]);
+  }, [isAuthenticated, fetchOffers, fetchCollections, fetchOffersStatus]);
 
   // Handle offer submission (create or edit)
   const handleOfferSubmit = async (e) => {
@@ -299,7 +314,6 @@ export const AdminPage = ({ onNavigate }) => {
       if (res.ok) {
         const data = await res.json();
         showNotification('success', 'Image uploaded successfully to Cloudinary.');
-        fetchImages();
         // Replace temporary local URL with the permanent Cloudinary URL
         if (showOfferForm) {
           setCurrentOffer(prev => ({ ...prev, image: data.imageUrl }));
@@ -339,22 +353,7 @@ export const AdminPage = ({ onNavigate }) => {
     }
   };
 
-  // Handle image deletion
-  const handleImageDelete = async (filename) => {
-    try {
-      const res = await fetch(`/api/images/${filename}`, { method: 'DELETE' });
-      if (res.ok) {
-        showNotification('success', 'Image removed from library.');
-        setDeleteImageConfirmName(null);
-        fetchImages();
-      } else {
-        showNotification('error', 'Failed to delete image.');
-      }
-    } catch (err) {
-      showNotification('error', 'Network error deleting image.');
-      console.error(err);
-    }
-  };
+
 
   // Copy text to clipboard helper
   const copyToClipboard = (text) => {
@@ -454,7 +453,7 @@ export const AdminPage = ({ onNavigate }) => {
   // RENDER: Admin Dashboard Dashboard
   // ----------------------------------------------------
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-slate-800 select-none text-left pt-24 pb-20 font-sans">
+    <div className="h-screen overflow-y-auto no-scrollbar bg-[#FAF8F5] text-slate-800 select-none text-left pt-24 pb-20 font-sans">
       
       {/* Toast Notification */}
       {notification && (
@@ -509,7 +508,7 @@ export const AdminPage = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-[#F8F6F2] border border-[#C9A44C]/25 rounded-[1.8rem] p-5 shadow-sm flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#0F5C3B]/10 border border-[#0F5C3B]/20 flex items-center justify-center text-[#0F5C3B] shadow-inner shrink-0">
               <Percent className="w-5.5 h-5.5" />
@@ -517,16 +516,6 @@ export const AdminPage = ({ onNavigate }) => {
             <div>
               <span className="text-[10px] font-black text-stone-500 uppercase tracking-widest block">Active Offers</span>
               <span className="text-2xl font-black text-[#0F5C3B] mt-0.5 block">{loadingOffers ? '...' : offers.length}</span>
-            </div>
-          </div>
-
-          <div className="bg-[#F8F6F2] border border-[#C9A44C]/25 rounded-[1.8rem] p-5 shadow-sm flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#C9A44C]/10 border border-[#C9A44C]/20 flex items-center justify-center text-[#8c601b] shadow-inner shrink-0">
-              <ImageIcon className="w-5.5 h-5.5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-black text-stone-500 uppercase tracking-widest block">Media Library Files</span>
-              <span className="text-2xl font-black text-[#8c601b] mt-0.5 block">{loadingImages ? '...' : images.length}</span>
             </div>
           </div>
 
@@ -557,17 +546,7 @@ export const AdminPage = ({ onNavigate }) => {
               <Tag className="w-4 h-4" />
               Manage Offers ({offers.length})
             </button>
-            <button
-              onClick={() => setActiveTab('media')}
-              className={`pb-4 px-4 font-black text-[11px] uppercase tracking-widest border-b-2 flex items-center gap-2 cursor-pointer transition-all ${
-                activeTab === 'media' 
-                  ? 'border-[#0F5C3B] text-[#0F5C3B]' 
-                  : 'border-transparent text-stone-500 hover:text-stone-850'
-              }`}
-            >
-              <ImageIcon className="w-4 h-4" />
-              Media Library ({images.length})
-            </button>
+
             <button
               onClick={() => setActiveTab('collections')}
               className={`pb-4 px-4 font-black text-[11px] uppercase tracking-widest border-b-2 flex items-center gap-2 cursor-pointer transition-all ${
@@ -582,26 +561,52 @@ export const AdminPage = ({ onNavigate }) => {
           </div>
 
           {activeTab === 'offers' && (
-            <button
-              onClick={() => {
-                setOfferFormMode('create');
-                setCurrentOffer({
-                  id: '',
-                  category: 'General',
-                  badge: 'Limited Time',
-                  title: '',
-                  description: '',
-                  validUntil: '',
-                  terms: '',
-                  image: ''
-                });
-                setShowOfferForm(true);
-              }}
-              className="mb-3 py-2 px-4 bg-[#0F5C3B] hover:bg-[#0a472c] text-white font-extrabold text-[10px] uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
-            >
-              <Plus className="w-4 h-4" />
-              Create Offer
-            </button>
+            <div className="flex flex-wrap items-center gap-4 mb-4">
+              <button
+                onClick={() => {
+                  setOfferFormMode('create');
+                  setCurrentOffer({
+                    id: '',
+                    category: 'General',
+                    badge: 'Limited Time',
+                    title: '',
+                    description: '',
+                    validUntil: '',
+                    terms: '',
+                    image: ''
+                  });
+                  setShowOfferForm(true);
+                }}
+                className="py-2 px-4 bg-[#0F5C3B] hover:bg-[#0a472c] text-white font-extrabold text-[10px] uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
+              >
+                <Plus className="w-4 h-4" />
+                Create Offer
+              </button>
+
+              {/* Offers Visibility Enable/Disable Toggle */}
+              <div className="flex items-center gap-3 bg-[#F8F6F2] border border-[#C9A44C]/25 px-4 py-2 rounded-xl shadow-xs">
+                <span className="text-[10px] font-black text-slate-700 uppercase tracking-wider">
+                  Homepage Offers Section:
+                </span>
+                <button
+                  type="button"
+                  onClick={() => toggleOffersEnabled(!offersEnabled)}
+                  className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                    offersEnabled ? 'bg-[#0F5C3B]' : 'bg-stone-300'
+                  }`}
+                  aria-label="Toggle Offers Visibility"
+                >
+                  <span
+                    className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                      offersEnabled ? 'translate-x-5' : 'translate-x-0'
+                    }`}
+                  />
+                </button>
+                <span className={`text-[10px] font-black uppercase tracking-wider ${offersEnabled ? 'text-[#0F5C3B]' : 'text-stone-500'}`}>
+                  {offersEnabled ? 'Active' : 'Disabled'}
+                </span>
+              </div>
+            </div>
           )}
         </div>
 
@@ -697,6 +702,49 @@ export const AdminPage = ({ onNavigate }) => {
 
                     {/* Actions and details footer */}
                     <div className="p-6 pt-3 bg-stone-50 border-t border-stone-100 flex flex-col gap-3">
+                      {/* Individual Offer Enable/Disable Toggle */}
+                      <div className="flex justify-between items-center bg-white border border-stone-200/60 rounded-xl px-3 py-1.5 shadow-2xs">
+                        <span className="text-[9px] font-black text-stone-650 uppercase tracking-wider">
+                          Offer Status
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              try {
+                                const newStatus = offer.enabled !== false ? false : true;
+                                const res = await fetch(`/api/offers/${offer.id}`, {
+                                  method: 'PUT',
+                                  headers: { 'Content-Type': 'application/json' },
+                                  body: JSON.stringify({ enabled: newStatus })
+                                });
+                                if (res.ok) {
+                                  showNotification('success', `Offer "${offer.title}" ${newStatus ? 'enabled' : 'disabled'} successfully.`);
+                                  fetchOffers();
+                                } else {
+                                  showNotification('error', 'Failed to update offer status.');
+                                }
+                              } catch {
+                                showNotification('error', 'Error connecting to server.');
+                              }
+                            }}
+                            className={`relative inline-flex h-4 w-8 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                              offer.enabled !== false ? 'bg-[#0F5C3B]' : 'bg-stone-300'
+                            }`}
+                            aria-label="Toggle Offer Active State"
+                          >
+                            <span
+                              className={`pointer-events-none inline-block h-3 w-3 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                                offer.enabled !== false ? 'translate-x-4' : 'translate-x-0'
+                              }`}
+                            />
+                          </button>
+                          <span className={`text-[8.5px] font-black uppercase tracking-wider ${offer.enabled !== false ? 'text-[#0F5C3B]' : 'text-stone-500'}`}>
+                            {offer.enabled !== false ? 'Active' : 'Disabled'}
+                          </span>
+                        </div>
+                      </div>
+
                       {offer.terms && (
                         <div className="text-[10px] font-semibold text-stone-400 line-clamp-1 italic">
                           T&C: {offer.terms}
@@ -749,127 +797,6 @@ export const AdminPage = ({ onNavigate }) => {
           </div>
         )}
 
-        {/* TAB CONTENT: Media Library */}
-        {activeTab === 'media' && (
-          <div>
-            {/* Uploader Box */}
-            <div className="bg-[#F8F6F2] border border-dashed border-[#C9A44C]/40 rounded-[2.5rem] p-8 mb-8 text-center max-w-2xl mx-auto shadow-inner relative">
-              <input 
-                type="file" 
-                id="file-upload" 
-                className="hidden" 
-                accept="image/*"
-                onChange={handleImageUpload}
-                disabled={isUploading}
-              />
-              <label 
-                htmlFor="file-upload"
-                className="flex flex-col items-center justify-center cursor-pointer group"
-              >
-                <div className="w-14 h-14 rounded-full bg-[#0F5C3B]/5 border border-[#0F5C3B]/10 flex items-center justify-center text-[#0F5C3B] group-hover:scale-110 transition-transform duration-300 mb-4 shadow-sm">
-                  {isUploading ? (
-                    <Loader2 className="w-6 h-6 text-[#0F5C3B] animate-spin" />
-                  ) : (
-                    <UploadCloud className="w-6 h-6 text-[#0F5C3B]" />
-                  )}
-                </div>
-                
-                <h3 className="text-sm font-black text-slate-800 tracking-tight uppercase">
-                  {isUploading ? 'Uploading file...' : 'Upload Image Assets'}
-                </h3>
-                <p className="text-[10px] font-bold text-stone-500 leading-relaxed mt-1 max-w-[280px] mx-auto">
-                  Drag and drop files here, or click to browse. Max size 5MB. Supports JPG, PNG, WEBP.
-                </p>
-              </label>
-            </div>
-
-            {/* Images Grid */}
-            {loadingImages ? (
-              <div className="w-full py-16 flex flex-col items-center justify-center gap-3">
-                <Loader2 className="w-8 h-8 text-emerald-600 animate-spin" />
-                <span className="text-xs font-bold text-stone-500 uppercase tracking-widest">Loading media files...</span>
-              </div>
-            ) : images.length === 0 ? (
-              <div className="text-center py-16 bg-[#F8F6F2] rounded-[2rem] max-w-md mx-auto border border-[#C9A44C]/10 shadow-sm">
-                <ImageIcon className="w-10 h-10 text-stone-300 mx-auto mb-3" />
-                <h4 className="text-xs font-black uppercase text-stone-400 tracking-widest">No uploaded images</h4>
-                <p className="text-[10px] text-stone-500 font-bold mt-1 max-w-[250px] mx-auto leading-relaxed">
-                  Upload custom cards background images or deal badges to build beautiful offers.
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                {images.map((img) => (
-                  <div 
-                    key={img.name} 
-                    className="bg-[#F8F6F2] border border-[#C9A44C]/15 rounded-2xl overflow-hidden group shadow-sm flex flex-col justify-between hover:shadow transition-all relative h-48"
-                  >
-                    {/* Hover copy button layer */}
-                    <div className="absolute top-2 right-2 z-10 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button
-                        onClick={() => copyToClipboard(img.url)}
-                        title="Copy Image URL Path"
-                        className="w-7 h-7 bg-slate-900/90 text-white rounded-lg flex items-center justify-center hover:bg-[#C9A44C] transition-colors cursor-pointer"
-                      >
-                        <Copy className="w-3.5 h-3.5" />
-                      </button>
-                      
-                      {deleteImageConfirmName === img.name ? (
-                        <button
-                          onClick={() => handleImageDelete(img.name)}
-                          className="px-2 h-7 bg-red-600 text-white rounded-lg flex items-center justify-center text-[9px] font-black uppercase hover:bg-red-700 transition-colors cursor-pointer animate-pulse"
-                        >
-                          Confirm Delete
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => setDeleteImageConfirmName(img.name)}
-                          title="Delete File"
-                          className="w-7 h-7 bg-slate-900/90 text-red-400 rounded-lg flex items-center justify-center hover:bg-red-650 transition-colors cursor-pointer"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      )}
-                    </div>
-
-                    {deleteImageConfirmName === img.name && (
-                      <div 
-                        className="absolute inset-0 bg-black/60 z-[5] flex items-center justify-center p-2 text-center cursor-pointer"
-                        onClick={() => setDeleteImageConfirmName(null)}
-                      >
-                        <span className="text-[8px] font-black text-stone-300 uppercase tracking-widest">
-                          Click outer to cancel
-                        </span>
-                      </div>
-                    )}
-
-                    <div className="flex-1 bg-stone-200 relative overflow-hidden flex items-center justify-center">
-                      <img 
-                        src={img.url} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                        alt={img.name}
-                      />
-                    </div>
-                    
-                    <div className="p-3 bg-stone-50 border-t border-stone-100 text-left">
-                      <div className="text-[10px] font-black truncate text-stone-850" title={img.name}>
-                        {img.name}
-                      </div>
-                      <div className="text-[8.5px] font-extrabold text-stone-400 mt-0.5 truncate uppercase">
-                        {new Date(img.uploadedAt).toLocaleDateString(undefined, { 
-                          month: 'short', 
-                          day: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit'
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
 
         {/* TAB CONTENT: Homepage Carousel (Collections) */}
         {activeTab === 'collections' && (
@@ -1056,32 +983,13 @@ export const AdminPage = ({ onNavigate }) => {
                   <label className="block text-[9px] font-black text-stone-500 uppercase tracking-widest mb-1.5 pl-0.5">
                     Custom Card Image URL Path
                   </label>
-                  <div className="flex gap-2">
                     <input
                       type="text"
                       placeholder="e.g., /uploads/file-12345.jpg"
                       value={currentOffer.image}
                       onChange={(e) => setCurrentOffer(prev => ({ ...prev, image: e.target.value }))}
-                      className="flex-1 bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
+                      className="w-full bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
                     />
-                    
-                    {images.length > 0 && (
-                      <select
-                        onChange={(e) => {
-                          if (e.target.value) {
-                            setCurrentOffer(prev => ({ ...prev, image: e.target.value }));
-                            e.target.value = ''; // Reset select
-                          }
-                        }}
-                        className="bg-[#FAF2DF]/30 border border-[#C9A44C]/35 rounded-xl px-3 text-[10px] font-black text-[#7A5C12] tracking-wider uppercase focus:outline-none cursor-pointer"
-                      >
-                        <option value="">Quick Select Image</option>
-                        {images.map(img => (
-                          <option key={img.name} value={img.url}>{img.name}</option>
-                        ))}
-                      </select>
-                    )}
-                  </div>
                 </div>
 
                 {/* Upload Section in Modal for Offer */}
@@ -1142,6 +1050,30 @@ export const AdminPage = ({ onNavigate }) => {
                     </div>
                   </div>
                 )}
+
+                {/* Enabled Status */}
+                <div className="sm:col-span-2 flex items-center gap-3 bg-[#FAF8F5] border border-stone-200/60 p-4 rounded-xl mt-4">
+                  <span className="text-[10px] font-black text-stone-500 uppercase tracking-widest pl-0.5">
+                    Offer Active Status
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setCurrentOffer(prev => ({ ...prev, enabled: prev.enabled !== false ? false : true }))}
+                    className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                      currentOffer.enabled !== false ? 'bg-[#0F5C3B]' : 'bg-stone-300'
+                    }`}
+                    aria-label="Toggle Offer Active State in Form"
+                  >
+                    <span
+                      className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                        currentOffer.enabled !== false ? 'translate-x-5' : 'translate-x-0'
+                      }`}
+                    />
+                  </button>
+                  <span className={`text-[10px] font-black uppercase tracking-wider ${currentOffer.enabled !== false ? 'text-[#0F5C3B]' : 'text-stone-500'}`}>
+                    {currentOffer.enabled !== false ? 'Show on Homepage' : 'Hidden / Inactive'}
+                  </span>
+                </div>
               </div>
 
               {/* Form Buttons */}
@@ -1237,32 +1169,13 @@ export const AdminPage = ({ onNavigate }) => {
                   <label className="block text-[9px] font-black text-stone-500 uppercase tracking-widest mb-1.5 pl-0.5">
                     Slide Background Image URL / Cloudinary Path
                   </label>
-                  <div className="flex gap-2">
                     <input
                       type="text"
                       placeholder="e.g., https://res.cloudinary.com/.../img.jpg"
                       value={currentCollection.image}
                       onChange={(e) => setCurrentCollection(prev => ({ ...prev, image: e.target.value }))}
-                      className="flex-1 bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
+                      className="w-full bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
                     />
-                    
-                    {images.length > 0 && (
-                      <select
-                        onChange={(e) => {
-                          if (e.target.value) {
-                            setCurrentCollection(prev => ({ ...prev, image: e.target.value }));
-                            e.target.value = ''; // Reset select
-                          }
-                        }}
-                        className="bg-[#FAF2DF]/30 border border-[#C9A44C]/35 rounded-xl px-3 text-[10px] font-black text-[#7A5C12] tracking-wider uppercase focus:outline-none cursor-pointer"
-                      >
-                        <option value="">Quick Select Image</option>
-                        {images.map(img => (
-                          <option key={img.name} value={img.url}>{img.name}</option>
-                        ))}
-                      </select>
-                    )}
-                  </div>
                 </div>
 
                 {/* Image Preview in Modal */}

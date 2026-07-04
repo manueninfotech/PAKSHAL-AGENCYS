@@ -50,6 +50,18 @@ export const PremiumCollections = () => {
   const [activeIndex, setActiveIndex] = useState(2); // Middle index (Laminates) is active by default
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [collectionsList, setCollectionsList] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Autoplay effect to cycle active coverflow index
+  useEffect(() => {
+    if (isHovered || collectionsList.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % collectionsList.length);
+    }, 1550); // Autoplay cycle every 1.5 seconds (increased speed)
+
+    return () => clearInterval(interval);
+  }, [isHovered, collectionsList]);
 
   // Fetch collections from API or fallback to default static list
   useEffect(() => {
@@ -70,10 +82,10 @@ export const PremiumCollections = () => {
       } catch (error) {
         console.error('Error loading collections:', error);
       }
-      
+
       // Fallback
       setCollectionsList(COLLECTIONS.map((c, i) => ({
-        id: `col${i+1}`,
+        id: `col${i + 1}`,
         title: c.title,
         subtitle: c.subtitle,
         displayImage: c.image
@@ -135,7 +147,11 @@ export const PremiumCollections = () => {
       </div>
 
       {/* 3D Coverflow Container */}
-      <div className="relative max-w-7xl mx-auto h-[460px] flex items-center justify-center">
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative max-w-7xl mx-auto h-[460px] flex items-center justify-center"
+      >
 
 
 
@@ -184,7 +200,7 @@ export const PremiumCollections = () => {
                   alt={item.title}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 brightness-[0.72] group-hover:brightness-[0.76]"
                 />
-                
+
                 {/* Dynamic Bottom Overlay Fade */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent z-0 pointer-events-none" />
 
@@ -211,8 +227,8 @@ export const PremiumCollections = () => {
             onClick={() => handleDotClick(idx)}
             aria-label={`Go to slide ${idx + 1}`}
             className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex
-                ? 'bg-[#C9A44C] scale-125'
-                : 'bg-stone-300 hover:bg-[#ebd8a1]/60'
+              ? 'bg-[#C9A44C] scale-125'
+              : 'bg-stone-300 hover:bg-[#ebd8a1]/60'
               }`}
           />
         ))}

@@ -1,37 +1,5 @@
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
+import { readDB, writeDB } from '../Utils/dbHelper.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// database path matches the original path to preserve existing data
-const dbPath = path.resolve(__dirname, '../Server/data/db.json');
-
-const readDB = () => {
-  try {
-    if (!fs.existsSync(dbPath)) {
-      return { offers: [] };
-    }
-    const data = fs.readFileSync(dbPath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Error reading DB:', error);
-    return { offers: [] };
-  }
-};
-
-const writeDB = (data) => {
-  try {
-    const dir = path.dirname(dbPath);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf8');
-  } catch (error) {
-    console.error('Error writing DB:', error);
-  }
-};
 
 // GET /api/offers
 export const getOffers = (req, res) => {
@@ -42,7 +10,7 @@ export const getOffers = (req, res) => {
 // POST /api/offers
 export const createOffer = (req, res) => {
   try {
-    const { title, description, category, badge, validUntil, terms, image } = req.body;
+    const { title, description, category, badge, validUntil, terms, image, enabled } = req.body;
     if (!title || !description) {
       return res.status(400).json({ error: 'Title and description are required' });
     }
@@ -55,7 +23,8 @@ export const createOffer = (req, res) => {
       badge: badge || 'Promo',
       validUntil: validUntil || 'N/A',
       terms: terms || '',
-      image: image || ''
+      image: image || '',
+      enabled: enabled !== undefined ? !!enabled : true
     };
     db.offers = db.offers || [];
     db.offers.push(newOffer);
@@ -70,7 +39,7 @@ export const createOffer = (req, res) => {
 export const updateOffer = (req, res) => {
   try {
     const id = req.params.id;
-    const { title, description, category, badge, validUntil, terms, image } = req.body;
+    const { title, description, category, badge, validUntil, terms, image, enabled } = req.body;
     const db = readDB();
     db.offers = db.offers || [];
     const index = db.offers.findIndex(item => item.id === id);
@@ -85,7 +54,8 @@ export const updateOffer = (req, res) => {
       badge: badge !== undefined ? badge : db.offers[index].badge,
       validUntil: validUntil !== undefined ? validUntil : db.offers[index].validUntil,
       terms: terms !== undefined ? terms : db.offers[index].terms,
-      image: image !== undefined ? image : db.offers[index].image
+      image: image !== undefined ? image : db.offers[index].image,
+      enabled: enabled !== undefined ? !!enabled : (db.offers[index].enabled !== false)
     };
     db.offers[index] = updatedOffer;
     writeDB(db);
@@ -108,6 +78,35 @@ export const deleteOffer = (req, res) => {
     db.offers = filteredOffers;
     writeDB(db);
     res.json({ message: 'Offer deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// GET /api/offers/status
+export const getOffersStatus = (req, res) => {
+  try {
+    const db = readDB();
+    res.json(db.settings || { offersEnabled: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// POST /api/offers/status
+export const updateOffersStatus = (req, res) => {
+  try {
+    const { offersEnabled } = req.body;
+    if (offersEnabled === undefined) {
+      return res.status(400).json({ error: 'offersEnabled parameter is required' });
+    }
+    const db = readDB();
+    db.settings = {
+      ...db.settings,
+      offersEnabled: !!offersEnabled
+    };
+    writeDB(db);
+    res.json(db.settings);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

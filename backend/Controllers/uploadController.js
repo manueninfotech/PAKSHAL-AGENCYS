@@ -4,6 +4,8 @@ import multer from 'multer';
 import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
+import { readDB, writeDB } from '../Utils/dbHelper.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -68,36 +70,7 @@ export const upload = multer({
   }
 });
 
-const dbPath = path.resolve(__dirname, '../Server/data/db.json');
 
-const readDB = () => {
-  try {
-    if (!fs.existsSync(dbPath)) {
-      return { offers: [], collections: [], images: [] };
-    }
-    const data = fs.readFileSync(dbPath, 'utf8');
-    const parsed = JSON.parse(data);
-    if (!parsed.images) {
-      parsed.images = [];
-    }
-    return parsed;
-  } catch (error) {
-    console.error('Error reading DB:', error);
-    return { offers: [], collections: [], images: [] };
-  }
-};
-
-const writeDB = (data) => {
-  try {
-    const dir = path.dirname(dbPath);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf8');
-  } catch (error) {
-    console.error('Error writing DB:', error);
-  }
-};
 
 // POST /api/upload
 export const uploadImage = async (req, res) => {

@@ -71,7 +71,7 @@ export const DetailedContent = ({ onNavigate }) => {
   ];
 
   return (
-    <section id="detailed-info" className="pt-16 pb-8 bg-slate-50/50 border-t border-b border-slate-200/50 text-left relative">
+    <section id="detailed-info" className="pt-16 pb-8 bg-white border-t border-b border-slate-100 text-left relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}

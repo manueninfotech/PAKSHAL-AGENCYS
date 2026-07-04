@@ -327,24 +327,13 @@ export const GalleryPage = () => {
                 <img src={`${import.meta.env.BASE_URL}showroom-reception.png`} alt="Showroom Lounge" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
 
-              {/* Row 2, Col 3: OUR EXPERIENCE CENTRE Card */}
-              <div className="relative rounded-br-[48px] sm:rounded-br-[80px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl overflow-hidden bg-gradient-to-br from-neutral-900 to-black p-4 sm:p-6 flex flex-col justify-between text-left group select-none">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-800/20 via-transparent to-transparent opacity-50 pointer-events-none" />
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
-
-                <div className="relative z-10">
-                  <span className="text-[8px] sm:text-[10px] text-[#C9A44C] tracking-[0.25em] font-bold uppercase block mb-0.5 sm:mb-1">OUR</span>
-                  <h3 className="text-xs sm:text-base md:text-xl font-bold text-[#C9A44C] tracking-wide leading-tight font-sans">
-                    EXPERIENCE<br />CENTRE
-                  </h3>
-                </div>
-                <div className="relative z-10 flex justify-start">
-                  <button className="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-[#C9A44C] hover:bg-[#b0873a] text-black flex items-center justify-center transition-colors shadow-lg">
-                    <svg className="w-4 h-4 sm:w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </button>
-                </div>
+              {/* Row 2, Col 3: Experience Centre Image Card */}
+              <div className="relative rounded-br-[48px] sm:rounded-br-[80px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl overflow-hidden group">
+                <img 
+                  src={interiorPanelsImg} 
+                  alt="Experience Centre" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
               </div>
             </div>
           </div>
