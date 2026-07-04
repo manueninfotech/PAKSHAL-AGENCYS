@@ -11,7 +11,16 @@ import { AdminPage } from './Admin/AdminPage';
 import { LoginForm } from './Admin/LoginForm';
 
 
-const getNormalizedPage = (pathname) => {
+const getNormalizedPage = (pathname, search = '') => {
+  // Check query parameter routing first (perfect for static hosts like GitHub Pages!)
+  const params = new URLSearchParams(search);
+  const pageParam = params.get('page');
+  if (pageParam) {
+    if (['home', 'about', 'gallery', 'products', 'contact', 'admin', 'login'].includes(pageParam)) {
+      return pageParam;
+    }
+  }
+
   const cleanPath = pathname.startsWith('/PAKSHAL-AGENCYS')
     ? pathname.slice('/PAKSHAL-AGENCYS'.length)
     : pathname;
@@ -27,7 +36,7 @@ const getNormalizedPage = (pathname) => {
 
 function App() {
   const [currentPage, setCurrentPage] = useState(() => {
-    return getNormalizedPage(window.location.pathname);
+    return getNormalizedPage(window.location.pathname, window.location.search);
   });
   const [currentSearch, setCurrentSearch] = useState(() => window.location.search);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
@@ -37,7 +46,7 @@ function App() {
   useEffect(() => {
     const handlePopState = () => {
       setCurrentSearch(window.location.search);
-      setCurrentPage(getNormalizedPage(window.location.pathname));
+      setCurrentPage(getNormalizedPage(window.location.pathname, window.location.search));
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -53,18 +62,22 @@ function App() {
     setCurrentPage(page);
     setCurrentSearch(search);
 
-    // Update path
-    const pathMap = { 
-      about: '/about', 
-      gallery: '/gallery', 
-      products: '/products', 
-      contact: '/contact',
-      admin: '/admin',
-      login: '/login'
-    };
-    const cleanPath = pathMap[page] || '/';
     const basePrefix = window.location.pathname.startsWith('/PAKSHAL-AGENCYS') ? '/PAKSHAL-AGENCYS' : '';
-    const newPath = basePrefix + cleanPath + search;
+    let newPath;
+
+    // Use query parameters for admin and login routes to completely avoid static host 404s on reload
+    if (page === 'admin' || page === 'login') {
+      newPath = `${basePrefix}/?page=${page}`;
+    } else {
+      const pathMap = { 
+        about: '/about', 
+        gallery: '/gallery', 
+        products: '/products', 
+        contact: '/contact'
+      };
+      const cleanPath = pathMap[page] || '/';
+      newPath = basePrefix + cleanPath + search;
+    }
 
     if (window.location.pathname + window.location.search !== newPath) {
       window.history.pushState({}, '', newPath);
