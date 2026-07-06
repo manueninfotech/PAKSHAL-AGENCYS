@@ -4,7 +4,7 @@ import {
   AlertCircle, Loader2, LogOut, ArrowLeft, Tag, Gift, Percent,
   UploadCloud, Copy, Sparkles, Calendar, ShieldCheck, X
 } from 'lucide-react';
-
+import { API_BASE_URL } from '../../config';
 // Import homepage static image assets
 import marinePlywood from '../../assets/homepage-marineplywood.png';
 import veneers from '../../assets/veneer2.png';
@@ -97,7 +97,7 @@ export const AdminPage = ({ onNavigate }) => {
   const fetchOffers = useCallback(async () => {
     setLoadingOffers(true);
     try {
-      const res = await fetch('/api/offers');
+      const res = await fetch(`${API_BASE_URL}/api/offers`);
       if (res.ok) {
         const data = await res.json();
         setOffers(data);
@@ -118,7 +118,7 @@ export const AdminPage = ({ onNavigate }) => {
   const fetchCollections = useCallback(async () => {
     setLoadingCollections(true);
     try {
-      const res = await fetch('/api/collections');
+      const res = await fetch(`${API_BASE_URL}/api/collections`);
       if (res.ok) {
         const data = await res.json();
         setCollections(data);
@@ -136,7 +136,7 @@ export const AdminPage = ({ onNavigate }) => {
   // Fetch offers visibility status
   const fetchOffersStatus = useCallback(async () => {
     try {
-      const res = await fetch('/api/offers/status');
+      const res = await fetch(`${API_BASE_URL}/api/offers/status`);
       if (res.ok) {
         const data = await res.json();
         setOffersEnabled(data.offersEnabled ?? true);
@@ -149,7 +149,7 @@ export const AdminPage = ({ onNavigate }) => {
   // Toggle offers visibility status
   const toggleOffersEnabled = async (newValue) => {
     try {
-      const res = await fetch('/api/offers/status', {
+      const res = await fetch(`${API_BASE_URL}/api/offers/status`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ offersEnabled: newValue })
@@ -189,7 +189,7 @@ export const AdminPage = ({ onNavigate }) => {
 
     setIsSavingOffer(true);
     const method = offerFormMode === 'create' ? 'POST' : 'PUT';
-    const url = offerFormMode === 'create' ? '/api/offers' : `/api/offers/${currentOffer.id}`;
+    const url = offerFormMode === 'create' ? `${API_BASE_URL}/api/offers` : `${API_BASE_URL}/api/offers/${currentOffer.id}`;
 
     try {
       const res = await fetch(url, {
@@ -223,7 +223,7 @@ export const AdminPage = ({ onNavigate }) => {
   // Handle offer deletion
   const handleOfferDelete = async (id) => {
     try {
-      const res = await fetch(`/api/offers/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE_URL}/api/offers/${id}`, { method: 'DELETE' });
       if (res.ok) {
         showNotification('success', 'Offer successfully deleted!');
         setDeleteConfirmId(null);
@@ -247,7 +247,7 @@ export const AdminPage = ({ onNavigate }) => {
 
     setIsSavingCollection(true);
     try {
-      const res = await fetch(`/api/collections/${currentCollection.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/collections/${currentCollection.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(currentCollection)
@@ -303,7 +303,7 @@ export const AdminPage = ({ onNavigate }) => {
     formData.append('image', file);
 
     try {
-      const res = await fetch('/api/upload', {
+      const res = await fetch(`${API_BASE_URL}/api/upload`, {
         method: 'POST',
         body: formData
       });
@@ -634,7 +634,7 @@ export const AdminPage = ({ onNavigate }) => {
                             onClick={async () => {
                               try {
                                 const newStatus = offer.enabled !== false ? false : true;
-                                const res = await fetch(`/api/offers/${offer.id}`, {
+                                const res = await fetch(`${API_BASE_URL}/api/offers/${offer.id}`, {
                                   method: 'PUT',
                                   headers: { 'Content-Type': 'application/json' },
                                   body: JSON.stringify({ enabled: newStatus })

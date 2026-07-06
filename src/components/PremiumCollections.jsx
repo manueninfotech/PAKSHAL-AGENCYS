@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../config';
 
 // Import local image assets
 import marinePlywood from '../assets/homepage-marineplywood.png';
@@ -67,7 +68,7 @@ export const PremiumCollections = () => {
   useEffect(() => {
     const loadCollections = async () => {
       try {
-        const res = await fetch('/api/collections');
+        const res = await fetch(`${API_BASE_URL}/api/collections`);
         if (res.ok) {
           const data = await res.json();
           if (data && data.length > 0) {

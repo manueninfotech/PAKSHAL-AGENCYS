@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {
   Flame, Layers, Gift, Settings, HardHat, ArrowUpRight, X, MessageCircle, Check
 } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 // Local static fallback images for card background overlays (Removed unused fallback imports)
 
@@ -152,14 +153,14 @@ export const OffersSection = () => {
     const loadOffers = async () => {
       try {
         // Fetch status config
-        const statusRes = await fetch('/api/offers/status');
+        const statusRes = await fetch(`${API_BASE_URL}/api/offers/status`);
         if (statusRes.ok) {
           const statusData = await statusRes.json();
           setOffersEnabled(statusData.offersEnabled ?? true);
         }
 
         // Fetch offers list
-        const res = await fetch('/api/offers');
+        const res = await fetch(`${API_BASE_URL}/api/offers`);
         if (res.ok) {
           const data = await res.json();
           setOffers(data);

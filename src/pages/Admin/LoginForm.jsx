@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Lock, Mail, Key, ArrowLeft, Eye, EyeOff, ShieldAlert } from 'lucide-react';
+import { API_BASE_URL } from '../../config';
 
 export const LoginForm = ({ onNavigate }) => {
   const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ export const LoginForm = ({ onNavigate }) => {
     setError('');
 
     try {
-      const res = await fetch('/api/admin/login', {
+      const res = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
