@@ -4,8 +4,7 @@ import multer from 'multer';
 import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
-import { readDB, writeDB } from '../Utils/dbHelper.js';
-
+import Image from '../Modal/Image.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -70,8 +69,6 @@ export const upload = multer({
   }
 });
 
-
-
 // POST /api/upload
 export const uploadImage = async (req, res) => {
   try {
@@ -89,16 +86,12 @@ export const uploadImage = async (req, res) => {
       fs.unlinkSync(req.file.path);
     }
     
-    // Save to db.json
-    const db = readDB();
-    db.images = db.images || [];
-    const newImage = {
+    // Save to MongoDB Image collection
+    const newImage = new Image({
       name: req.file.filename,
-      url: result.secure_url,
-      uploadedAt: Date.now()
-    };
-    db.images.push(newImage);
-    writeDB(db);
+      url: result.secure_url
+    });
+    await newImage.save();
     
     res.json({ imageUrl: result.secure_url });
   } catch (error) {
@@ -111,10 +104,9 @@ export const uploadImage = async (req, res) => {
 };
 
 // GET /api/images
-export const getImages = (req, res) => {
+export const getImages = async (req, res) => {
   try {
-    const db = readDB();
-    const images = (db.images || []).sort((a, b) => b.uploadedAt - a.uploadedAt);
+    const images = await Image.find().sort({ uploadedAt: -1 });
     res.json(images);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -122,16 +114,11 @@ export const getImages = (req, res) => {
 };
 
 // DELETE /api/images/:filename
-export const deleteImage = (req, res) => {
+export const deleteImage = async (req, res) => {
   try {
     const filename = req.params.filename;
-    const db = readDB();
-    db.images = db.images || [];
-    
-    const index = db.images.findIndex(img => img.name === filename);
-    if (index !== -1) {
-      db.images.splice(index, 1);
-      writeDB(db);
+    const deleted = await Image.findOneAndDelete({ name: filename });
+    if (deleted) {
       res.json({ message: 'Image deleted successfully from database' });
     } else {
       res.status(404).json({ error: 'Image not found in database' });

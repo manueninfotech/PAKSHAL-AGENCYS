@@ -8,22 +8,32 @@ export const LoginForm = ({ onNavigate }) => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
-    // Simulate small delay for realistic premium login feel
-    setTimeout(() => {
-      if (email === 'admin@pakshal.com' && password === 'admin@pakshal') {
-        sessionStorage.setItem('admin_auth', 'true');
-        setIsLoading(false);
-        onNavigate('admin');
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setTimeout(() => {
+          sessionStorage.setItem('admin_auth', 'true');
+          setIsLoading(false);
+          onNavigate('admin');
+        }, 300);
       } else {
-        setError('Invalid administrative credentials. Please check your ID and password.');
+        setError(data.error || 'Invalid administrative credentials. Please check your ID and password.');
         setIsLoading(false);
       }
-    }, 800);
+    } catch (err) {
+      setError('Connection to backend failed. Please verify the server is running.');
+      setIsLoading(false);
+    }
   };
 
   return (

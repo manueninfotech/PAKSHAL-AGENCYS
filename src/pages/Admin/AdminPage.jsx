@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { 
-  Lock, Unlock, Plus, Trash2, Edit, Image as ImageIcon, CheckCircle2, 
-  AlertCircle, Loader2, LogOut, ArrowLeft, Tag, Gift, Percent, 
+import {
+  Lock, Unlock, Plus, Trash2, Edit, Image as ImageIcon, CheckCircle2,
+  AlertCircle, Loader2, LogOut, ArrowLeft, Tag, Gift, Percent,
   UploadCloud, Copy, Sparkles, Calendar, ShieldCheck, X
 } from 'lucide-react';
 
@@ -69,15 +69,25 @@ export const AdminPage = ({ onNavigate }) => {
   const [deleteConfirmId, setDeleteConfirmId] = useState(null); // For offers deletion
 
   // Passcode verification
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (passcode === 'admin123') {
-      sessionStorage.setItem('admin_auth', 'true');
-      setIsAuthenticated(true);
-      setAuthError('');
-      showNotification('success', 'Logged in successfully as Administrator.');
-    } else {
-      setAuthError('Invalid administrator passcode. Please try again.');
+    try {
+      const res = await fetch('/api/admin/verify-passcode', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        sessionStorage.setItem('admin_auth', 'true');
+        setIsAuthenticated(true);
+        setAuthError('');
+        showNotification('success', 'Logged in successfully as Administrator.');
+      } else {
+        setAuthError(data.error || 'Invalid administrator passcode. Please try again.');
+      }
+    } catch (err) {
+      setAuthError('Connection to backend failed. Please verify the server is running.');
     }
   };
 
@@ -380,13 +390,13 @@ export const AdminPage = ({ onNavigate }) => {
         <div className="max-w-md w-full bg-slate-900/90 border border-[#C9A44C]/35 rounded-[2.5rem] p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden">
           {/* Subtle gold orb glow */}
           <div className="absolute -top-12 -left-12 w-32 h-32 rounded-full bg-[#C9A44C]/10 blur-2xl pointer-events-none" />
-          
+
           <div className="flex flex-col items-center text-center">
             {/* Elegant shield circle lock icon */}
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#FAF2DF] to-[#ebd8a1] flex items-center justify-center mb-5 shadow-lg border border-[#C9A44C]">
               <Lock className="w-7 h-7 text-[#0F5C3B]" />
             </div>
-            
+
             <h1 className="text-2xl font-black text-[#FAF2DF] tracking-tight uppercase">
               Pakshal Agencies
             </h1>
@@ -454,14 +464,13 @@ export const AdminPage = ({ onNavigate }) => {
   // ----------------------------------------------------
   return (
     <div className="h-screen overflow-y-auto no-scrollbar bg-[#FAF8F5] text-slate-800 select-none text-left pt-24 pb-20 font-sans">
-      
+
       {/* Toast Notification */}
       {notification && (
-        <div className={`fixed bottom-6 right-6 z-[120] flex items-center gap-3 px-5 py-4 rounded-2xl shadow-xl border animate-fade-in ${
-          notification.type === 'success' 
-            ? 'bg-emerald-950 border-emerald-500/30 text-emerald-400' 
+        <div className={`fixed bottom-6 right-6 z-[120] flex items-center gap-3 px-5 py-4 rounded-2xl shadow-xl border animate-fade-in ${notification.type === 'success'
+            ? 'bg-emerald-950 border-emerald-500/30 text-emerald-400'
             : 'bg-red-950 border-red-500/30 text-red-400'
-        }`}>
+          }`}>
           {notification.type === 'success' ? (
             <CheckCircle2 className="w-5.5 h-5.5 text-emerald-400 shrink-0" />
           ) : (
@@ -506,7 +515,7 @@ export const AdminPage = ({ onNavigate }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        
+
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-[#F8F6F2] border border-[#C9A44C]/25 rounded-[1.8rem] p-5 shadow-sm flex items-center gap-4">
@@ -537,11 +546,10 @@ export const AdminPage = ({ onNavigate }) => {
           <div className="flex gap-2">
             <button
               onClick={() => setActiveTab('offers')}
-              className={`pb-4 px-4 font-black text-[11px] uppercase tracking-widest border-b-2 flex items-center gap-2 cursor-pointer transition-all ${
-                activeTab === 'offers' 
-                  ? 'border-[#0F5C3B] text-[#0F5C3B]' 
+              className={`pb-4 px-4 font-black text-[11px] uppercase tracking-widest border-b-2 flex items-center gap-2 cursor-pointer transition-all ${activeTab === 'offers'
+                  ? 'border-[#0F5C3B] text-[#0F5C3B]'
                   : 'border-transparent text-stone-500 hover:text-stone-850'
-              }`}
+                }`}
             >
               <Tag className="w-4 h-4" />
               Manage Offers ({offers.length})
@@ -549,11 +557,10 @@ export const AdminPage = ({ onNavigate }) => {
 
             <button
               onClick={() => setActiveTab('collections')}
-              className={`pb-4 px-4 font-black text-[11px] uppercase tracking-widest border-b-2 flex items-center gap-2 cursor-pointer transition-all ${
-                activeTab === 'collections' 
-                  ? 'border-[#0F5C3B] text-[#0F5C3B]' 
+              className={`pb-4 px-4 font-black text-[11px] uppercase tracking-widest border-b-2 flex items-center gap-2 cursor-pointer transition-all ${activeTab === 'collections'
+                  ? 'border-[#0F5C3B] text-[#0F5C3B]'
                   : 'border-transparent text-stone-500 hover:text-stone-850'
-              }`}
+                }`}
             >
               <Sparkles className="w-4 h-4" />
               Manage Carousel (5)
@@ -591,15 +598,13 @@ export const AdminPage = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => toggleOffersEnabled(!offersEnabled)}
-                  className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                    offersEnabled ? 'bg-[#0F5C3B]' : 'bg-stone-300'
-                  }`}
+                  className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${offersEnabled ? 'bg-[#0F5C3B]' : 'bg-stone-300'
+                    }`}
                   aria-label="Toggle Offers Visibility"
                 >
                   <span
-                    className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                      offersEnabled ? 'translate-x-5' : 'translate-x-0'
-                    }`}
+                    className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${offersEnabled ? 'translate-x-5' : 'translate-x-0'
+                      }`}
                   />
                 </button>
                 <span className={`text-[10px] font-black uppercase tracking-wider ${offersEnabled ? 'text-[#0F5C3B]' : 'text-stone-500'}`}>
@@ -649,8 +654,8 @@ export const AdminPage = ({ onNavigate }) => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {offers.map((offer) => (
-                  <div 
-                    key={offer.id} 
+                  <div
+                    key={offer.id}
                     className="bg-[#F8F6F2] border border-[#C9A44C]/20 rounded-[2.2rem] overflow-hidden flex flex-col justify-between shadow-sm relative group hover:shadow-md transition-all duration-300 min-h-[420px]"
                   >
                     {/* Badge and Tag info */}
@@ -682,9 +687,9 @@ export const AdminPage = ({ onNavigate }) => {
                     {/* Image space */}
                     <div className="h-40 bg-stone-150 border-t border-b border-[#C9A44C]/10 relative overflow-hidden">
                       {offer.image ? (
-                        <img 
-                          src={offer.image} 
-                          className="w-full h-full object-cover" 
+                        <img
+                          src={offer.image}
+                          className="w-full h-full object-cover"
                           alt={offer.title}
                         />
                       ) : (
@@ -728,15 +733,13 @@ export const AdminPage = ({ onNavigate }) => {
                                 showNotification('error', 'Error connecting to server.');
                               }
                             }}
-                            className={`relative inline-flex h-4 w-8 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                              offer.enabled !== false ? 'bg-[#0F5C3B]' : 'bg-stone-300'
-                            }`}
+                            className={`relative inline-flex h-4 w-8 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${offer.enabled !== false ? 'bg-[#0F5C3B]' : 'bg-stone-300'
+                              }`}
                             aria-label="Toggle Offer Active State"
                           >
                             <span
-                              className={`pointer-events-none inline-block h-3 w-3 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                                offer.enabled !== false ? 'translate-x-4' : 'translate-x-0'
-                              }`}
+                              className={`pointer-events-none inline-block h-3 w-3 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${offer.enabled !== false ? 'translate-x-4' : 'translate-x-0'
+                                }`}
                             />
                           </button>
                           <span className={`text-[8.5px] font-black uppercase tracking-wider ${offer.enabled !== false ? 'text-[#0F5C3B]' : 'text-stone-500'}`}>
@@ -750,7 +753,7 @@ export const AdminPage = ({ onNavigate }) => {
                           T&C: {offer.terms}
                         </div>
                       )}
-                      
+
                       <div className="flex gap-2.5">
                         <button
                           onClick={() => {
@@ -763,7 +766,7 @@ export const AdminPage = ({ onNavigate }) => {
                           <Edit className="w-3.5 h-3.5 text-slate-500" />
                           Edit
                         </button>
-                        
+
                         {deleteConfirmId === offer.id ? (
                           <div className="flex-1 flex gap-1 animate-pulse">
                             <button
@@ -809,8 +812,8 @@ export const AdminPage = ({ onNavigate }) => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {collections.map((item) => (
-                  <div 
-                    key={item.id} 
+                  <div
+                    key={item.id}
                     className="bg-[#F8F6F2] border border-[#C9A44C]/25 rounded-[2.2rem] overflow-hidden flex flex-col justify-between shadow-sm relative group hover:shadow-md transition-all duration-300 min-h-[360px]"
                   >
                     <div className="p-6 pb-2 relative z-10">
@@ -830,9 +833,9 @@ export const AdminPage = ({ onNavigate }) => {
 
                     {/* Image Preview space */}
                     <div className="h-44 bg-stone-150 border-t border-b border-[#C9A44C]/10 relative overflow-hidden flex items-center justify-center">
-                      <img 
-                        src={item.image || getFallbackImage(item.id)} 
-                        className="w-full h-full object-cover" 
+                      <img
+                        src={item.image || getFallbackImage(item.id)}
+                        className="w-full h-full object-cover"
                         alt={item.title}
                       />
                       {!item.image && (
@@ -867,7 +870,7 @@ export const AdminPage = ({ onNavigate }) => {
       {showOfferForm && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-white rounded-[2.5rem] border border-[#C9A44C]/25 max-w-xl w-full p-6 sm:p-8 relative shadow-2xl text-left overflow-y-auto max-h-[90vh] no-scrollbar">
-            <button 
+            <button
               onClick={() => setShowOfferForm(false)}
               className="absolute top-5 right-5 text-stone-400 hover:text-stone-600 transition-colors p-1 cursor-pointer"
             >
@@ -877,7 +880,7 @@ export const AdminPage = ({ onNavigate }) => {
             <span className="px-2.5 py-1 bg-[#FAF2DF] text-[#7A5C12] rounded-full text-[9px] font-black uppercase tracking-wider border border-[#C9A44C]/30 inline-block">
               {offerFormMode === 'create' ? '✨ NEW OFFER' : '✏️ EDITING'}
             </span>
-            
+
             <h3 className="text-2xl font-black text-[#0F5C3B] tracking-tight uppercase mt-3 mb-1">
               {offerFormMode === 'create' ? 'Create Promotional Offer' : 'Edit Promotional Offer'}
             </h3>
@@ -886,7 +889,7 @@ export const AdminPage = ({ onNavigate }) => {
             </p>
 
             <form onSubmit={handleOfferSubmit} className="space-y-4">
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Title */}
                 <div className="sm:col-span-2">
@@ -983,13 +986,13 @@ export const AdminPage = ({ onNavigate }) => {
                   <label className="block text-[9px] font-black text-stone-500 uppercase tracking-widest mb-1.5 pl-0.5">
                     Custom Card Image URL Path
                   </label>
-                    <input
-                      type="text"
-                      placeholder="e.g., /uploads/file-12345.jpg"
-                      value={currentOffer.image}
-                      onChange={(e) => setCurrentOffer(prev => ({ ...prev, image: e.target.value }))}
-                      className="w-full bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
-                    />
+                  <input
+                    type="text"
+                    placeholder="e.g., /uploads/file-12345.jpg"
+                    value={currentOffer.image}
+                    onChange={(e) => setCurrentOffer(prev => ({ ...prev, image: e.target.value }))}
+                    className="w-full bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
+                  />
                 </div>
 
                 {/* Upload Section in Modal for Offer */}
@@ -998,15 +1001,15 @@ export const AdminPage = ({ onNavigate }) => {
                     Or Upload Custom Image directly
                   </label>
                   <div className="flex items-center gap-3">
-                    <input 
-                      type="file" 
-                      id="offer-file-upload" 
-                      className="hidden" 
+                    <input
+                      type="file"
+                      id="offer-file-upload"
+                      className="hidden"
                       accept="image/*"
                       onChange={handleImageUpload}
                       disabled={isUploading}
                     />
-                    <label 
+                    <label
                       htmlFor="offer-file-upload"
                       className="py-2.5 px-4 bg-[#0F5C3B]/5 hover:bg-[#0F5C3B]/10 border border-[#0F5C3B]/20 rounded-xl text-[#0F5C3B] font-extrabold text-[10px] uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer"
                     >
@@ -1059,15 +1062,13 @@ export const AdminPage = ({ onNavigate }) => {
                   <button
                     type="button"
                     onClick={() => setCurrentOffer(prev => ({ ...prev, enabled: prev.enabled !== false ? false : true }))}
-                    className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                      currentOffer.enabled !== false ? 'bg-[#0F5C3B]' : 'bg-stone-300'
-                    }`}
+                    className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${currentOffer.enabled !== false ? 'bg-[#0F5C3B]' : 'bg-stone-300'
+                      }`}
                     aria-label="Toggle Offer Active State in Form"
                   >
                     <span
-                      className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                        currentOffer.enabled !== false ? 'translate-x-5' : 'translate-x-0'
-                      }`}
+                      className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${currentOffer.enabled !== false ? 'translate-x-5' : 'translate-x-0'
+                        }`}
                     />
                   </button>
                   <span className={`text-[10px] font-black uppercase tracking-wider ${currentOffer.enabled !== false ? 'text-[#0F5C3B]' : 'text-stone-500'}`}>
@@ -1113,7 +1114,7 @@ export const AdminPage = ({ onNavigate }) => {
       {showCollectionForm && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
           <div className="bg-white rounded-[2.5rem] border border-[#C9A44C]/25 max-w-xl w-full p-6 sm:p-8 relative shadow-2xl text-left overflow-y-auto max-h-[90vh] no-scrollbar">
-            <button 
+            <button
               onClick={() => setShowCollectionForm(false)}
               className="absolute top-5 right-5 text-stone-400 hover:text-stone-600 transition-colors p-1 cursor-pointer"
             >
@@ -1123,7 +1124,7 @@ export const AdminPage = ({ onNavigate }) => {
             <span className="px-2.5 py-1 bg-[#FAF2DF] text-[#7A5C12] rounded-full text-[9px] font-black uppercase tracking-wider border border-[#C9A44C]/30 inline-block">
               ✏️ EDITING CAROUSEL SLIDE
             </span>
-            
+
             <h3 className="text-2xl font-black text-[#0F5C3B] tracking-tight uppercase mt-3 mb-1">
               Edit Coverflow Slide
             </h3>
@@ -1132,7 +1133,7 @@ export const AdminPage = ({ onNavigate }) => {
             </p>
 
             <form onSubmit={handleCollectionSubmit} className="space-y-4">
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Title */}
                 <div className="sm:col-span-2">
@@ -1169,13 +1170,13 @@ export const AdminPage = ({ onNavigate }) => {
                   <label className="block text-[9px] font-black text-stone-500 uppercase tracking-widest mb-1.5 pl-0.5">
                     Slide Background Image URL / Cloudinary Path
                   </label>
-                    <input
-                      type="text"
-                      placeholder="e.g., https://res.cloudinary.com/.../img.jpg"
-                      value={currentCollection.image}
-                      onChange={(e) => setCurrentCollection(prev => ({ ...prev, image: e.target.value }))}
-                      className="w-full bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
-                    />
+                  <input
+                    type="text"
+                    placeholder="e.g., https://res.cloudinary.com/.../img.jpg"
+                    value={currentCollection.image}
+                    onChange={(e) => setCurrentCollection(prev => ({ ...prev, image: e.target.value }))}
+                    className="w-full bg-slate-50 border border-stone-200 focus:bg-white rounded-xl py-2.5 px-3.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"
+                  />
                 </div>
 
                 {/* Image Preview in Modal */}
@@ -1205,15 +1206,15 @@ export const AdminPage = ({ onNavigate }) => {
                     Upload New Image directly to Cloudinary
                   </label>
                   <div className="flex items-center gap-3">
-                    <input 
-                      type="file" 
-                      id="modal-file-upload" 
-                      className="hidden" 
+                    <input
+                      type="file"
+                      id="modal-file-upload"
+                      className="hidden"
                       accept="image/*"
                       onChange={handleImageUpload}
                       disabled={isUploading}
                     />
-                    <label 
+                    <label
                       htmlFor="modal-file-upload"
                       className="py-2.5 px-4 bg-[#0F5C3B]/5 hover:bg-[#0F5C3B]/10 border border-[#0F5C3B]/20 rounded-xl text-[#0F5C3B] font-extrabold text-[10px] uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer"
                     >

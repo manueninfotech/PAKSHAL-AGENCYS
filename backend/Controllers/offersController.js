@@ -1,34 +1,34 @@
-import { readDB, writeDB } from '../Utils/dbHelper.js';
-
+import Offer from '../Modal/Offers.js';
+import Admin from '../Modal/Admin.js';
 
 // GET /api/offers
-export const getOffers = (req, res) => {
-  const db = readDB();
-  res.json(db.offers || []);
+export const getOffers = async (req, res) => {
+  try {
+    const offers = await Offer.find();
+    res.json(offers);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // POST /api/offers
-export const createOffer = (req, res) => {
+export const createOffer = async (req, res) => {
   try {
     const { title, description, category, badge, validUntil, terms, image, enabled } = req.body;
     if (!title || !description) {
       return res.status(400).json({ error: 'Title and description are required' });
     }
-    const db = readDB();
-    const newOffer = {
-      id: Date.now().toString(),
+    const newOffer = new Offer({
       title,
       description,
-      category: category || 'General',
-      badge: badge || 'Promo',
-      validUntil: validUntil || 'N/A',
-      terms: terms || '',
-      image: image || '',
+      category,
+      badge,
+      validUntil,
+      terms,
+      image,
       enabled: enabled !== undefined ? !!enabled : true
-    };
-    db.offers = db.offers || [];
-    db.offers.push(newOffer);
-    writeDB(db);
+    });
+    await newOffer.save();
     res.status(201).json(newOffer);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -36,29 +36,29 @@ export const createOffer = (req, res) => {
 };
 
 // PUT /api/offers/:id
-export const updateOffer = (req, res) => {
+export const updateOffer = async (req, res) => {
   try {
     const id = req.params.id;
     const { title, description, category, badge, validUntil, terms, image, enabled } = req.body;
-    const db = readDB();
-    db.offers = db.offers || [];
-    const index = db.offers.findIndex(item => item.id === id);
-    if (index === -1) {
+    const updatedOffer = await Offer.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          ...(title !== undefined && { title }),
+          ...(description !== undefined && { description }),
+          ...(category !== undefined && { category }),
+          ...(badge !== undefined && { badge }),
+          ...(validUntil !== undefined && { validUntil }),
+          ...(terms !== undefined && { terms }),
+          ...(image !== undefined && { image }),
+          ...(enabled !== undefined && { enabled: !!enabled })
+        }
+      },
+      { new: true }
+    );
+    if (!updatedOffer) {
       return res.status(404).json({ error: 'Offer not found' });
     }
-    const updatedOffer = {
-      ...db.offers[index],
-      title: title !== undefined ? title : db.offers[index].title,
-      description: description !== undefined ? description : db.offers[index].description,
-      category: category !== undefined ? category : db.offers[index].category,
-      badge: badge !== undefined ? badge : db.offers[index].badge,
-      validUntil: validUntil !== undefined ? validUntil : db.offers[index].validUntil,
-      terms: terms !== undefined ? terms : db.offers[index].terms,
-      image: image !== undefined ? image : db.offers[index].image,
-      enabled: enabled !== undefined ? !!enabled : (db.offers[index].enabled !== false)
-    };
-    db.offers[index] = updatedOffer;
-    writeDB(db);
     res.json(updatedOffer);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -66,17 +66,13 @@ export const updateOffer = (req, res) => {
 };
 
 // DELETE /api/offers/:id
-export const deleteOffer = (req, res) => {
+export const deleteOffer = async (req, res) => {
   try {
     const id = req.params.id;
-    const db = readDB();
-    db.offers = db.offers || [];
-    const filteredOffers = db.offers.filter(item => item.id !== id);
-    if (filteredOffers.length === db.offers.length) {
+    const deleted = await Offer.findByIdAndDelete(id);
+    if (!deleted) {
       return res.status(404).json({ error: 'Offer not found' });
     }
-    db.offers = filteredOffers;
-    writeDB(db);
     res.json({ message: 'Offer deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -84,29 +80,37 @@ export const deleteOffer = (req, res) => {
 };
 
 // GET /api/offers/status
-export const getOffersStatus = (req, res) => {
+export const getOffersStatus = async (req, res) => {
   try {
-    const db = readDB();
-    res.json(db.settings || { offersEnabled: true });
+    let admin = await Admin.findOne();
+    if (!admin) {
+      admin = await Admin.create({
+        email: 'admin@pakshal.com',
+        password: 'admin@pakshal',
+        passcode: 'admin123',
+        offersEnabled: true
+      });
+    }
+    res.json({ offersEnabled: admin.offersEnabled });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
 // POST /api/offers/status
-export const updateOffersStatus = (req, res) => {
+export const updateOffersStatus = async (req, res) => {
   try {
     const { offersEnabled } = req.body;
     if (offersEnabled === undefined) {
       return res.status(400).json({ error: 'offersEnabled parameter is required' });
     }
-    const db = readDB();
-    db.settings = {
-      ...db.settings,
-      offersEnabled: !!offersEnabled
-    };
-    writeDB(db);
-    res.json(db.settings);
+    let admin = await Admin.findOne();
+    if (!admin) {
+      admin = new Admin();
+    }
+    admin.offersEnabled = !!offersEnabled;
+    await admin.save();
+    res.json({ offersEnabled: admin.offersEnabled });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
