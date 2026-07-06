@@ -14,6 +14,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 import Admin from '../Modal/Admin.js';
 import Collection from '../Modal/Collection.js';
+import Offer from '../Modal/Offers.js';
 import offersRoutes from '../Routes/offersRoutes.js';
 import uploadRoutes from '../Routes/uploadRoutes.js';
 import collectionsRoutes from '../Routes/collectionsRoutes.js';
@@ -61,6 +62,34 @@ const seedDefaults = async () => {
     if (collectionCount === 0) {
       await Collection.insertMany(DEFAULT_COLLECTIONS);
       console.log('Default collections seeded successfully.');
+    }
+
+    const offerCount = await Offer.countDocuments();
+    if (offerCount === 0) {
+      const DEFAULT_OFFERS = [
+        {
+          title: "Summer Offer",
+          description: "Visit the store and get special deals on premium marine plywood.",
+          category: "Marine Plywood",
+          badge: "Limited Time",
+          validUntil: "5/7/2026",
+          terms: "Conditions apply. Contact us for custom sizes.",
+          image: "https://res.cloudinary.com/dddmskp5o/image/upload/v1783074425/pakshal_agencies/da7mwxgcwavju2onu9uy.png",
+          enabled: true
+        },
+        {
+          title: "Winter Sale",
+          description: "Get 10% discount on orders above 6,000 INR on kitchen baskets and drawer channels.",
+          category: "Kitchen Accessories",
+          badge: "Limited Time",
+          validUntil: "10/7/2026",
+          terms: "Valid for first 50 customers only.",
+          image: "",
+          enabled: true
+        }
+      ];
+      await Offer.insertMany(DEFAULT_OFFERS);
+      console.log('Default offers seeded successfully.');
     }
   } catch (err) {
     console.error('Error seeding database defaults:', err);
