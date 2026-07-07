@@ -117,10 +117,11 @@ export const PremiumCollections = () => {
 
   // Determine spacing based on viewport width
   const getSpacing = () => {
-    if (windowWidth < 640) return 90; // Mobile
-    if (windowWidth < 768) return 140; // Small tablet
-    if (windowWidth < 1024) return 180; // Large tablet
-    return 240; // Desktop
+    if (windowWidth < 640) return 80;
+    if (windowWidth < 768) return 120;
+    if (windowWidth < 1024) return 155;
+    if (windowWidth < 1280) return 190;
+    return 230;
   };
 
   const spacing = getSpacing();
@@ -181,7 +182,7 @@ export const PremiumCollections = () => {
             const style = {
               transform: `translateX(${offset * spacing}px) scale(${isActive ? 1.05 : 0.82}) rotateY(${offset * -24}deg) translateZ(${Math.abs(offset) * -120}px)`,
               zIndex: 10 - Math.abs(offset),
-              opacity: Math.abs(offset) > 2 ? 0 : 0.70 + (isActive ? 0.30 : 0),
+              opacity: Math.abs(offset) > (windowWidth < 1200 ? 1 : 2) ? 0 : 0.70 + (isActive ? 0.30 : 0),
               transition: 'transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.65s cubic-bezier(0.4, 0, 0.2, 1)',
               WebkitBoxReflect: 'below 6px linear-gradient(transparent 62%, rgba(255, 255, 255, 0.16))',
               transformStyle: 'preserve-3d',
@@ -193,7 +194,7 @@ export const PremiumCollections = () => {
                 key={idx}
                 onClick={() => handleCardClick(idx)}
                 style={style}
-                className="absolute w-[280px] sm:w-[380px] md:w-[440px] h-[220px] sm:h-[260px] md:h-[300px] rounded-[1.8rem] border border-[#C9A44C]/25 bg-stone-900 overflow-hidden shadow-2xl transition-all cursor-pointer flex flex-col justify-end p-5 md:p-6 group select-none"
+                className="absolute w-[280px] sm:w-[340px] md:w-[390px] lg:w-[430px] h-[210px] sm:h-[250px] md:h-[280px] lg:h-[300px] rounded-[1.8rem] border border-[#C9A44C]/25 bg-stone-900 overflow-hidden shadow-2xl transition-all cursor-pointer flex flex-col justify-end p-5 md:p-6 group select-none"
               >
                 {/* Background Full-Cover Image */}
                 <img

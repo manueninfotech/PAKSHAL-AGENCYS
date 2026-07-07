@@ -1752,9 +1752,9 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </div>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 flex flex-col lg:flex-row gap-8 items-start relative">
+      <div className="max-w-[1280px] mx-auto px-6 flex flex-col xl:flex-row gap-8 items-start relative">
         {/* Desktop Sidebar Navigation */}
-        <aside className="hidden lg:block w-72 sticky top-32 flex-shrink-0 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-slate-200/40 shadow-sm max-h-[calc(100vh-160px)] flex flex-col overflow-hidden" style={{ transform: 'translateX(-72px)' }}>
+        <aside className="hidden xl:block w-72 sticky top-32 flex-shrink-0 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-slate-200/40 shadow-sm max-h-[calc(100vh-160px)] flex flex-col overflow-hidden" style={{ transform: 'translateX(-72px)' }}>
           {/* Desktop Title Header */}
           <div className="mb-5 pb-3 border-b border-slate-200/60 flex-shrink-0 text-left">
             <h3 className="text-xs font-black uppercase tracking-widest text-[#C9A44C]">
@@ -1803,7 +1803,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
                 <div className="book-spine" />
                 <div className="spine-binding" />
 
-                <div className="flex flex-col lg:flex-row relative">
+                <div className="flex flex-col xl:flex-row relative">
 
                   {/* Left Page (static under flip overlay) */}
                   {renderLeftPage(flipState === 'flipping-next' ? prevSpreadIdx : currentSpreadIdx)}
@@ -1813,7 +1813,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
                   {/* 3D Page Turning Card Overlay */}
                   {flipState !== 'idle' && (
-                    <div className={`hidden lg:block flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
+                    <div className={`hidden xl:block flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
                       {/* Front of the flipping page */}
                       <div className="flip-front">
                         {flipState === 'flipping-next'
@@ -2468,7 +2468,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
         {/* Mobile Sidebar Index Toggle */}
         <button
           onClick={() => setShowSidebar(true)}
-          className="lg:hidden w-14 h-14 bg-[#006e2f] text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
+          className="xl:hidden w-14 h-14 bg-[#006e2f] text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
           title="Browse Catalogue Index"
         >
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

@@ -450,7 +450,7 @@
   transform: rotateY(180deg);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1279px) {
   /* Set heights to auto on mobile so contents don't get cropped */
   .page-content {
     height: auto !important;
