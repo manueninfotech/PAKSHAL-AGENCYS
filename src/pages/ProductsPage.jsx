@@ -1813,13 +1813,20 @@ export const ProductsPage = ({ onNavigate, search }) => {
           <div className="w-full pb-8 mb-4 overflow-hidden md:overflow-visible">
             <div 
               className="book-outer-wrap flex-shrink-0 relative"
-              style={windowDimensions.width >= 768 ? {
-                width: '960px',
-                left: '50%',
-                transform: `translate(-50%, 0) scale(${scale})`,
-                transformOrigin: 'top center',
-                marginBottom: `${marginBot}px`
-              } : {}}
+              style={windowDimensions.width >= 768 ? (
+                windowDimensions.width >= 1280 ? {
+                  width: '960px',
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'top left',
+                  marginBottom: `${marginBot}px`
+                } : {
+                  width: '960px',
+                  left: '50%',
+                  transform: `translate(-50%, 0) scale(${scale})`,
+                  transformOrigin: 'top center',
+                  marginBottom: `${marginBot}px`
+                }
+              ) : {}}
             >
               <div className="book-container book-shadow-3d relative">
 
