@@ -1010,7 +1010,41 @@ export const ProductsPage = ({ onNavigate, search }) => {
     "Plywood, Cabinet Fittings & Kitchen Accessories | Pakshal",
     "Explore our extensive catalog of Hettich, Ebco, Dorset, and Hafele modular kitchen accessories, drawer channels, tandem boxes, and premium doors."
   );
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1280,
+    height: typeof window !== 'undefined' ? window.innerHeight : 800
+  });
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const getCatalogScale = () => {
+    if (windowDimensions.width < 768) return { scale: 1, marginBot: 0 };
+
+    const targetWidth = windowDimensions.width >= 1280 ? 1328 : 960;
+    const scaleWidth = (windowDimensions.width - 48) / targetWidth;
+
+    const targetHeight = windowDimensions.width >= 1280 ? 720 : 640;
+    const scaleHeight = (windowDimensions.height - 120) / targetHeight;
+
+    let scale = Math.min(scaleWidth, scaleHeight);
+    scale = Math.min(1.0, Math.max(0.5, scale));
+
+    const heightReduction = 600 * (1 - scale);
+    const marginBot = -heightReduction + 16;
+
+    return { scale, marginBot };
+  };
+
+  const { scale, marginBot } = getCatalogScale();
   const renderHeroTagIcon = (iconName) => {
     switch (iconName) {
       case 'wood':
@@ -1752,9 +1786,15 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </div>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 flex flex-col xl:flex-row gap-4 items-start relative">
+      <div className="max-w-[1360px] mx-auto px-6 flex flex-col xl:flex-row gap-4 items-start relative">
         {/* Desktop Sidebar Navigation */}
-        <aside className="hidden xl:block w-80 sticky top-32 flex-shrink-0 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-slate-200/40 shadow-sm max-h-[calc(100vh-160px)] flex flex-col overflow-hidden" style={{ transform: 'translateX(-16px)' }}>
+        <aside 
+          className="catalog-sidebar hidden xl:block w-80 sticky top-32 flex-shrink-0 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-slate-200/40 shadow-sm h-[600px] flex flex-col overflow-hidden" 
+          style={windowDimensions.width >= 1280 ? {
+            transform: `translateX(${-16 * scale}px) scale(${scale})`,
+            transformOrigin: 'top left'
+          } : { transform: 'translateX(-16px)' }}
+        >
           {/* Desktop Title Header */}
           <div className="mb-5 pb-3 border-b border-slate-200/60 flex-shrink-0 text-left">
             <h3 className="text-sm font-black uppercase tracking-widest text-[#C9A44C]">
@@ -1770,8 +1810,17 @@ export const ProductsPage = ({ onNavigate, search }) => {
         {/* Main booklet area wrapper */}
         <div className="flex-1 w-full min-w-0 flex flex-col">
           {/* The Open Book */}
-          <div className="w-full pb-8 mb-4 overflow-hidden lg:overflow-visible">
-            <div className="book-outer-wrap">
+          <div className="w-full pb-8 mb-4 overflow-hidden md:overflow-visible">
+            <div 
+              className="book-outer-wrap flex-shrink-0 relative"
+              style={windowDimensions.width >= 768 ? {
+                width: '960px',
+                left: '50%',
+                transform: `translate(-50%, 0) scale(${scale})`,
+                transformOrigin: 'top center',
+                marginBottom: `${marginBot}px`
+              } : {}}
+            >
               <div className="book-container book-shadow-3d relative">
 
                 {/* Hardcover structural base wrapping the stacks */}
@@ -1803,7 +1852,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
                 <div className="book-spine" />
                 <div className="spine-binding" />
 
-                <div className="flex flex-col xl:flex-row relative">
+                <div className="flex flex-col md:flex-row relative">
 
                   {/* Left Page (static under flip overlay) */}
                   {renderLeftPage(flipState === 'flipping-next' ? prevSpreadIdx : currentSpreadIdx)}
@@ -1813,7 +1862,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
                   {/* 3D Page Turning Card Overlay */}
                   {flipState !== 'idle' && (
-                    <div className={`hidden xl:block flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
+                    <div className={`hidden md:block flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
                       {/* Front of the flipping page */}
                       <div className="flip-front">
                         {flipState === 'flipping-next'
