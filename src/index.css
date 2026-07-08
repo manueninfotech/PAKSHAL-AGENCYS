@@ -315,6 +315,11 @@
   /* Premium Paper Texture */
   position: relative;
   transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media (max-height: 800px) {

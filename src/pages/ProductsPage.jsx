@@ -1029,7 +1029,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
   const getCatalogScale = () => {
     if (windowDimensions.width < 768) return { scale: 1, marginBot: 0 };
 
-    const targetWidth = windowDimensions.width >= 1280 ? 1328 : 960;
+    const targetWidth = windowDimensions.width >= 1280 ? 1352 : 960;
     const scaleWidth = (windowDimensions.width - 48) / targetWidth;
 
     const targetHeight = windowDimensions.width >= 1280 ? 720 : 640;
@@ -1793,12 +1793,16 @@ export const ProductsPage = ({ onNavigate, search }) => {
         } : {}}
       >
         <div 
-          className="flex flex-col xl:flex-row gap-4 items-start relative"
+          className="flex flex-col xl:flex-row gap-10 items-start relative"
           style={windowDimensions.width >= 768 ? {
-            width: windowDimensions.width >= 1280 ? '1296px' : '960px',
-            transform: `scale(${scale})`,
+            width: windowDimensions.width >= 1280 ? '1320px' : '960px',
+            transform: `scale(${scale}) translateZ(0)`,
             transformOrigin: 'top center',
-            margin: '0 auto'
+            margin: '0 auto',
+            willChange: 'transform',
+            WebkitFontSmoothing: 'antialiased',
+            MozOsxFontSmoothing: 'grayscale',
+            backfaceVisibility: 'hidden'
           } : {}}
         >
           {/* Desktop Sidebar Navigation */}
