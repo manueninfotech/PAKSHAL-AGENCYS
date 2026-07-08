@@ -21,9 +21,8 @@ export const Hero = () => {
         }}
       />
 
-      {/* Content */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid lg:grid-cols-12 items-center min-h-screen pt-28 pb-32 sm:pb-36 lg:pt-20 lg:pb-24">
+        <div className="grid lg:grid-cols-12 items-center min-h-screen pt-36 pb-32 sm:pb-36 lg:pt-40 lg:pb-24">
 
           {/* Left Content */}
           <div className="lg:col-span-6 flex flex-col items-start">
