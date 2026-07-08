@@ -455,40 +455,6 @@
   transform: rotateY(180deg);
 }
 
-@media (max-width: 767px) {
-
-  /* Set heights to auto on mobile so contents don't get cropped */
-  .page-content {
-    height: auto !important;
-    min-height: auto !important;
-    overflow: visible !important;
-  }
-
-  /* Hide the 3D book structure and page edge stacks on mobile layout */
-  .book-container>div.absolute {
-    display: none !important;
-  }
-
-  .book-spine,
-  .spine-binding,
-  .book-hardcover-base {
-    display: none;
-  }
-
-  .page-curvature-left,
-  .page-curvature-right {
-    display: none;
-  }
-
-  .page-layer {
-    display: none;
-  }
-
-  .flip-card {
-    display: none !important;
-  }
-}
-
 /* Realistic Plywood Veneer Texture Gradients */
 .wood-top-grain {
   background: linear-gradient(90deg,

@@ -1027,7 +1027,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
   }, []);
 
   const getCatalogScale = () => {
-    if (windowDimensions.width < 768) return { scale: 1, marginBot: 0 };
+    if (windowDimensions.width < 320) return { scale: 0.3, marginBot: -420 };
 
     const targetWidth = windowDimensions.width >= 1280 ? 1352 : 960;
     const scaleWidth = (windowDimensions.width - 48) / targetWidth;
@@ -1036,7 +1036,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
     const scaleHeight = (windowDimensions.height - 120) / targetHeight;
 
     let scale = Math.min(scaleWidth, scaleHeight);
-    scale = Math.min(1.0, Math.max(0.5, scale));
+    scale = Math.min(1.0, Math.max(0.3, scale));
 
     const heightReduction = 600 * (1 - scale);
     const marginBot = -heightReduction + 16;
@@ -1788,13 +1788,13 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
       <div 
         className="max-w-[1360px] mx-auto px-6 relative"
-        style={windowDimensions.width >= 768 ? {
+        style={windowDimensions.width >= 320 ? {
           marginBottom: `${marginBot}px`
         } : {}}
       >
         <div 
           className="flex flex-col xl:flex-row gap-10 items-start relative"
-          style={windowDimensions.width >= 768 ? {
+          style={windowDimensions.width >= 320 ? {
             width: windowDimensions.width >= 1280 ? '1320px' : '960px',
             transform: `scale(${scale}) translateZ(0)`,
             transformOrigin: 'top center',
@@ -1858,7 +1858,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
                 <div className="book-spine" />
                 <div className="spine-binding" />
 
-                <div className="flex flex-col md:flex-row relative">
+                <div className="flex flex-row relative">
 
                   {/* Left Page (static under flip overlay) */}
                   {renderLeftPage(flipState === 'flipping-next' ? prevSpreadIdx : currentSpreadIdx)}
@@ -1868,7 +1868,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
                   {/* 3D Page Turning Card Overlay */}
                   {flipState !== 'idle' && (
-                    <div className={`hidden md:block flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
+                    <div className={`flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
                       {/* Front of the flipping page */}
                       <div className="flip-front">
                         {flipState === 'flipping-next'
