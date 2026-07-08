@@ -59,10 +59,10 @@ export const WhyChooseUs = () => {
             {points.map((point, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center text-center p-5 bg-white border border-[#ebd8a1]/25 rounded-2xl transition-all duration-300 hover:border-[#38a12c]/40 hover:-translate-y-1 group shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-md"
+                className="flex flex-col items-center text-center p-5 bg-white border border-[#ebd8a1]/25 rounded-2xl transition-all duration-300 hover:-translate-y-1 group shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-md"
               >
-                {/* Icon Container with elegant hover transition */}
-                <div className="mb-4 w-14 h-14 rounded-2xl bg-[#38a12c]/8 border border-[#38a12c]/15 flex items-center justify-center text-[#38a12c] group-hover:bg-[#38a12c] group-hover:text-white group-hover:shadow-[0_8px_24px_rgba(56,161,44,0.25)] group-hover:scale-105 transition-all duration-300">
+                {/* Icon Container */}
+                <div className="mb-4 w-14 h-14 rounded-2xl bg-[#38a12c]/8 border border-[#38a12c]/15 flex items-center justify-center text-[#38a12c] transition-all duration-300">
                   {point.icon}
                 </div>
 

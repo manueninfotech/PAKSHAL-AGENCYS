@@ -28,13 +28,6 @@ export const Hero = () => {
           {/* Left Content */}
           <div className="lg:col-span-6 flex flex-col items-start">
 
-            {/* Badge */}
-            <div className="inline-flex items-center px-5 py-2 rounded-full border border-[#A67C00]/30 bg-white/20 backdrop-blur-sm mb-8">
-              <span className="text-[11px] font-bold uppercase tracking-[2px] text-[#A67C00]">
-                Authorized Distributor &amp; Supply Partner
-              </span>
-            </div>
-
             {/* Heading */}
             <h1
               className="text-[36px] sm:text-[46px] lg:text-[56px] xl:text-[60px] font-black leading-[1.08] tracking-tight text-[#071330] max-w-3xl"
