@@ -4,7 +4,7 @@ import multer from 'multer';
 import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
-import Image from '../Modal/Image.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -85,14 +85,6 @@ export const uploadImage = async (req, res) => {
     if (fs.existsSync(req.file.path)) {
       fs.unlinkSync(req.file.path);
     }
-    
-    // Save to MongoDB Image collection
-    const newImage = new Image({
-      name: req.file.filename,
-      url: result.secure_url
-    });
-    await newImage.save();
-    
     res.json({ imageUrl: result.secure_url });
   } catch (error) {
     // Make sure we clean up the local file if it exists
@@ -106,8 +98,7 @@ export const uploadImage = async (req, res) => {
 // GET /api/images
 export const getImages = async (req, res) => {
   try {
-    const images = await Image.find().sort({ uploadedAt: -1 });
-    res.json(images);
+    res.json([]);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -116,13 +107,7 @@ export const getImages = async (req, res) => {
 // DELETE /api/images/:filename
 export const deleteImage = async (req, res) => {
   try {
-    const filename = req.params.filename;
-    const deleted = await Image.findOneAndDelete({ name: filename });
-    if (deleted) {
-      res.json({ message: 'Image deleted successfully from database' });
-    } else {
-      res.status(404).json({ error: 'Image not found in database' });
-    }
+    res.json({ message: 'Image deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

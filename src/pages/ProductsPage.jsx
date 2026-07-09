@@ -1029,10 +1029,12 @@ export const ProductsPage = ({ onNavigate, search }) => {
   const getCatalogScale = () => {
     if (windowDimensions.width < 320) return { scale: 0.3, marginBot: -420 };
 
-    const targetWidth = windowDimensions.width >= 1280 ? 1352 : 960;
+    // Always target the combined width of the sidebar and booklet (1352px)
+    const targetWidth = 1352;
     const scaleWidth = (windowDimensions.width - 48) / targetWidth;
 
-    const targetHeight = windowDimensions.width >= 1280 ? 720 : 640;
+    // Always target the full height (720px)
+    const targetHeight = 720;
     const scaleHeight = (windowDimensions.height - 120) / targetHeight;
 
     let scale = Math.min(scaleWidth, scaleHeight);
@@ -1045,6 +1047,9 @@ export const ProductsPage = ({ onNavigate, search }) => {
   };
 
   const { scale, marginBot } = getCatalogScale();
+  const parentContentWidth = Math.min(windowDimensions.width, 1360) - 48;
+  const leftOffset = (parentContentWidth - (1320 * scale)) / 2;
+
   const renderHeroTagIcon = (iconName) => {
     switch (iconName) {
       case 'wood':
@@ -1786,19 +1791,21 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </div>
       </div>
 
-      <div 
+      <div
         className="max-w-[1360px] mx-auto px-6 relative"
         style={windowDimensions.width >= 320 ? {
           marginBottom: `${marginBot}px`
         } : {}}
       >
-        <div 
-          className="flex flex-col xl:flex-row gap-10 items-start relative"
+        <div
+          className="flex flex-row gap-10 items-start relative"
           style={windowDimensions.width >= 320 ? {
-            width: windowDimensions.width >= 1280 ? '1320px' : '960px',
+            width: '1320px',
             transform: `scale(${scale}) translateZ(0)`,
-            transformOrigin: 'top center',
-            margin: '0 auto',
+            transformOrigin: 'top left',
+            left: `${leftOffset}px`,
+            position: 'relative',
+            margin: '0',
             willChange: 'transform',
             WebkitFontSmoothing: 'antialiased',
             MozOsxFontSmoothing: 'grayscale',
@@ -1806,8 +1813,8 @@ export const ProductsPage = ({ onNavigate, search }) => {
           } : {}}
         >
           {/* Desktop Sidebar Navigation */}
-          <aside 
-            className="catalog-sidebar hidden xl:block w-80 sticky top-32 flex-shrink-0 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-slate-200/40 shadow-sm h-[600px] flex flex-col overflow-hidden" 
+          <aside
+            className="catalog-sidebar w-80 sticky top-32 flex-shrink-0 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-slate-200/40 shadow-sm h-[600px] flex flex-col overflow-hidden"
             style={{ transform: 'translateX(-16px)' }}
           >
             {/* Desktop Title Header */}
@@ -1825,107 +1832,107 @@ export const ProductsPage = ({ onNavigate, search }) => {
           {/* Main booklet area wrapper */}
           <div className="flex-1 w-full min-w-0 flex flex-col">
             {/* The Open Book */}
-            <div className="w-full pb-8 mb-4 overflow-hidden md:overflow-visible">
+            <div className="w-full pb-8 mb-4 overflow-visible">
               <div className="book-outer-wrap flex-shrink-0 w-[960px] relative">
-              <div className="book-container book-shadow-3d relative">
+                <div className="book-container book-shadow-3d relative">
 
-                {/* Hardcover structural base wrapping the stacks */}
-                <div className="book-hardcover-base" style={{ inset: '-4px -18px -18px -18px' }} />
+                  {/* Hardcover structural base wrapping the stacks */}
+                  <div className="book-hardcover-base" style={{ inset: '-4px -18px -18px -18px' }} />
 
-                {/* Realistic Page Stack Effect (Left, Right, and Bottom edges) */}
-                {/* Right Side Pages Stack */}
-                <div className="absolute top-[2px] bottom-[2px] right-[-3px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -10 }} />
-                <div className="absolute top-[4px] bottom-[4px] right-[-6px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -20 }} />
-                <div className="absolute top-[6px] bottom-[6px] right-[-9px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -30 }} />
-                <div className="absolute top-[8px] bottom-[8px] right-[-12px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -40 }} />
-                <div className="absolute top-[10px] bottom-[10px] right-[-15px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -50 }} />
+                  {/* Realistic Page Stack Effect (Left, Right, and Bottom edges) */}
+                  {/* Right Side Pages Stack */}
+                  <div className="absolute top-[2px] bottom-[2px] right-[-3px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -10 }} />
+                  <div className="absolute top-[4px] bottom-[4px] right-[-6px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -20 }} />
+                  <div className="absolute top-[6px] bottom-[6px] right-[-9px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -30 }} />
+                  <div className="absolute top-[8px] bottom-[8px] right-[-12px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -40 }} />
+                  <div className="absolute top-[10px] bottom-[10px] right-[-15px] w-[3px] bg-[#fdfdfa] border-r-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-r-md" style={{ zIndex: -50 }} />
 
-                {/* Left Side Pages Stack */}
-                <div className="absolute top-[2px] bottom-[2px] left-[-3px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -10 }} />
-                <div className="absolute top-[4px] bottom-[4px] left-[-6px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -20 }} />
-                <div className="absolute top-[6px] bottom-[6px] left-[-9px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -30 }} />
-                <div className="absolute top-[8px] bottom-[8px] left-[-12px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -40 }} />
-                <div className="absolute top-[10px] bottom-[10px] left-[-15px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -50 }} />
+                  {/* Left Side Pages Stack */}
+                  <div className="absolute top-[2px] bottom-[2px] left-[-3px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -10 }} />
+                  <div className="absolute top-[4px] bottom-[4px] left-[-6px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -20 }} />
+                  <div className="absolute top-[6px] bottom-[6px] left-[-9px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -30 }} />
+                  <div className="absolute top-[8px] bottom-[8px] left-[-12px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -40 }} />
+                  <div className="absolute top-[10px] bottom-[10px] left-[-15px] w-[3px] bg-[#fdfdfa] border-l-2 border-[#000000]/25 border-b border-[#000000]/10 pointer-events-none rounded-l-md" style={{ zIndex: -50 }} />
 
-                {/* Bottom Pages Stack */}
-                <div className="absolute bottom-[-3px] left-[2px] right-[2px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -10 }} />
-                <div className="absolute bottom-[-6px] left-[4px] right-[4px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -20 }} />
-                <div className="absolute bottom-[-9px] left-[6px] right-[6px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -30 }} />
-                <div className="absolute bottom-[-12px] left-[8px] right-[8px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -40 }} />
-                <div className="absolute bottom-[-15px] left-[10px] right-[10px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -50 }} />
+                  {/* Bottom Pages Stack */}
+                  <div className="absolute bottom-[-3px] left-[2px] right-[2px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -10 }} />
+                  <div className="absolute bottom-[-6px] left-[4px] right-[4px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -20 }} />
+                  <div className="absolute bottom-[-9px] left-[6px] right-[6px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -30 }} />
+                  <div className="absolute bottom-[-12px] left-[8px] right-[8px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -40 }} />
+                  <div className="absolute bottom-[-15px] left-[10px] right-[10px] h-[3px] bg-[#fdfdfa] border-b-2 border-[#000000]/25 pointer-events-none rounded-b-md" style={{ zIndex: -50 }} />
 
-                {/* Realistic Spine Elements */}
-                <div className="book-spine" />
-                <div className="spine-binding" />
+                  {/* Realistic Spine Elements */}
+                  <div className="book-spine" />
+                  <div className="spine-binding" />
 
-                <div className="flex flex-row relative">
+                  <div className="flex flex-row relative">
 
-                  {/* Left Page (static under flip overlay) */}
-                  {renderLeftPage(flipState === 'flipping-next' ? prevSpreadIdx : currentSpreadIdx)}
+                    {/* Left Page (static under flip overlay) */}
+                    {renderLeftPage(flipState === 'flipping-next' ? prevSpreadIdx : currentSpreadIdx)}
 
-                  {/* Right Page (static under flip overlay) */}
-                  {renderRightPage(flipState === 'flipping-prev' ? prevSpreadIdx : currentSpreadIdx)}
+                    {/* Right Page (static under flip overlay) */}
+                    {renderRightPage(flipState === 'flipping-prev' ? prevSpreadIdx : currentSpreadIdx)}
 
-                  {/* 3D Page Turning Card Overlay */}
-                  {flipState !== 'idle' && (
-                    <div className={`flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
-                      {/* Front of the flipping page */}
-                      <div className="flip-front">
-                        {flipState === 'flipping-next'
-                          ? renderRightPage(prevSpreadIdx)
-                          : renderLeftPage(prevSpreadIdx)
-                        }
+                    {/* 3D Page Turning Card Overlay */}
+                    {flipState !== 'idle' && (
+                      <div className={`flip-card ${flipState === 'flipping-next' ? 'flip-card-next' : 'flip-card-prev'}`}>
+                        {/* Front of the flipping page */}
+                        <div className="flip-front">
+                          {flipState === 'flipping-next'
+                            ? renderRightPage(prevSpreadIdx)
+                            : renderLeftPage(prevSpreadIdx)
+                          }
+                        </div>
+                        {/* Back of the flipping page */}
+                        <div className="flip-back">
+                          {flipState === 'flipping-next'
+                            ? renderLeftPage(currentSpreadIdx)
+                            : renderRightPage(currentSpreadIdx)
+                          }
+                        </div>
                       </div>
-                      {/* Back of the flipping page */}
-                      <div className="flip-back">
-                        {flipState === 'flipping-next'
-                          ? renderLeftPage(currentSpreadIdx)
-                          : renderRightPage(currentSpreadIdx)
-                        }
-                      </div>
-                    </div>
-                  )}
+                    )}
 
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={handlePrev}
-              disabled={activeCatIdx === 0 || flipState !== 'idle'}
-              className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-              </span>
-              <span className="hidden sm:inline tracking-tight">Previous Spread</span>
-            </button>
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-center gap-6 mt-8">
+              <button
+                onClick={handlePrev}
+                disabled={activeCatIdx === 0 || flipState !== 'idle'}
+                className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </span>
+                <span className="hidden sm:inline tracking-tight">Previous Spread</span>
+              </button>
 
-            <div className="px-6 py-2 bg-white rounded-full shadow-sm border border-slate-100 font-black text-xs text-slate-800">
-              {activeSpread.pageNumLeft} - {activeSpread.pageNumRight} <span className="text-slate-400 font-medium mx-1.5">in</span> {activeSpread.category}
+              <div className="px-6 py-2 bg-white rounded-full shadow-sm border border-slate-100 font-black text-xs text-slate-800">
+                {activeSpread.pageNumLeft} - {activeSpread.pageNumRight} <span className="text-slate-400 font-medium mx-1.5">in</span> {activeSpread.category}
+              </div>
+
+              <button
+                onClick={handleNext}
+                disabled={activeCatIdx === activeCategorySpreads.length - 1 || flipState !== 'idle'}
+                className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <span className="hidden sm:inline tracking-tight">Next Spread</span>
+                <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </span>
+              </button>
             </div>
-
-            <button
-              onClick={handleNext}
-              disabled={activeCatIdx === activeCategorySpreads.length - 1 || flipState !== 'idle'}
-              className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              <span className="hidden sm:inline tracking-tight">Next Spread</span>
-              <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </span>
-            </button>
           </div>
         </div>
       </div>
-    </div>
 
       {/* Product Overview Section - Interactive Selection Component */}
       {(() => {
@@ -2521,16 +2528,6 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
       {/* Floating Action Buttons */}
       <div className="fixed right-6 bottom-8 z-[100] flex flex-col gap-3">
-        {/* Mobile Sidebar Index Toggle */}
-        <button
-          onClick={() => setShowSidebar(true)}
-          className="xl:hidden w-14 h-14 bg-[#006e2f] text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
-          title="Browse Catalogue Index"
-        >
-          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
         <a
           href="https://wa.me/919247449522"
           target="_blank"
@@ -2562,34 +2559,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </button>
       </div>
 
-      {/* Mobile Sidebar Slide-over Drawer */}
-      {showSidebar && (
-        <div className="fixed inset-0 z-[130] lg:hidden">
-          {/* Backdrop shadow */}
-          <div
-            onClick={() => setShowSidebar(false)}
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
-          />
-          {/* Slide-over panel */}
-          <div className="absolute top-0 bottom-0 left-0 w-80 bg-[#FAF8F5] shadow-2xl p-6 flex flex-col animate-fade-in text-left border-r border-slate-200/50">
-            <div className="flex justify-between items-center mb-5 border-b border-slate-200/60 pb-3 flex-shrink-0">
-              <div className="flex flex-col text-left">
-                <span className="text-sm font-black uppercase tracking-widest text-[#C9A44C]">Catalogue Index</span>
-                <span className="text-[11px] text-slate-400 font-bold uppercase mt-0.5">Select Brand to View Page</span>
-              </div>
-              <button
-                onClick={() => setShowSidebar(false)}
-                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center cursor-pointer transition-colors"
-              >
-                <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            {renderSidebarContent()}
-          </div>
-        </div>
-      )}
+
 
     </div>
   );
