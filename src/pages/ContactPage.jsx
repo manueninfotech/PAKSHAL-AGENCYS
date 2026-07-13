@@ -205,7 +205,7 @@ export const ContactPage = () => {
             <div 
               className="text-white p-6 rounded-3xl border border-[#C9A44C]/35 space-y-4 shadow-xl relative overflow-hidden group"
               style={{ 
-                backgroundImage: `url(${import.meta.env.BASE_URL}wood-grain-clean.jpg)`,
+                backgroundImage: `url('${import.meta.env.BASE_URL}wood-grain-clean.jpg')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}
