@@ -118,8 +118,8 @@ app.get('/', (req, res) => {
   res.json({ status: "success", message: "Pakshal Agencies Backend Server is running" });
 });
 
-// Determine host: if '--host' is passed in process.argv, bind to '0.0.0.0'
-const host = process.argv.includes('--host') ? '0.0.0.0' : 'localhost';
+// Determine host: if PORT env var is present (e.g. on Render) or '--host' is passed, bind to '0.0.0.0'
+const host = process.env.PORT || process.argv.includes('--host') ? '0.0.0.0' : 'localhost';
 
 app.listen(PORT, host, () => {
   console.log(`\nServer is running:`);
