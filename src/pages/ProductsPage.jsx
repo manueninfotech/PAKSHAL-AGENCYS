@@ -34,7 +34,7 @@ import acrylicPanels6Img from '../assets/acrylicpanels6.png';
 import hardwareImg from '../assets/hardwarefittings.png';
 import accessoriesImg from '../assets/kitchenaccessories.png';
 import slidingChannelsImg from '../assets/slidingchannels.png';
-import gurjanStarImg from '../assets/gurjanstar.jpg';
+import gurjanStarImg from '../assets/gurjanstar.png';
 import tandemBoxImg from '../assets/tandembox.png';
 import fancyDoorsImg from '../assets/fancydoors.png';
 import doorFittingsImg from '../assets/door_fittings.png';

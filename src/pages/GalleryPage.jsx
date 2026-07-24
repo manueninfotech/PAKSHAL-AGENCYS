@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import plywoodImg from '../assets/plywood-image.png';
+import plywoodImg from '../assets/royalclub.png';
 import laminatesImg from '../assets/laminates.png';
 import hardwareImg from '../assets/hardwarefittings.png';
 import accessoriesImg from '../assets/kitchenaccessories.png';
