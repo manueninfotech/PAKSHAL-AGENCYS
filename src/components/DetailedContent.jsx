@@ -105,9 +105,9 @@ export const DetailedContent = ({ onNavigate }) => {
             <div>
               {/* Image with slanted separator and floating badge */}
               <div className="relative w-full h-[180px] overflow-hidden bg-slate-100">
-                <img 
-                  src={plywoodImg} 
-                  alt="Plywood & Structural Panels" 
+                <img
+                  src={plywoodImg}
+                  alt="Plywood & Structural Panels"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)' }}
                 />
@@ -182,9 +182,9 @@ export const DetailedContent = ({ onNavigate }) => {
             <div>
               {/* Image with slanted separator and floating badge */}
               <div className="relative w-full h-[180px] overflow-hidden bg-slate-100">
-                <img 
-                  src={laminatesImg} 
-                  alt="Decorative Surfaces" 
+                <img
+                  src={laminatesImg}
+                  alt="Decorative Surfaces"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)' }}
                 />
@@ -259,9 +259,9 @@ export const DetailedContent = ({ onNavigate }) => {
             <div>
               {/* Image with slanted separator and floating badge */}
               <div className="relative w-full h-[180px] overflow-hidden bg-slate-100">
-                <img 
-                  src={hardwareImg} 
-                  alt="Architectural Hardware" 
+                <img
+                  src={hardwareImg}
+                  alt="Architectural Hardware"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)' }}
                 />
