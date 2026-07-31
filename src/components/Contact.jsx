@@ -20,10 +20,10 @@ export const Contact = () => {
     <section id="contact" className="py-12 bg-white border-t border-slate-100 text-left relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Main Card Container */}
         <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl border border-[#ebd8a1]/25 shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden bg-white">
-          
+
           {/* Left Column - Contact Details */}
           <div className="lg:col-span-5 bg-[#fcf7ea] p-8 sm:p-10 lg:p-12 flex flex-col gap-6 justify-center">
             <div className="flex flex-col gap-1.5">
@@ -34,11 +34,11 @@ export const Contact = () => {
                 INTERIOR &amp; CONSTRUCTION MATERIALS?
               </span>
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl lg:text-[40px] lg:leading-[1.15] font-black tracking-tight text-slate-900 font-sans">
               Let's Build Something<br />Exceptional Together
             </h2>
-            
+
             <p className="text-slate-600 text-sm sm:text-[15px] leading-relaxed max-w-[95%] font-medium">
               Get genuine products, trusted brands and expert support for your next project.
             </p>
@@ -46,7 +46,7 @@ export const Contact = () => {
             {/* Quick Action Button Strip - Two buttons in a row */}
             <div className="grid grid-cols-2 gap-1.5 sm:gap-2.5 mt-4 w-full">
               <a
-                href="tel:+919247449522"
+                href="tel:+919966493777"
                 className="flex items-center justify-center gap-1 sm:gap-1.5 bg-[#38a12c] hover:bg-[#2e8a23] text-white py-3.5 px-1 sm:px-3 rounded-xl text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-md shadow-green-900/10 text-center whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
@@ -55,7 +55,7 @@ export const Contact = () => {
                 <span>Call Now</span>
               </a>
               <a
-                href="https://wa.me/919247449522"
+                href="https://wa.me/919966493777"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-center gap-1 sm:gap-1.5 bg-[#38a12c] hover:bg-[#2e8a23] text-white py-3.5 px-1 sm:px-3 rounded-xl text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-md shadow-green-900/10 text-center whitespace-nowrap"
@@ -81,7 +81,7 @@ export const Contact = () => {
 
             {submitted && (
               <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 px-4 py-3 rounded-lg text-sm font-semibold animate-fade-in">
-                🎉 Thank you! Your inquiry has been submitted.
+                Thank you! Your inquiry has been submitted.
               </div>
             )}
 

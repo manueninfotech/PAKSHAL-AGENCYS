@@ -71,7 +71,7 @@ const ContactInfoCard = ({ label, icon, children, href }) => {
 export const ContactPage = () => {
   useDocumentMetadata(
     "Contact Pakshal Agencies | Goshamahal Showroom",
-    "Visit our experience center at Goshamahal, Hyderabad. Register as a dealer, request direct wholesale quotes, or call us at 92464 84452."
+    "Visit our experience center at Goshamahal, Hyderabad. Register as a dealer, request direct wholesale quotes, or call us at 9966493777."
   );
 
   const [formData, setFormData] = useState({
@@ -94,13 +94,40 @@ export const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!formData.fullName || !formData.phone) {
-      setNotification({ message: 'Please fill in both Name and Phone Number.', type: 'error' });
+      setNotification({
+        message: "Please fill in both Name and Phone Number.",
+        type: "error",
+      });
+
       setTimeout(() => setNotification(null), 4000);
       return;
     }
-    setNotification({ message: 'Thank you! Your inquiry has been sent successfully.', type: 'success' });
-    setFormData({ fullName: '', phone: '', email: '', subject: '', message: '' });
+
+    const message = `*New Enquiry - Pakshal Agencies*
+
+ Name: ${formData.fullName}
+ Phone: ${formData.phone}
+ Email: ${formData.email || "N/A"}
+ Subject: ${formData.subject || "General Enquiry"}
+ Message:
+${formData.message || "No message"}
+`;
+    const whatsappUrl = `https://wa.me/919966493777?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+    setNotification({
+      message: "Opening WhatsApp...",
+      type: "success",
+    });
+    setFormData({
+      fullName: "",
+      phone: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+
     setTimeout(() => setNotification(null), 5000);
   };
 
@@ -154,26 +181,26 @@ export const ContactPage = () => {
             <div className="space-y-4">
               <ContactInfoCard
                 label="Phone Number"
-                href="tel:+919100088040"
+                href="tel:+919966493777"
                 icon={
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a20.373 20.373 0 01-7.108-7.108c-.155-.44.01-.928.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                   </svg>
                 }
               >
-                +91 91000 88040
+                9966493777
               </ContactInfoCard>
 
               <ContactInfoCard
                 label="Email Support"
-                href="mailto:info@pakshalagencies.com"
+                href="mailto:Pakshalagencys@gmail.com"
                 icon={
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                   </svg>
                 }
               >
-                info@pakshalagencies.com
+                Pakshalagencys@gmail.com
               </ContactInfoCard>
 
               <ContactInfoCard
@@ -197,14 +224,14 @@ export const ContactPage = () => {
                   </svg>
                 }
               >
-                Mon–Sat: 9:30 AM–7:00 PM | Sun: 10:30 AM–5:00 PM
+                Monday-Sunday : 9am - 9pm
               </ContactInfoCard>
             </div>
 
             {/* Premium Dynamic Location Card */}
-            <div 
+            <div
               className="text-white p-6 rounded-3xl border border-[#C9A44C]/35 space-y-4 shadow-xl relative overflow-hidden group"
-              style={{ 
+              style={{
                 backgroundImage: `url('${import.meta.env.BASE_URL}wood-grain-clean.jpg')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
@@ -325,7 +352,7 @@ export const ContactPage = () => {
                   type="submit"
                   className="w-full py-4 bg-[#C6961A] hover:bg-[#a87e14] active:scale-[0.98] text-white font-black text-xs tracking-widest uppercase rounded-xl shadow-lg shadow-[#C6961A]/20 transition-all duration-200 flex items-center justify-center gap-2 group"
                 >
-                  <span>Submit Inquiry</span>
+                  <span>Submit Enquiry</span>
                   <svg className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
@@ -335,8 +362,6 @@ export const ContactPage = () => {
           </div>
 
         </div>
-
-
 
       </div>
     </div>

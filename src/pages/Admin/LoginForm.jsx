@@ -77,7 +77,7 @@ export const LoginForm = ({ onNavigate }) => {
               <input
                 type="email"
                 required
-                placeholder="admin@pakshal.com"
+                placeholder="Pakshalagencys@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-slate-50 border border-stone-200 focus:bg-white rounded-lg py-2.5 pl-9 pr-3 text-xs font-semibold text-slate-800 focus:outline-none focus:border-[#0F5C3B] transition-colors"

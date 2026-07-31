@@ -220,12 +220,12 @@ export const OffersSection = () => {
 
   const handleWhatsAppInquiry = (offerTitle) => {
     const text = encodeURIComponent(`Hi Pakshal Agencies, I would like to inquire about your offer: "${offerTitle}".`);
-    window.open(`https://wa.me/919247449522?text=${text}`, '_blank');
+    window.open(`https://wa.me/919966493777?text=${text}`, '_blank');
   };
 
   const handleWhatsAppQuote = () => {
     const text = encodeURIComponent(`Hi Pakshal Agencies, I am a Builder/Contractor and would like to request a bulk quote for a project.`);
-    window.open(`https://wa.me/919247449522?text=${text}`, '_blank');
+    window.open(`https://wa.me/919966493777?text=${text}`, '_blank');
   };
 
   if (loading) {

@@ -62,7 +62,7 @@ export const Footer = ({ onNavigate }) => {
                 },
                 {
                   name: 'WhatsApp',
-                  href: 'https://wa.me/919247449522',
+                  href: 'https://wa.me/919966493777',
                   icon: (
                     <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
                       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.493 4.904 1.495 5.182 0 9.4-4.216 9.403-9.397.001-2.51-1-4.87-2.817-6.649-1.817-1.778-4.23-2.757-6.79-2.758-5.186 0-9.409 4.217-9.412 9.4-.002 1.942.506 3.843 1.472 5.513L2.26 21.53l4.387-1.376zM18.04 14.99c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.51-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.95-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.15-.14.32-.32.48-.48.16-.16.21-.27.32-.48.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.38-.26-.64-.53-.55-.72-.56l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.12 1.1-1.12 2.68s1.15 3.1 1.31 3.32c.16.22 2.27 3.46 5.5 4.86.76.33 1.36.53 1.83.68.77.24 1.47.21 2.03.12.62-.09 1.89-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.3-.21-.62-.37z" />
@@ -208,7 +208,7 @@ export const Footer = ({ onNavigate }) => {
                   </svg>
                 </div>
                 <div className="flex flex-col text-left">
-                  <a href="tel:+919247449522" className="text-white hover:text-[#C9A44C] font-bold text-sm tracking-wide transition-colors hover:underline">92474 49522</a>
+                  <a href="tel:+919966493777" className="text-white hover:text-[#C9A44C] font-bold text-sm tracking-wide transition-colors hover:underline">9966493777</a>
                   <span className="text-[#E6DFD5]/40 text-[10px] font-medium mt-0.5">(Mon - Sat: 10:00 AM - 7:00 PM)</span>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export const Footer = ({ onNavigate }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                   </svg>
                 </div>
-                <a href="mailto:info@pakshalagencies.com" className="text-[#E6DFD5]/80 font-semibold text-xs sm:text-[13px] hover:text-[#C9A44C] transition-colors mt-0.5">info@pakshalagencies.com</a>
+                <a href="mailto:Pakshalagencys@gmail.com" className="text-[#E6DFD5]/80 font-semibold text-xs sm:text-[13px] hover:text-[#C9A44C] transition-colors mt-0.5">Pakshalagencys@gmail.com</a>
               </div>
 
               {/* Address Card */}

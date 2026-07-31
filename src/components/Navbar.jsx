@@ -102,13 +102,13 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
           <div className="hidden xl:flex items-center gap-6">
             {/* Phone link */}
             <a
-              href="tel:+919246484452"
+              href="tel:+919966493777"
               className="flex items-center gap-2 text-slate-800 hover:text-[#38a12c] transition-colors text-sm font-bold"
             >
               <svg className="w-4 h-4 text-[#C9A44C] fill-current" viewBox="0 0 24 24">
                 <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z" />
               </svg>
-              92464 84452
+              9966493777
             </a>
 
             {isAdminAuthenticated && (
@@ -221,10 +221,10 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
                     Quick Inquiry Call
                   </span>
                   <a
-                    href="tel:+919246484452"
+                    href="tel:+919966493777"
                     className="text-sm font-black text-slate-800 hover:text-[#0F5C3B] transition-colors mt-0.5"
                   >
-                    +91 92464 84452
+                    +91 9966493777
                   </a>
                 </div>
               </div>
