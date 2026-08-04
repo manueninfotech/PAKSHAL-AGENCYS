@@ -54,6 +54,20 @@ import kitchenBasketImg from '../assets/kitchenbasket.jpg';
 import hardwareFittings4 from '../assets/productspage-hardware&fittings4.png';
 import tandemBoxNewImg from '../assets/tandembox.jpg';
 import hardwareFittings5 from '../assets/productspage-hardware&fittings5.png';
+import hardwareFittings6 from '../assets/productspage-hardware&fittings6.png';
+import hardwareFittings7 from '../assets/productspage-hardware&fittings7.png';
+import astdaxHandles1 from '../assets/astdax-handles-1.jpg';
+import astdaxHandles2 from '../assets/astdax-handles-2.jpg';
+import conceal from '../assets/conceal.png';
+import conceal2 from '../assets/conceal2.png';
+import knob from '../assets/knob.png';
+import knob2 from '../assets/knob2.png';
+import curtain from '../assets/curtain.png';
+import curtain2 from '../assets/curtain2.png';
+import mortise from '../assets/mortise.png';
+import support from '../assets/support.png';
+import sofaleg from '../assets/sofaleg.png';
+import others from '../assets/others.png';
 
 const SPREADS = [
   {
@@ -967,6 +981,85 @@ const SPREADS = [
     ]
   },
   {
+    id: 22,
+    brandId: 'astdax-hardwares',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 51,
+    pageNumRight: 52,
+    badge: 'Premium Handles',
+    title: 'Designer\nHandles.',
+    tagline: 'Premium zinc alloy cabinet pulls with multi-finish options',
+    image: astdaxHandles1,
+    brandName: 'Astdax Hardwares',
+    desc: 'Precision-crafted zinc alloy cabinet handles available in elegant multi-tone finishes. Perfect for modular kitchens, wardrobes, and premium furniture.',
+    thicknesses: ['96 mm', '160 mm', '224 mm'],
+    defaultThickness: '160 mm',
+    features: ['Zinc Alloy Body', 'Multi-Tone Finish', 'Anti-Corrosion Coat'],
+    applications: ['Kitchen Cabinets', 'Wardrobe Shutters', 'Furniture Drawers'],
+    specs: {
+      'Size (mm)': '96 | 160 | 224',
+      'Finish': 'Rosegold-Black | Gold-Antique | Cp-Satin',
+      'Material': 'Zinc Alloy',
+      'Surface Treatment': 'Electroplated Multi-Tone'
+    },
+    heroSub: 'PREMIUM HANDLES. DESIGNER FINISH.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Precision-crafted zinc alloy cabinet handles available in Rosegold-Black, Gold-Antique, and Cp-Satin finishes. A perfect complement to any modular kitchen or wardrobe.',
+    heroTags: [
+      { text: 'Zinc Alloy Body', icon: 'gear' },
+      { text: 'Multi-Tone Finish', icon: 'sparkles' },
+      { text: 'Anti-Corrosion', icon: 'shield' }
+    ],
+    overviewFeatures: [
+      { title: 'Zinc Alloy Body', desc: 'Strong, lightweight precision casting', icon: 'gear' },
+      { title: 'Multi-Tone Finish', desc: 'Rosegold-Black, Gold-Antique, Cp-Satin', icon: 'sparkles' },
+      { title: 'Anti-Corrosion', desc: 'Long-lasting electroplated surface coat', icon: 'shield' },
+      { title: 'Easy Install', desc: 'Standard screw spacing for quick fitting', icon: 'calibrate' },
+      { title: 'Modern Design', desc: 'Sleek geometric profile for luxury look', icon: 'sparkles' }
+    ]
+  },
+  {
+    id: 23,
+    brandId: 'astdax-hardwares-2',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 53,
+    pageNumRight: 54,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Premium Collection',
+    title: 'Fusion\nHandles.',
+    tagline: 'Dual-material fusion handles with wood & metal combination',
+    image: astdaxHandles2,
+    brandName: 'Astdax Hardwares',
+    desc: 'Dual-material fusion cabinet handles combining premium zinc alloy with wood-effect inserts. Ideal for contemporary and transitional interior styles.',
+    thicknesses: ['96 mm', '160 mm'],
+    defaultThickness: '160 mm',
+    features: ['Dual-Material Design', 'Wood-Effect Insert', 'Premium Chrome Base'],
+    applications: ['Modular Kitchens', 'Luxury Wardrobes', 'Designer Furniture'],
+    specs: {
+      'Size (mm)': '96 | 160',
+      'Material': 'Zinc Alloy + Wood Effect Insert',
+      'Surface Treatment': 'Chrome Electroplated',
+      'Style': 'Contemporary Fusion'
+    },
+    heroSub: 'FUSION DESIGN. PREMIUM HANDLES.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Dual-material fusion handles combining zinc alloy and wood-effect inserts for a warm, contemporary look. Available in 96mm and 160mm sizes.',
+    heroTags: [
+      { text: 'Dual-Material', icon: 'gear' },
+      { text: 'Wood-Effect Insert', icon: 'wood' },
+      { text: 'Chrome Base', icon: 'sparkles' }
+    ],
+    overviewFeatures: [
+      { title: 'Dual-Material Body', desc: 'Zinc alloy frame with wood insert', icon: 'gear' },
+      { title: 'Wood Effect Insert', desc: 'Warm natural texture contrast', icon: 'wood' },
+      { title: 'Chrome Plated', desc: 'Polished chrome electroplated finish', icon: 'sparkles' },
+      { title: 'Easy Install', desc: 'Standard screw spacing for quick fitting', icon: 'calibrate' },
+      { title: 'Contemporary Look', desc: 'Perfect for modern modular kitchens', icon: 'sparkles' }
+    ]
+  },
+
+  {
     id: 10,
     brandId: 'gurjan-star',
     category: 'Plywood',
@@ -1786,7 +1879,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
             </svg>
             <span className="text-[11px] font-black uppercase tracking-widest text-slate-700">Product Catalogue</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#C9A44C]" />
-            <span className="text-[10px] font-bold text-slate-400">Browse by Brand</span>
+            <span className="text-[10px] font-bold text-slate-400"></span>
           </div>
           <div className="flex-1 h-px bg-gradient-to-l from-slate-200 to-transparent" />
         </div>

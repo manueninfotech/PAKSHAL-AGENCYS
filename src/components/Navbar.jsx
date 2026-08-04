@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { LogIn, ShieldCheck, LogOut, Home, Info, Image as ImageIcon, ShoppingBag, PhoneCall, X, Menu } from 'lucide-react';
+import { LogIn, ShieldCheck, LogOut, Home, Info, Image as ImageIcon, ShoppingBag, PhoneCall, X, Menu, Download, FileText } from 'lucide-react';
 import pakshallogo from '../assets/pakshallogo_new.png';
+import brochurePdf from '../assets/Broucher/ASTDAX HAR_FINAL_2.pdf';
 
 export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -95,6 +96,18 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
               className={`text-[11px] font-extrabold uppercase tracking-widest transition-colors ${currentPage === 'contact' ? 'text-[#38a12c]' : 'text-slate-800 hover:text-[#38a12c]'}`}
             >
               Contact Us
+            </a>
+
+            {/* Download Brochure Link */}
+            <a
+              href={brochurePdf}
+              download="ASTDAX HAR_FINAL_2.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] font-extrabold uppercase tracking-widest transition-colors text-slate-800 hover:text-[#38a12c] cursor-pointer"
+              title="Download Brochure"
+            >
+              Download Brochure
             </a>
           </div>
 
@@ -204,6 +217,19 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
                     </a>
                   );
                 })}
+
+                {/* Download Brochure Link in Mobile Drawer */}
+                <a
+                  href={brochurePdf}
+                  download="ASTDAX HAR_FINAL_2.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3.5 px-4 py-3.5 rounded-2xl text-[12px] font-extrabold uppercase tracking-wider bg-transparent text-slate-700 hover:bg-stone-100 hover:text-slate-900 border border-transparent transition-all duration-200 cursor-pointer"
+                >
+                  <Download className="w-4 h-4 text-slate-400" />
+                  <span>Download Brochure</span>
+                </a>
               </div>
             </div>
 
