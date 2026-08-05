@@ -241,7 +241,7 @@ export const Footer = ({ onNavigate }) => {
 
       <div className="w-full bg-[#120A05] text-[#E6DFD5]/60 border-t border-[#C9A44C]/10 mt-5 py-4 font-medium text-xs select-none">
         <div className="max-w-[98.5%] xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-          <span>&copy; {new Date().getFullYear()} Pakshal Agencies. All Rights Reserved.</span>
+          <span>&copy; {new Date().getFullYear()} PAKSHAL AGENCYS. All Rights Reserved.</span>
         </div>
       </div>
     </footer>
