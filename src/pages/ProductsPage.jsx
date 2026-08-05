@@ -999,7 +999,6 @@ const SPREADS = [
     specs: {
       'Size (mm)': '96 | 160 | 224',
       'Finish': 'Rosegold-Black | Gold-Antique | Cp-Satin',
-      'Material': 'Zinc Alloy',
       'Surface Treatment': 'Electroplated Multi-Tone'
     },
     heroSub: 'PREMIUM HANDLES. DESIGNER FINISH.',
@@ -1034,11 +1033,11 @@ const SPREADS = [
     desc: 'Dual-material fusion cabinet handles combining premium zinc alloy with wood-effect inserts. Ideal for contemporary and transitional interior styles.',
     thicknesses: ['96 mm', '160 mm'],
     defaultThickness: '160 mm',
+    thicknessLabel: 'Available Sizes (mm)',
     features: ['Dual-Material Design', 'Wood-Effect Insert', 'Premium Chrome Base'],
     applications: ['Modular Kitchens', 'Luxury Wardrobes', 'Designer Furniture'],
     specs: {
       'Size (mm)': '96 | 160',
-      'Material': 'Zinc Alloy + Wood Effect Insert',
       'Surface Treatment': 'Chrome Electroplated',
       'Style': 'Contemporary Fusion'
     },
@@ -1056,6 +1055,308 @@ const SPREADS = [
       { title: 'Chrome Plated', desc: 'Polished chrome electroplated finish', icon: 'sparkles' },
       { title: 'Easy Install', desc: 'Standard screw spacing for quick fitting', icon: 'calibrate' },
       { title: 'Contemporary Look', desc: 'Perfect for modern modular kitchens', icon: 'sparkles' }
+    ]
+  },
+  {
+    id: 24,
+    brandId: 'astdax-conceal',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 55,
+    pageNumRight: 56,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Conceal Handles',
+    title: 'Conceal\nHandles.',
+    tagline: 'Sleek recessed conceal handles with multi-finish options',
+    image: conceal,
+    brandName: 'Astdax Hardwares',
+    desc: 'Premium zinc alloy concealed cabinet handles designed for seamless recessed installation with Satin-Rosegold, Antique-Gold, and Black-Gold finishes.',
+    thicknesses: ['96 mm', '160 mm', '224 mm'],
+    defaultThickness: '160 mm',
+    thicknessLabel: 'Available Sizes (mm)',
+    features: ['Recessed Flush Mount', 'Zinc Alloy Body', 'Anti-Corrosion Coating'],
+    applications: ['Modular Kitchens', 'Wardrobe Shutters', 'Cabinet Drawers'],
+    specs: {
+      'Size (mm)': '96 | 160 | 224',
+      'Finish': 'Satin-Rosegold | Antique-Gold | Black-Gold',
+      'Mounting Type': 'Recessed / Flush Fit'
+    },
+    heroSub: 'CONCEAL HANDLES. RECESSED DESIGN.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Premium zinc alloy concealed cabinet handles available in Satin-Rosegold, Antique-Gold, and Black-Gold finishes across 96mm, 160mm, and 224mm sizes.',
+    heroTags: [
+      { text: 'Recessed Fit', icon: 'gear' },
+      { text: 'Multi-Finish', icon: 'sparkles' },
+      { text: 'Zinc Alloy', icon: 'shield' }
+    ],
+    overviewFeatures: [
+      { title: 'Flush Mount', desc: 'Sits completely flush with shutter surface', icon: 'gear' },
+      { title: 'Premium Finishes', desc: 'Satin-Rosegold, Antique-Gold, Black-Gold', icon: 'sparkles' },
+      { title: 'Multi-Size Options', desc: 'Available in 96mm, 160mm, and 224mm', icon: 'calibrate' },
+      { title: 'Durability', desc: 'Electroplated surface against tarnishing', icon: 'shield' }
+    ]
+  },
+  {
+    id: 25,
+    brandId: 'astdax-conceal-2',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 57,
+    pageNumRight: 58,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Conceal Handles II',
+    title: 'Conceal\nHandles II.',
+    tagline: 'Dual-tone recessed conceal handles',
+    image: conceal2,
+    brandName: 'Astdax Hardwares',
+    desc: 'Sophisticated dual-finish conceal handles offering superior flush aesthetic in Rosegold-Black, Gold-Black, and Black-Gold finishes.',
+    thicknesses: ['96 mm', '160 mm', '224 mm'],
+    defaultThickness: '160 mm',
+    thicknessLabel: 'Available Sizes (mm)',
+    features: ['Dual-Tone Finish', 'Seamless Flush Mount', 'Scratch Resistant Coat'],
+    applications: ['Luxury Wardrobes', 'Kitchen Shutters', 'Modern Furniture'],
+    specs: {
+      'Size (mm)': '96 | 160 | 224',
+      'Finish': 'Rosegold-Black | Gold-Black | Black-Gold',
+      'Surface Treatment': 'Electroplated Dual Finish'
+    },
+    heroSub: 'CONCEAL HANDLES II. DUAL FINISH.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Sophisticated dual-finish conceal handles available in Rosegold-Black, Gold-Black, and Black-Gold finishes for luxury interiors.',
+    heroTags: [
+      { text: 'Dual-Tone', icon: 'sparkles' },
+      { text: 'Flush Fit', icon: 'gear' },
+      { text: '96/160/224 mm', icon: 'calibrate' }
+    ],
+    overviewFeatures: [
+      { title: 'Dual-Finish Elegance', desc: 'Rosegold-Black, Gold-Black, Black-Gold', icon: 'sparkles' },
+      { title: 'Seamless Flush', desc: 'Modern minimalist profile', icon: 'gear' },
+      { title: 'Precision Cast', desc: 'Solid zinc alloy durability', icon: 'shield' }
+    ]
+  },
+  {
+    id: 26,
+    brandId: 'astdax-curtain',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 59,
+    pageNumRight: 60,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Curtain Brackets',
+    title: 'Curtain\nBrackets.',
+    tagline: 'Designer curtain rod supports & finials',
+    image: curtain,
+    brandName: 'Astdax Hardwares',
+    desc: 'Heavy-duty architectural curtain brackets crafted for elegant drapery support in CP, Antique, Rosegold, and Copper finishes.',
+    thicknesses: ['CP', 'Antique', 'Rosegold', 'Copper'],
+    defaultThickness: 'CP',
+    thicknessLabel: 'Available Finishes',
+    features: ['Heavy-Duty Support', 'Precision Electroplated', 'Easy Wall Mount'],
+    applications: ['Living Room Curtains', 'Bedroom Drapery', 'Office Windows'],
+    specs: {
+      'Finish': 'CP | Antique | Rosegold | Copper',
+      'Mounting Type': 'Wall Flange Mount',
+      'Compatibility': 'Standard Drapery Rods'
+    },
+    heroSub: 'CURTAIN BRACKETS. DESIGNER FINISH.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Heavy-duty curtain brackets designed for stylish drape support in CP, Antique, Rosegold, and Copper finishes.',
+    heroTags: [
+      { text: 'Heavy Load', icon: 'shield' },
+      { text: 'Multi-Finish', icon: 'sparkles' },
+      { text: 'Wall Mount', icon: 'gear' }
+    ],
+    overviewFeatures: [
+      { title: 'High Load Support', desc: 'Supports heavy fabric curtains securely', icon: 'shield' },
+      { title: '4 Premium Finishes', desc: 'CP, Antique, Rosegold, and Copper', icon: 'sparkles' },
+      { title: 'Easy Fitting', desc: 'Concealed screw wall mounting flange', icon: 'calibrate' }
+    ]
+  },
+  {
+    id: 27,
+    brandId: 'astdax-curtain-2',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 61,
+    pageNumRight: 62,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Curtain Brackets II',
+    title: 'Curtain\nBrackets II.',
+    tagline: 'Extended finish series curtain brackets',
+    image: curtain2,
+    brandName: 'Astdax Hardwares',
+    desc: 'Premium decorative curtain rod supports featuring an extended array of luxurious finishes including CP, Antique, Rosegold, Copper, Silver, and Blackgold.',
+    thicknesses: ['CP', 'Antique', 'Rosegold', 'Copper', 'Silver', 'Blackgold'],
+    defaultThickness: 'CP',
+    thicknessLabel: 'Available Finishes',
+    features: ['Extended Color Palette', 'High Durability', 'Concealed Screws'],
+    applications: ['Luxury Interiors', 'Hotel Suites', 'Residential Drapes'],
+    specs: {
+      'Finish': 'CP | Antique | Rosegold | Copper | Silver | Blackgold',
+      'Mounting Type': 'Wall / Ceiling Flange Mount',
+      'Quality Rating': 'Premium Architectural'
+    },
+    heroSub: 'CURTAIN BRACKETS II. LUXURY SELECTION.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Decorative curtain rod supports with an extended finish collection: CP, Antique, Rosegold, Copper, Silver, and Blackgold.',
+    heroTags: [
+      { text: '6 Finishes', icon: 'sparkles' },
+      { text: 'High Strength', icon: 'shield' },
+      { text: 'Flange Mount', icon: 'gear' }
+    ],
+    overviewFeatures: [
+      { title: '6 Color Options', desc: 'CP, Antique, Rosegold, Copper, Silver, Blackgold', icon: 'sparkles' },
+      { title: 'Concealed Mounting', desc: 'Clean aesthetic with hidden screw holes', icon: 'gear' },
+      { title: 'Corrosion Free', desc: 'Multi-layer anti-rust protection', icon: 'shield' }
+    ]
+  },
+  {
+    id: 28,
+    brandId: 'astdax-knob',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 63,
+    pageNumRight: 64,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Designer Knobs',
+    title: 'Designer\nKnobs.',
+    tagline: 'Elegant dual-tone cabinet knobs',
+    image: knob,
+    brandName: 'Astdax Hardwares',
+    desc: 'Architectural cabinet knobs styled to enhance modern cabinet doors, drawers, and wardrobe shutters.',
+    thicknesses: ['Z Black-Gold', 'Z Black-Antique', 'Z Black-Rosegold', 'Satin-CP'],
+    defaultThickness: 'Z Black-Gold',
+    thicknessLabel: 'Available Finishes',
+    features: ['Dual-Tone Elegance', 'Solid Metal Core', 'Ergonomic Grip'],
+    applications: ['Cabinet Doors', 'Vanity Drawers', 'Wardrobes'],
+    specs: {
+      'Finish': 'Z Black-Gold | Z Black-Antique | Z Black-Rosegold | Satin-CP',
+      'Threading': 'Standard M4 Screw Mount',
+      'Style': 'Contemporary Accent'
+    },
+    heroSub: 'DESIGNER KNOBS. DUAL-TONE ACCENTS.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Architectural cabinet knobs styled in Z Black-Gold, Z Black-Antique, Z Black-Rosegold, and Satin-CP finishes.',
+    heroTags: [
+      { text: 'Dual-Tone', icon: 'sparkles' },
+      { text: 'Solid Core', icon: 'shield' },
+      { text: 'M4 Threading', icon: 'gear' }
+    ],
+    overviewFeatures: [
+      { title: 'Contrast Finishes', desc: 'Z Black-Gold, Z Black-Antique, Z Black-Rosegold, Satin-CP', icon: 'sparkles' },
+      { title: 'Ergonomic Touch', desc: 'Smooth rounded edges for comfortable grip', icon: 'gear' },
+      { title: 'Universal Threading', desc: 'Standard M4 screw fitting for easy setup', icon: 'calibrate' }
+    ]
+  },
+  {
+    id: 29,
+    brandId: 'astdax-knob-2',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 65,
+    pageNumRight: 66,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Designer Knobs II',
+    title: 'Designer\nKnobs II.',
+    tagline: 'Luxury accent cabinet knobs',
+    image: knob2,
+    brandName: 'Astdax Hardwares',
+    desc: 'High-end decorative furniture knobs available in contrasting accent finishes including Rosegold-White, CP-Satin, Rosegold-Black, and Gold-Antique.',
+    thicknesses: ['Rosegold-White', 'CP-Satin', 'Rosegold-Black', 'Gold-Antique'],
+    defaultThickness: 'Rosegold-White',
+    thicknessLabel: 'Available Finishes',
+    features: ['Luxury Accent Styling', 'Scratch Resistant Coat', 'Precision Threading'],
+    applications: ['Modular Kitchens', 'Dresser Drawers', 'Custom Furniture'],
+    specs: {
+      'Finish': 'Rosegold-White | CP-Satin | Rosegold-Black | Gold-Antique',
+      'Mounting': 'Single Hole Rear Screw',
+      'Suitability': 'Modular Furniture & Closets'
+    },
+    heroSub: 'DESIGNER KNOBS II. ACCENT FINISHES.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Luxury cabinet knobs offered in Rosegold-White, CP-Satin, Rosegold-Black, and Gold-Antique for high-end carpentry.',
+    heroTags: [
+      { text: 'Accent Style', icon: 'sparkles' },
+      { text: 'Scratch Proof', icon: 'shield' },
+      { text: 'Single Hole', icon: 'gear' }
+    ],
+    overviewFeatures: [
+      { title: 'Accent Colors', desc: 'Rosegold-White, CP-Satin, Rosegold-Black, Gold-Antique', icon: 'sparkles' },
+      { title: 'Scratch Resistant', desc: 'Protective top coat maintains shine', icon: 'shield' },
+      { title: 'Single Hole Mount', desc: 'Fast, secure installation', icon: 'calibrate' }
+    ]
+  },
+  {
+    id: 30,
+    brandId: 'astdax-others',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 67,
+    pageNumRight: 68,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Hardware Accessories',
+    title: 'Hardware\nAccessories.',
+    tagline: 'Essential cabinet studs, magnets & caster wheels',
+    image: others,
+    brandName: 'Astdax Hardwares',
+    desc: 'High-performance utility hardware accessories including 6mm corner studs, magnetic catches, sixer wheels, and locking wheels.',
+    thicknesses: ['6mm Corner Stud', 'Magnets', 'Sixer Wheels', 'Locking Wheel'],
+    defaultThickness: '6mm Corner Stud',
+    thicknessLabel: 'Available Accessories',
+    features: ['Heavy Load Capacity', 'Smooth Caster Movement', 'Strong Magnetic Hold'],
+    applications: ['Modular Furniture', 'Cabinet Assembly', 'Movable Storage Units'],
+    specs: {},
+    heroSub: 'HARDWARE ACCESSORIES. UTILITY & MOBILITY.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Essential cabinet accessories: 6mm corner studs, magnetic catches, sixer wheels, and locking wheels for complete furniture utility.',
+    heroTags: [
+      { text: '6mm Studs', icon: 'gear' },
+      { text: 'Magnetic Catch', icon: 'shield' },
+      { text: 'Caster Wheels', icon: 'sparkles' }
+    ],
+    overviewFeatures: [
+      { title: '6mm Corner Stud', desc: 'Strong corner reinforcement', icon: 'gear' },
+      { title: 'Magnetic Catches', desc: 'Keeps cabinet doors firmly shut', icon: 'shield' },
+      { title: 'Sixer & Locking Wheels', desc: 'Smooth heavy-duty trolley movement', icon: 'sparkles' }
+    ]
+  },
+  {
+    id: 31,
+    brandId: 'astdax-sofaleg',
+    category: 'Hardware&Fittings',
+    pageNumLeft: 69,
+    pageNumRight: 70,
+    hideFromIndex: true,
+    parentBrandId: 'astdax-hardwares',
+    badge: 'Sofa Legs',
+    title: 'Sofa\nLegs.',
+    tagline: 'Heavy-duty decorative furniture & sofa legs',
+    image: sofaleg,
+    brandName: 'Astdax Hardwares',
+    desc: 'Sturdy and stylish metallic sofa legs engineered to support heavy upholstered furniture in Antique, Copper, Wengi, and Silver finishes.',
+    thicknesses: ['Antique', 'Copper', 'Wengi', 'Silver'],
+    defaultThickness: 'Antique',
+    thicknessLabel: 'Available Finishes',
+    features: ['High Load Bearing', 'Protective Rubber Base', 'Corrosion Resistant'],
+    applications: ['Sofas & Couches', 'Bed Frames', 'Cabinets & Sideboards'],
+    specs: {
+      'Finish': 'Antique | Copper | Wengi | Silver',
+      'Material': 'Heavy Duty Alloy / Steel',
+      'Base': 'Anti-scratch Rubber Pad',
+      'Load Capacity': 'Up to 200kg per leg'
+    },
+    heroSub: 'SOFA LEGS. HEAVY-DUTY STRENGTH.',
+    heroTitle: 'ASTDAX HARDWARES',
+    heroDesc: 'Heavy-duty decorative sofa legs engineered for maximum weight capacity in Antique, Copper, Wengi, and Silver finishes.',
+    heroTags: [
+      { text: 'Heavy Load', icon: 'shield' },
+      { text: '4 Finishes', icon: 'sparkles' },
+      { text: 'Rubber Base', icon: 'gear' }
+    ],
+    overviewFeatures: [
+      { title: '200kg Load Rating', desc: 'Supports heavy couches and sofa sets', icon: 'shield' },
+      { title: '4 Premium Finishes', desc: 'Antique, Copper, Wengi, Silver', icon: 'sparkles' },
+      { title: 'Floor Protection', desc: 'Rubber base prevents floor scratching', icon: 'gear' }
     ]
   },
 
@@ -1562,22 +1863,14 @@ export const ProductsPage = ({ onNavigate, search }) => {
   };
 
   const handlePrev = () => {
-    if (activeCatIdx > 0 && flipState === 'idle') {
-      const prevSpread = activeCategorySpreads[activeCatIdx - 1];
-      const prevGlobalIdx = SPREADS.findIndex(s => s === prevSpread);
-      if (prevGlobalIdx !== -1) {
-        triggerFlip(prevGlobalIdx, 'prev');
-      }
+    if (currentSpreadIdx > 0 && flipState === 'idle') {
+      triggerFlip(currentSpreadIdx - 1, 'prev');
     }
   };
 
   const handleNext = () => {
-    if (activeCatIdx < activeCategorySpreads.length - 1 && flipState === 'idle') {
-      const nextSpread = activeCategorySpreads[activeCatIdx + 1];
-      const nextGlobalIdx = SPREADS.findIndex(s => s === nextSpread);
-      if (nextGlobalIdx !== -1) {
-        triggerFlip(nextGlobalIdx, 'next');
-      }
+    if (currentSpreadIdx < SPREADS.length - 1 && flipState === 'idle') {
+      triggerFlip(currentSpreadIdx + 1, 'next');
     }
   };
 
@@ -1611,9 +1904,8 @@ export const ProductsPage = ({ onNavigate, search }) => {
   const renderLeftPage = (idx) => {
     const spread = SPREADS[idx];
     if (!spread) return null;
-    const catSpreads = SPREADS.filter(s => s.category === spread.category);
-    const catIdx = catSpreads.findIndex(s => s === spread);
-    const canGoPrev = catIdx > 0 && flipState === 'idle';
+    const canGoPrev = idx > 0 && flipState === 'idle';
+    const pageNumLeft = (idx * 2) + 1;
     return (
       <div
         onClick={() => {
@@ -1649,7 +1941,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </div>
 
         {/* Bottom Page Number */}
-        <div className="absolute bottom-4 left-8 text-[10px] font-black text-slate-400 z-20">Pg. {spread.pageNumLeft}</div>
+        <div className="absolute bottom-4 left-8 text-[10px] font-black text-slate-400 z-20">Pg. {pageNumLeft}</div>
       </div>
     );
   };
@@ -1658,9 +1950,8 @@ export const ProductsPage = ({ onNavigate, search }) => {
     const spread = SPREADS[idx];
     if (!spread) return null;
     const thickness = selectedThicknesses[idx] || spread.defaultThickness;
-    const catSpreads = SPREADS.filter(s => s.category === spread.category);
-    const catIdx = catSpreads.findIndex(s => s === spread);
-    const canGoNext = catIdx !== -1 && catIdx < catSpreads.length - 1 && flipState === 'idle';
+    const canGoNext = idx < SPREADS.length - 1 && flipState === 'idle';
+    const pageNumRight = (idx * 2) + 2;
     return (
       <div
         onClick={() => {
@@ -1676,7 +1967,14 @@ export const ProductsPage = ({ onNavigate, search }) => {
         {/* Right Page Header */}
         <div className="flex justify-between items-baseline mb-4">
           <div>
-            <h2 className="text-2xl font-black text-slate-900 tracking-tighter leading-none mb-1">{spread.brandName}</h2>
+            <div className="flex flex-wrap items-center gap-2 mb-1">
+              <h2 className="text-2xl font-black text-slate-900 tracking-tighter leading-none">{spread.brandName}</h2>
+              {spread.badge && (
+                <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                  {spread.badge}
+                </span>
+              )}
+            </div>
             <div className="h-1.5 w-12 bg-[#006e2f] mb-2 rounded-full" />
             <p className="text-slate-500 font-medium text-xs sm:text-sm leading-relaxed max-w-sm">
               {spread.desc}
@@ -1686,9 +1984,11 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
         <div className="space-y-4">
 
-          {/* Thickness Selection Chips */}
+          {/* Thickness / Finishes / Sizes Selection Chips */}
           <div>
-            <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Available Thickness</h3>
+            <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+              {spread.thicknessLabel || "Available Thickness"}
+            </h3>
             <div className="flex flex-wrap gap-2">
               {spread.thicknesses.map(thick => (
                 <span
@@ -1729,27 +2029,29 @@ export const ProductsPage = ({ onNavigate, search }) => {
           </div>
 
           {/* Technical Specifications Table */}
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 mt-1">
-            <div className="flex justify-between items-center mb-2">
-              <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-900">Technical Specifications</h3>
-              <span className="text-[8px] font-black text-[#006e2f] px-2 py-0.5 bg-white border border-green-700/20 rounded-full uppercase tracking-wider">
-                Premium Quality
-              </span>
+          {spread.specs && Object.keys(spread.specs).length > 0 && (
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 mt-1">
+              <div className="flex justify-between items-center mb-2">
+                <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-900">Technical Specifications</h3>
+                <span className="text-[8px] font-black text-[#006e2f] px-2 py-0.5 bg-white border border-green-700/20 rounded-full uppercase tracking-wider">
+                  Premium Quality
+                </span>
+              </div>
+              <div className="space-y-2">
+                {Object.entries(spread.specs).map(([key, val]) => (
+                  <div key={key} className="flex flex-col sm:flex-row sm:justify-between text-[11px] border-b border-slate-200/60 pb-1.5 last:border-b-0 last:pb-0 gap-1 sm:gap-2">
+                    <span className="text-slate-400 font-bold uppercase tracking-wider">{key}</span>
+                    <span className="text-slate-900 font-black uppercase sm:text-right">{val}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-2">
-              {Object.entries(spread.specs).map(([key, val]) => (
-                <div key={key} className="flex flex-col sm:flex-row sm:justify-between text-[11px] border-b border-slate-200/60 pb-1.5 last:border-b-0 last:pb-0 gap-1 sm:gap-2">
-                  <span className="text-slate-400 font-bold uppercase tracking-wider">{key}</span>
-                  <span className="text-slate-900 font-black uppercase sm:text-right">{val}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          )}
 
         </div>
 
         {/* Bottom Page Number */}
-        <div className="absolute bottom-4 right-8 text-[10px] font-black text-slate-400 z-20">Pg. {spread.pageNumRight}</div>
+        <div className="absolute bottom-4 right-8 text-[10px] font-black text-slate-400 z-20">Pg. {pageNumRight}</div>
       </div>
     );
   };
@@ -1996,7 +2298,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
             <div className="flex items-center justify-center gap-6 mt-8">
               <button
                 onClick={handlePrev}
-                disabled={activeCatIdx === 0 || flipState !== 'idle'}
+                disabled={currentSpreadIdx === 0 || flipState !== 'idle'}
                 className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <span className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center bg-white group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm">
@@ -2008,12 +2310,12 @@ export const ProductsPage = ({ onNavigate, search }) => {
               </button>
 
               <div className="px-6 py-2 bg-white rounded-full shadow-sm border border-slate-100 font-black text-xs text-slate-800">
-                {activeSpread.pageNumLeft} - {activeSpread.pageNumRight} <span className="text-slate-400 font-medium mx-1.5">in</span> {activeSpread.category}
+                {(currentSpreadIdx * 2) + 1} - {(currentSpreadIdx * 2) + 2} <span className="text-slate-400 font-medium mx-1.5">in</span> {activeSpread.category}
               </div>
 
               <button
                 onClick={handleNext}
-                disabled={activeCatIdx === activeCategorySpreads.length - 1 || flipState !== 'idle'}
+                disabled={currentSpreadIdx === SPREADS.length - 1 || flipState !== 'idle'}
                 className="flex items-center gap-2 group text-slate-800 font-bold text-xs cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <span className="hidden sm:inline tracking-tight">Next Spread</span>
