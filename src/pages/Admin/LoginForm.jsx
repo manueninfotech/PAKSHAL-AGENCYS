@@ -56,7 +56,7 @@ export const LoginForm = ({ onNavigate }) => {
           </div>
           
           <h1 className="text-xl font-extrabold text-slate-900 tracking-tight uppercase">
-            Pakshal Agencies
+            PAKSHAL AGENCYS
           </h1>
           <p className="text-[9px] text-[#C9A44C] tracking-[0.2em] font-black uppercase">
             ADMIN PORTAL

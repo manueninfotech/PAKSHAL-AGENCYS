@@ -210,7 +210,7 @@ const GalleryCard = ({ item, onClick }) => {
 
 export const GalleryPage = () => {
   useDocumentMetadata(
-    "Showroom & Materials Gallery | Pakshal Agencies",
+    "Showroom & Materials Gallery | PAKSHAL AGENCYS",
     "Get inspired by our showroom gallery featuring custom modular wardrobes, luxury kitchens, slatted wall panels, and high-gloss acrylic sheet selections."
   );
 

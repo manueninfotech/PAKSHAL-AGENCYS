@@ -24,7 +24,7 @@ export const AboutPage = ({ onNavigateHome }) => {
           </h1>
           
           <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-            Pakshal Agencies is a premier distributor of high-end plywood, laminates, designer doors, and state-of-the-art kitchen and furniture hardware.
+            PAKSHAL AGENCYS is a premier distributor of high-end plywood, laminates, designer doors, and state-of-the-art kitchen and furniture hardware.
           </p>
 
           <button 
@@ -53,7 +53,7 @@ export const AboutPage = ({ onNavigateHome }) => {
               
               <div className="flex flex-col gap-4 text-slate-600 text-sm sm:text-base leading-relaxed">
                 <p>
-                  Founded with a vision to streamline supply chains for premium interior fittings, Pakshal Agencies has grown to become Hyderabad's most trusted name for builders, interior architects, dealers, and carpenters.
+                  Founded with a vision to streamline supply chains for premium interior fittings, PAKSHAL AGENCYS has grown to become Hyderabad's most trusted name for builders, interior architects, dealers, and carpenters.
                 </p>
                 <p>
                   We act as the bridge between globally leading manufacturers (like Hafele, Hettich, Ebco, Dorset, and Ebco) and your local creations. By maintaining a large, state-of-the-art warehouse, we ensure that bulk demands are met on time, every time, with 100% genuine products.
@@ -254,7 +254,7 @@ export const AboutPage = ({ onNavigateHome }) => {
       {/* 5. Clean Bottom CTA Banner */}
       <section className="py-12 bg-gradient-to-r from-[#071330] to-[#0c1e43] text-white">
         <div className="max-w-5xl mx-auto px-4 text-center flex flex-col gap-6 items-center">
-          <h3 className="text-2xl sm:text-3xl font-extrabold font-sans">Experience the Pakshal Commitment</h3>
+          <h3 className="text-2xl sm:text-3xl font-extrabold font-sans">Experience the PAKSHAL AGENCYS Commitment</h3>
           <p className="text-sm text-slate-300 max-w-xl leading-relaxed font-medium">
             Contact us today for direct wholesale price lists, bulk lumber rates, or hardware catalogs. Our team is ready to serve you.
           </p>

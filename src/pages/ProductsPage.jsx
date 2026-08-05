@@ -1922,7 +1922,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
         <div className="flex justify-between items-start mb-4">
           <div className="flex flex-col">
             <span className="text-xl font-black tracking-tighter uppercase italic mb-0.5 text-slate-800">
-              Pakshal <span className="text-[#006e2f]">Agencies</span>
+              PAKSHAL <span className="text-[#006e2f]">AGENCYS</span>
             </span>
           </div>
           <div className="text-right">

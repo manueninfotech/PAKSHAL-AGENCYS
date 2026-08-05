@@ -45,7 +45,7 @@ export const WhyChooseUs = () => {
             <div className="flex items-center justify-center gap-3 w-full max-w-lg mx-auto">
               <div className="h-[1.5px] w-10 bg-[#071330]/15 rounded-full" />
               <span className="text-[#071330] font-extrabold uppercase tracking-widest text-[10px] sm:text-[11px]">
-                WHY CHOOSE PAKSHAL AGENCIES
+                WHY CHOOSE PAKSHAL AGENCYS
               </span>
               <div className="h-[1.5px] w-10 bg-[#071330]/15 rounded-full" />
             </div>

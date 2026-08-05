@@ -12,7 +12,7 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export const HomePage = ({ onNavigateAbout, onNavigate }) => {
   useDocumentMetadata(
-    "Pakshal Agencies | Plywood, Laminates & Hardware",
+    "PAKSHAL AGENCYS | Plywood, Laminates & Hardware",
     "Authorized distributor of premium plywood, veneers, laminates, and luxury hardware fittings in Hyderabad. Serving builders and architects since 2011."
   );
 

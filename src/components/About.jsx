@@ -52,7 +52,7 @@ export const About = ({ onNavigate }) => {
           {/* Left Panel: Content Details */}
           <div className="lg:col-span-6 flex flex-col gap-6 text-left">
             <div className="text-emerald-600 font-extrabold uppercase tracking-wider text-[10px]">
-              About Pakshal Agencies
+              About PAKSHAL AGENCYS
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-sans text-slate-900">
@@ -61,7 +61,7 @@ export const About = ({ onNavigate }) => {
 
             <div className="flex flex-col gap-4 text-slate-900 text-sm leading-relaxed font-semibold">
               <p>
-                Pakshal Agencies is a leading distributor and authorized supply partner of <strong>premium plywood, hardware, and interior solutions for modern spaces</strong>. Since 2011, we have catered to the residential and commercial interior sectors by distributing high-quality plywood, decorative laminates, fancy doors, kitchen accessories, sliding systems, and cabinet hardware fittings.
+                PAKSHAL AGENCYS is a leading distributor and authorized supply partner of <strong>premium plywood, hardware, and interior solutions for modern spaces</strong>. Since 2011, we have catered to the residential and commercial interior sectors by distributing high-quality plywood, decorative laminates, fancy doors, kitchen accessories, sliding systems, and cabinet hardware fittings.
               </p>
               <p>
                 We serve architects, interior designers, builders, contractors, and furniture manufacturers with genuine products, competitive pricing, and reliable supply support. Our showroom and warehouse in Goshamahal, Hyderabad showcase our complete range of premium materials engineered to elevate modern spaces with unmatched durability.

@@ -42,10 +42,10 @@ export const DetailedContent = ({ onNavigate }) => {
     },
     {
       question: "Are the hardware fittings genuine?",
-      answer: "Yes, Pakshal Agencies is an authorized distributor. Every hinge, lock, or drawer slide channel is sourced directly from manufacturers like Ebco, Hettich, Godrej, Hafele, and Dorset. We stand behind 100% genuine quality for all architectural hardware solutions."
+      answer: "Yes, PAKSHAL AGENCYS is an authorized distributor. Every hinge, lock, or drawer slide channel is sourced directly from manufacturers like Ebco, Hettich, Godrej, Hafele, and Dorset. We stand behind 100% genuine quality for all architectural hardware solutions."
     },
     {
-      question: "Where is the Pakshal showroom located?",
+      question: "Where is the PAKSHAL AGENCYS showroom located?",
       answer: "Our experience center and showroom is located at 5-5-755, Hindi Nagar, Goshamahal, Hyderabad, 500012, Telangana. You can visit us to explore our physical material collection and request custom quotes."
     },
     {

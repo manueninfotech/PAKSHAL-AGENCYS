@@ -7,8 +7,8 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
 
 export const AboutPage = ({ onNavigateHome }) => {
   useDocumentMetadata(
-    "About Pakshal | Plywood & Hardware Distributor",
-    "Learn about Pakshal Agencies, a trusted distributor of premium plywood, veneers, decorative laminates, and luxury furniture fittings in Hyderabad since 2011."
+    "About PAKSHAL AGENCYS | Plywood & Hardware Distributor",
+    "Learn about PAKSHAL AGENCYS, a trusted distributor of premium plywood, veneers, decorative laminates, and luxury furniture fittings in Hyderabad since 2011."
   );
 
   // Scroll to top on mount
@@ -47,7 +47,7 @@ export const AboutPage = ({ onNavigateHome }) => {
             {/* Luxury Magazine Description */}
             <div className="flex flex-col gap-4 text-sm sm:text-base lg:text-[17px] text-[#1C1917] leading-relaxed font-semibold tracking-wide">
               <p>
-                Pakshal Agencies is a trusted name in the plywood, laminates, hardware and interior accessory industry. Since our inception, we have been committed to providing high quality products, exceptional service and lasting relationships.
+                PAKSHAL AGENCYS is a trusted name in the plywood, laminates, hardware and interior accessory industry. Since our inception, we have been committed to providing high quality products, exceptional service and lasting relationships.
               </p>
               <p>
                 As a premier distributor, we bridge the gap between global manufacturers and regional creations. By maintaining centralized, state-of-the-art warehouses, we ensure that bulk demands are met on time with 100% genuine products.

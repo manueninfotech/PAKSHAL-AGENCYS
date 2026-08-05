@@ -177,7 +177,7 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
               <div className="flex justify-between items-center pb-4 border-b border-stone-200/60 mb-8">
                 <div className="flex flex-col text-left">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#C9A44C]">
-                    PAKSHAL AGENCIES
+                    PAKSHAL AGENCYS
                   </span>
                   <span className="text-[9px] text-slate-400 font-bold uppercase mt-0.5">
                     Premium Wood & Fittings

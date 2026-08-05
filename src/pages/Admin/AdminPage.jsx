@@ -404,7 +404,7 @@ export const AdminPage = ({ onNavigate }) => {
               CONTROL PANEL
             </div>
             <h1 className="text-3xl font-black tracking-tight mt-1 flex items-center gap-2.5 text-slate-900">
-              <span>Pakshal Agencies</span>
+              <span>PAKSHAL AGENCYS</span>
               <span className="bg-[#0F5C3B] text-white text-[10px] py-1 px-2.5 rounded-full font-black uppercase tracking-wider">
                 Admin
               </span>
