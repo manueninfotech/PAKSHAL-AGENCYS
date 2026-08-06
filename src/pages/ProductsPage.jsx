@@ -1988,7 +1988,9 @@ export const ProductsPage = ({ onNavigate, search }) => {
                 </span>
               )}
             </div>
-            <div className="h-1.5 w-12 bg-[#006e2f] mb-2 rounded-full" />
+            {spread.category !== 'Kitchen Accessories' && (
+              <div className="h-1.5 w-12 bg-[#006e2f] mb-2 rounded-full" />
+            )}
             <p className="text-slate-500 font-medium text-xs sm:text-sm leading-relaxed max-w-sm">
               {spread.desc}
             </p>
