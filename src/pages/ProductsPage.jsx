@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata';
+import { kitchenAccessoriesSpreads } from '../components/KitchenAccessories';
 import {
   Trees,
   FlaskConical,
@@ -1360,6 +1361,8 @@ const SPREADS = [
     ]
   },
 
+  ...kitchenAccessoriesSpreads,
+
   {
     id: 10,
     brandId: 'gurjan-star',
@@ -1728,7 +1731,10 @@ export const ProductsPage = ({ onNavigate, search }) => {
     const params = new URLSearchParams(searchStr || '');
     const category = params.get('category');
     if (!category) return 0;
-    switch (category.toLowerCase()) {
+    const catLower = category.toLowerCase();
+    const foundIdx = SPREADS.findIndex(s => s.category.toLowerCase().replace(/[\s&]+/g, '-') === catLower.replace(/[\s&]+/g, '-'));
+    if (foundIdx !== -1) return foundIdx;
+    switch (catLower) {
       case 'plywood': return 0;
       case 'laminates': return 3;
       case 'fancy-doors': return 24;
@@ -1736,7 +1742,10 @@ export const ProductsPage = ({ onNavigate, search }) => {
       case 'hardware-fittings': return 19;
       case 'hardware&fittings': return 19;
       case 'door-fittings': return 12;
-      case 'kitchen-accessories': return 6;
+      case 'kitchen-accessories': {
+        const kaIdx = SPREADS.findIndex(s => s.category === 'Kitchen Accessories');
+        return kaIdx !== -1 ? kaIdx : 0;
+      }
       case 'sliding-channels': return 20;
       case 'tandem-boxes': return 22;
       default: return 0;
@@ -1932,10 +1941,14 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </div>
 
         {/* Large Product Showcase Image */}
-        <div className="relative flex-grow rounded-xl overflow-hidden mb-4 shadow-inner min-h-[180px] md:min-h-[200px] lg:min-h-[210px] bg-slate-50 border border-slate-100">
+        <div className="relative flex-grow rounded-xl overflow-hidden mb-4 shadow-inner min-h-[180px] md:min-h-[200px] lg:min-h-[210px] bg-white border border-slate-100 flex items-center justify-center p-2">
           <img
             alt={spread.brandName}
-            className="w-full h-full object-cover"
+            className={`w-full h-full ${
+              spread.category === 'Kitchen Accessories' || spread.imageFit === 'contain'
+                ? 'object-contain'
+                : 'object-cover'
+            }`}
             src={spread.image}
           />
         </div>
@@ -1979,6 +1992,30 @@ export const ProductsPage = ({ onNavigate, search }) => {
             <p className="text-slate-500 font-medium text-xs sm:text-sm leading-relaxed max-w-sm">
               {spread.desc}
             </p>
+
+            {/* Provided Material, Color, and Size Content */}
+            {(spread.material || spread.colors || spread.sizeDetails) && (
+              <div className="mt-3 p-3 bg-[#f5ede0]/60 rounded-xl border border-[#C9A44C]/30 text-xs font-semibold text-slate-800 space-y-1 max-w-sm">
+                {spread.material && (
+                  <div className="flex gap-1.5 items-start">
+                    <span className="text-[#8c6d23] font-black uppercase text-[10px] tracking-wider min-w-[70px]">Material:</span>
+                    <span className="font-bold text-slate-900">{spread.material}</span>
+                  </div>
+                )}
+                {spread.colors && (
+                  <div className="flex gap-1.5 items-start">
+                    <span className="text-[#8c6d23] font-black uppercase text-[10px] tracking-wider min-w-[70px]">Color:</span>
+                    <span className="font-bold text-slate-900">{spread.colors}</span>
+                  </div>
+                )}
+                {spread.sizeDetails && (
+                  <div className="flex gap-1.5 items-start">
+                    <span className="text-[#8c6d23] font-black uppercase text-[10px] tracking-wider min-w-[70px]">Size:</span>
+                    <span className="font-bold text-slate-900 leading-snug">{spread.sizeDetails}</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
@@ -2163,7 +2200,11 @@ export const ProductsPage = ({ onNavigate, search }) => {
           >
             <img
               src={activeSpread.image}
-              className="w-full h-full object-cover object-center transform hover:scale-[1.03] transition-transform duration-10000"
+              className={`w-full h-full ${
+                activeSpread.category === 'Kitchen Accessories' || activeSpread.imageFit === 'contain'
+                  ? 'object-contain p-6 bg-white/40'
+                  : 'object-cover'
+              } object-center transform hover:scale-[1.03] transition-transform duration-10000`}
               alt={activeSpread.brandName}
             />
           </div>
