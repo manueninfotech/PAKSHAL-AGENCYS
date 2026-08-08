@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { LogIn, ShieldCheck, LogOut, Home, Info, Image as ImageIcon, ShoppingBag, PhoneCall, X, Menu, Download, FileText } from 'lucide-react';
+import { LogIn, ShieldCheck, LogOut, Home, Info, Image as ImageIcon, ShoppingBag, PhoneCall, X, Menu } from 'lucide-react';
 import pakshallogo from '../assets/pakshallogo_new.png';
-import brochurePdf from '../assets/Broucher/ASTDAX HAR_FINAL_2.pdf';
 
 export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +31,7 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
           </a>
 
           {/* Desktop Nav Links */}
-          <div className="hidden xl:flex items-center gap-7">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {/* Home Link */}
             <div className="relative flex flex-col items-center py-2">
               <a
@@ -98,21 +97,10 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
               Contact Us
             </a>
 
-            {/* Download Brochure Link */}
-            <a
-              href={brochurePdf}
-              download="ASTDAX HAR_FINAL_2.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] font-extrabold uppercase tracking-widest transition-colors text-slate-800 hover:text-[#38a12c] cursor-pointer"
-              title="Download Brochure"
-            >
-              Download Brochure
-            </a>
           </div>
 
           {/* Actions Section */}
-          <div className="hidden xl:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             {/* Phone link */}
             <a
               href="tel:+919966493777"
@@ -149,7 +137,7 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="xl:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-black/5 focus:outline-none transition-colors cursor-pointer"
@@ -162,7 +150,7 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
 
       {/* Mobile Menu Drawer Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-[100] xl:hidden">
+        <div className="fixed inset-0 z-[100] lg:hidden">
           {/* Glassmorphic Backdrop */}
           <div
             onClick={() => setIsOpen(false)}
@@ -208,8 +196,8 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
                       href={`${basePrefix}/${item.id === 'home' ? '' : item.id}`}
                       onClick={(e) => handleLinkClick(e, item.id)}
                       className={`flex items-center gap-3.5 px-4 py-3.5 rounded-2xl text-[12px] font-extrabold uppercase tracking-wider transition-all duration-200 ${isActive
-                          ? 'bg-[#0F5C3B] text-white shadow-md shadow-[#0F5C3B]/10 border border-[#0F5C3B]/20'
-                          : 'bg-transparent text-slate-700 hover:bg-stone-100 hover:text-slate-900 border border-transparent'
+                        ? 'bg-[#0F5C3B] text-white shadow-md shadow-[#0F5C3B]/10 border border-[#0F5C3B]/20'
+                        : 'bg-transparent text-slate-700 hover:bg-stone-100 hover:text-slate-900 border border-transparent'
                         }`}
                     >
                       <Icon className={`w-4 h-4 ${isActive ? 'text-[#C9A44C]' : 'text-slate-400'}`} />
@@ -218,18 +206,6 @@ export const Navbar = ({ currentPage, onNavigate, isAdminAuthenticated }) => {
                   );
                 })}
 
-                {/* Download Brochure Link in Mobile Drawer */}
-                <a
-                  href={brochurePdf}
-                  download="ASTDAX HAR_FINAL_2.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3.5 px-4 py-3.5 rounded-2xl text-[12px] font-extrabold uppercase tracking-wider bg-transparent text-slate-700 hover:bg-stone-100 hover:text-slate-900 border border-transparent transition-all duration-200 cursor-pointer"
-                >
-                  <Download className="w-4 h-4 text-slate-400" />
-                  <span>Download Brochure</span>
-                </a>
               </div>
             </div>
 

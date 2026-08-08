@@ -17,8 +17,15 @@ import {
   Leaf,
   Shield,
   Ban,
-  Dumbbell
+  Dumbbell,
+  FileText,
+  Download,
+  ChevronDown,
+  BookOpen,
+  Wrench
 } from 'lucide-react';
+import sgCatalogPdf from '../assets/Broucher/SG CATALOG.pdf';
+import hardwarePdf from '../assets/Broucher/hardwareaccessories.pdf';
 import plywoodImg from '../assets/royalclub.png';
 import royalClubImg from '../assets/royalclub.png';
 import royalClub2Img from '../assets/royalclub2.png';
@@ -1768,6 +1775,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
   const [selectedThicknesses, setSelectedThicknesses] = useState({});
   const [selectedSize, setSelectedSize] = useState('8 x 4');
   const [showEnquiryModal, setShowEnquiryModal] = useState(false);
+  const [isBrochureDropdownOpen, setIsBrochureDropdownOpen] = useState(false);
   const [toastMsg, setToastMsg] = useState('');
   const [showSidebar, setShowSidebar] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState({
@@ -1944,11 +1952,10 @@ export const ProductsPage = ({ onNavigate, search }) => {
         <div className="relative flex-grow rounded-xl overflow-hidden mb-4 shadow-inner min-h-[180px] md:min-h-[200px] lg:min-h-[210px] bg-white border border-slate-100 flex items-center justify-center p-2">
           <img
             alt={spread.brandName}
-            className={`w-full h-full ${
-              spread.category === 'Kitchen Accessories' || spread.imageFit === 'contain'
+            className={`w-full h-full ${spread.category === 'Kitchen Accessories' || spread.imageFit === 'contain'
                 ? 'object-contain'
                 : 'object-cover'
-            }`}
+              }`}
             src={spread.image}
           />
         </div>
@@ -2202,11 +2209,10 @@ export const ProductsPage = ({ onNavigate, search }) => {
           >
             <img
               src={activeSpread.image}
-              className={`w-full h-full ${
-                activeSpread.category === 'Kitchen Accessories' || activeSpread.imageFit === 'contain'
+              className={`w-full h-full ${activeSpread.category === 'Kitchen Accessories' || activeSpread.imageFit === 'contain'
                   ? 'object-contain p-6 bg-white/40'
                   : 'object-cover'
-              } object-center transform hover:scale-[1.03] transition-transform duration-10000`}
+                } object-center transform hover:scale-[1.03] transition-transform duration-10000`}
               alt={activeSpread.brandName}
             />
           </div>
@@ -2368,6 +2374,42 @@ export const ProductsPage = ({ onNavigate, search }) => {
                   </svg>
                 </span>
               </button>
+            </div>
+
+            {/* Brochure Download Dropdown Section */}
+            <div className="mt-6 pt-4 border-t border-slate-200/50 flex flex-col items-center justify-center text-center relative z-30">
+              <button
+                onClick={() => setIsBrochureDropdownOpen(!isBrochureDropdownOpen)}
+                className="group relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-[#006e2f] hover:bg-[#005c26] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+              >
+                <span>For more details Download Brochure</span>
+                <ChevronDown className={`w-4 h-4 text-white transition-transform duration-200 ${isBrochureDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isBrochureDropdownOpen && (
+                <div className="mt-2 w-72 bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden animate-fade-in text-left z-50 divide-y divide-slate-100">
+                  <a
+                    href={sgCatalogPdf}
+                    download="SG CATALOG.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsBrochureDropdownOpen(false)}
+                    className="block px-4 py-3 text-xs font-extrabold text-slate-800 hover:bg-[#f0f9f4] hover:text-[#006e2f] transition-colors cursor-pointer"
+                  >
+                    SG Product Catalogue
+                  </a>
+                  <a
+                    href={hardwarePdf}
+                    download="hardwareaccessories.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsBrochureDropdownOpen(false)}
+                    className="block px-4 py-3 text-xs font-extrabold text-slate-800 hover:bg-[#f0f9f4] hover:text-[#006e2f] transition-colors cursor-pointer"
+                  >
+                    Hardware Accessories Catalogue
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -3030,13 +3072,9 @@ export const ProductsPage = ({ onNavigate, search }) => {
                 </svg>
               </button>
             </div>
-            {renderSidebarContent()}
           </div>
         </div>
       )}
-
-
-
     </div>
   );
 };

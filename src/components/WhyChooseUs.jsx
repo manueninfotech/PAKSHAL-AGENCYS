@@ -55,7 +55,7 @@ export const WhyChooseUs = () => {
           </div>
 
           {/* Points Grid - 6 Columns on Extra Large Screens */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {points.map((point, idx) => (
               <div
                 key={idx}
