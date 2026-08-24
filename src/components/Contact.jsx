@@ -46,7 +46,7 @@ export const Contact = () => {
             {/* Quick Action Button Strip - Two buttons in a row */}
             <div className="grid grid-cols-2 gap-1.5 sm:gap-2.5 mt-4 w-full">
               <a
-                href="tel:+919966493777"
+                href="tel:+919247449522"
                 className="flex items-center justify-center gap-1 sm:gap-1.5 bg-[#38a12c] hover:bg-[#2e8a23] text-white py-3.5 px-1 sm:px-3 rounded-xl text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-md shadow-green-900/10 text-center whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
@@ -55,7 +55,7 @@ export const Contact = () => {
                 <span>Call Now</span>
               </a>
               <a
-                href="https://wa.me/919966493777"
+                href="https://wa.me/919247449522"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-center gap-1 sm:gap-1.5 bg-[#38a12c] hover:bg-[#2e8a23] text-white py-3.5 px-1 sm:px-3 rounded-xl text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 shadow-md shadow-green-900/10 text-center whitespace-nowrap"

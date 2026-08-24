@@ -1944,7 +1944,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
           </div>
           <div className="text-right">
             <div className="text-slate-800 font-black text-xs mb-0.5">{spread.brandName.toUpperCase()}</div>
-            <div className="text-[#006e2f] font-bold text-[10px]">+91 9966493777</div>
+            <div className="text-[#006e2f] font-bold text-[10px]">+91 9247449522</div>
           </div>
         </div>
 
@@ -2462,7 +2462,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
                     </svg>
                   </button>
                   <a
-                    href={`https://wa.me/919966493777?text=${encodeURIComponent(`I am interested in ${getOverviewTitle(activeSpread)} (${activeThickness}). Please share pricing and availability.`)}`}
+                    href={`https://wa.me/919247449522?text=${encodeURIComponent(`I am interested in ${getOverviewTitle(activeSpread)} (${activeThickness}). Please share pricing and availability.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto px-10 py-4 bg-white border border-[#006e2f] hover:bg-[#f0f9f4] text-[#006e2f] text-[11px] font-black tracking-widest uppercase rounded-lg transition-all flex items-center justify-center gap-3 cursor-pointer shadow-sm hover:shadow-md transform active:scale-95"
@@ -3018,7 +3018,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
           </svg>
         </button>
         <a
-          href="https://wa.me/919966493777"
+          href="https://wa.me/919247449522"
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-[#25d366] text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
@@ -3029,7 +3029,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
           </svg>
         </a>
         <a
-          href="tel:+919966493777"
+          href="tel:+919247449522"
           className="w-14 h-14 bg-slate-900 text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
           title="Call Direct"
         >

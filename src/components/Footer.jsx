@@ -62,7 +62,7 @@ export const Footer = ({ onNavigate }) => {
                 },
                 {
                   name: 'WhatsApp',
-                  href: 'https://wa.me/919966493777',
+                  href: 'https://wa.me/919247449522',
                   icon: (
                     <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
                       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.493 4.904 1.495 5.182 0 9.4-4.216 9.403-9.397.001-2.51-1-4.87-2.817-6.649-1.817-1.778-4.23-2.757-6.79-2.758-5.186 0-9.409 4.217-9.412 9.4-.002 1.942.506 3.843 1.472 5.513L2.26 21.53l4.387-1.376zM18.04 14.99c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.51-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.95-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.15-.14.32-.32.48-.48.16-.16.21-.27.32-.48.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.38-.26-.64-.53-.55-.72-.56l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.12 1.1-1.12 2.68s1.15 3.1 1.31 3.32c.16.22 2.27 3.46 5.5 4.86.76.33 1.36.53 1.83.68.77.24 1.47.21 2.03.12.62-.09 1.89-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.3-.21-.62-.37z" />
@@ -208,7 +208,7 @@ export const Footer = ({ onNavigate }) => {
                   </svg>
                 </div>
                 <div className="flex flex-col text-left">
-                  <a href="tel:+919966493777" className="text-white hover:text-[#C9A44C] font-bold text-sm tracking-wide transition-colors hover:underline">9966493777</a>
+                  <a href="tel:+919247449522" className="text-white hover:text-[#C9A44C] font-bold text-sm tracking-wide transition-colors hover:underline">9247449522</a>
                   <span className="text-[#E6DFD5]/40 text-[10px] font-medium mt-0.5">(Mon - Sat: 10:00 AM - 7:00 PM)</span>
                 </div>
               </div>
@@ -231,7 +231,15 @@ export const Footer = ({ onNavigate }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z" />
                   </svg>
                 </div>
-                <span className="text-[#E6DFD5]/80 font-semibold text-xs sm:text-[13px] mt-0.5">5-5-755, Hindi Nagar, Goshamahal, Hyderabad 500012. TS</span>
+                <a
+                  href="https://maps.app.goo.gl/zWXuM7J7DQXmWkYB7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#E6DFD5]/80 hover:text-[#C9A44C] font-semibold text-xs sm:text-[13px] mt-0.5 transition-colors group/addr"
+                >
+                  <span>5-5-755, Hindi Nagar, Goshamahal, Hyderabad 500012. TS</span>
+                  <span className="block text-[10px] text-[#C9A44C] font-extrabold mt-0.5 tracking-wider uppercase underline">Get Directions →</span>
+                </a>
               </div>
             </div>
           </div>

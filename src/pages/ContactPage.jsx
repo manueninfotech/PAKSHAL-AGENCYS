@@ -71,7 +71,7 @@ const ContactInfoCard = ({ label, icon, children, href }) => {
 export const ContactPage = () => {
   useDocumentMetadata(
     "Contact PAKSHAL AGENCYS | Goshamahal Showroom",
-    "Visit our experience center at Goshamahal, Hyderabad. Register as a dealer, request direct wholesale quotes, or call us at 9966493777."
+    "Visit our experience center at Goshamahal, Hyderabad. Register as a dealer, request direct wholesale quotes, or call us at 9247449522."
   );
 
   const [formData, setFormData] = useState({
@@ -114,7 +114,7 @@ export const ContactPage = () => {
  Message:
 ${formData.message || "No message"}
 `;
-    const whatsappUrl = `https://wa.me/919966493777?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/919247449522?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
     setNotification({
       message: "Opening WhatsApp...",
@@ -136,7 +136,7 @@ ${formData.message || "No message"}
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const mapsUrl = "https://maps.google.com/?q=5-5-755,+Hindi+Nagar,+Goshamahal,+Hyderabad+500012";
+  const mapsUrl = "https://maps.app.goo.gl/zWXuM7J7DQXmWkYB7";
 
   return (
     <div className="w-full min-h-screen pt-24 pb-16 font-sans bg-[#FAF8F4] relative overflow-hidden">
@@ -181,14 +181,14 @@ ${formData.message || "No message"}
             <div className="space-y-4">
               <ContactInfoCard
                 label="Phone Number"
-                href="tel:+919966493777"
+                href="tel:+919247449522"
                 icon={
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a20.373 20.373 0 01-7.108-7.108c-.155-.44.01-.928.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                   </svg>
                 }
               >
-                9966493777
+                9247449522
               </ContactInfoCard>
 
               <ContactInfoCard
