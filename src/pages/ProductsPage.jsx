@@ -33,6 +33,11 @@ import marineClubImg from '../assets/marineclub.png';
 import laminatesImg from '../assets/laminates.png';
 import laminates2Img from '../assets/laminates2.png';
 import laminates3Img from '../assets/laminates3.png';
+import centuryLaminateImg from '../assets/century_laminate.jpg';
+import greenLaminateImg from '../assets/green_laminate.jpg';
+import marineLaminateImg from '../assets/marine_laminate.jpg';
+import vistaLaminateImg from '../assets/vista_laminate.jpg';
+import cromaLaminateImg from '../assets/croma_laminate.jpg';
 import acrylicPanelsImg from '../assets/acrylicpanels.png';
 import acrylicPanels2Img from '../assets/acrylicpanels2.png';
 import acrylicPanels3Img from '../assets/acrylicpanels3.png';
@@ -193,117 +198,187 @@ const SPREADS = [
   },
   {
     id: 3,
-    brandId: 'indigo-exotic',
+    brandId: 'century-laminates',
     category: 'Laminates',
     pageNumLeft: 7,
     pageNumRight: 8,
-    badge: 'Design Accents',
-    title: 'Vibrant\nFinishes.',
-    tagline: 'Colors and textures for high-end styling',
-    image: laminatesImg,
-    brandName: 'Indigo',
-    desc: 'Modern high-pressure laminates offering scratch-resistant surfaces, stylish textures, and brilliant colors.',
+    badge: 'Architectural Collection',
+    title: 'Timeless\nElegance.',
+    tagline: 'High-pressure decorative laminates for interior surfaces',
+    image: centuryLaminateImg,
+    brandName: 'Century',
+    desc: 'Century Laminates offer high-pressure scratch-resistant surfaces, rich textures, and superior color fastness.',
     thicknesses: ['0.8mm', '1.0mm', '1.2mm'],
     defaultThickness: '1.0mm',
-    features: ['Scratch Resistant', 'UV Protection', 'Anti-Fingerprint'],
+    features: ['Scratch Resistant', 'UV Protection', 'Anti-Bacterial'],
     applications: ['Tabletops', 'Cabinets', 'Wall Paneling'],
     specs: {
       'Material': 'Phenolic Resin Kraft',
-      'Surface Finish': 'Suede / Glossy',
+      'Surface Finish': 'Suede / Matt / Gloss',
       'Heat Resistance': 'Up to 180°C'
     },
-    heroSub: 'VIBRANT FINISHES. DESIGN ACCENTS.',
-    heroTitle: 'INDIGO',
-    heroDesc: 'Modern high-pressure laminates offering scratch-resistant surfaces, stylish textures, and brilliant colors for luxury spaces.',
+    heroSub: 'TIMELESS ELEGANCE. ARCHITECTURAL GRADE.',
+    heroTitle: 'CENTURY',
+    heroDesc: 'Century Laminates offer high-pressure scratch-resistant surfaces, rich textures, and superior color fastness for luxury spaces.',
     heroTags: [
       { text: 'Scratch Resistant', icon: 'sparkles' },
       { text: 'UV Protection', icon: 'shield' },
-      { text: 'Anti-Fingerprint', icon: 'sparkles' }
+      { text: 'Anti-Bacterial', icon: 'sparkles' }
     ],
     overviewFeatures: [
       { title: 'Scratch Resistant', desc: 'Protective top wear layer', icon: 'sparkles' },
       { title: 'UV Protected', desc: 'Zero color fading under sunlight', icon: 'shield' },
-      { title: 'Anti-Fingerprint', desc: 'Stays clean and smudge-free', icon: 'sparkles' },
+      { title: 'Anti-Bacterial', desc: 'Hygienic surface protection', icon: 'sparkles' },
       { title: 'Heat Proof', desc: 'Resists hot items up to 180°C', icon: 'droplet' },
-      { title: 'Eco Safe Kraft', desc: 'Non-toxic raw raw materials', icon: 'leaf' }
+      { title: 'Eco Safe Kraft', desc: 'Non-toxic raw materials', icon: 'leaf' }
     ]
   },
   {
     id: 11,
-    brandId: 'indigo-premium',
+    brandId: 'green-laminates',
     category: 'Laminates',
     pageNumLeft: 9,
     pageNumRight: 10,
-    hideFromIndex: true,
-    parentBrandId: 'indigo-exotic',
-    badge: 'Premium Finishes',
-    title: 'Exotic\nTextures.',
-    tagline: 'Premium designs that redefine luxury and style',
-    image: laminates2Img,
-    brandName: 'Indigo',
-    desc: 'Exquisite designs that redefine luxury with outstanding durability, premium textures, and anti-fingerprint technology.',
-    thicknesses: ['1.0mm', '1.2mm', '1.5mm'],
+    badge: 'Eco Luxury',
+    title: 'Natural\nTeak.',
+    tagline: 'Sustainable green laminates crafted with eco-resins',
+    image: greenLaminateImg,
+    brandName: 'Green',
+    desc: 'Green Laminates combine eco-friendly raw materials with authentic wood grain aesthetics and high durability.',
+    thicknesses: ['0.8mm', '1.0mm', '1.2mm'],
     defaultThickness: '1.0mm',
-    features: ['Super Matt Finish', 'Anti-Fingerprint', 'Stain Resistant'],
-    applications: ['Kitchen Cabinets', 'Wardrobe Shutters', 'Executive Desks'],
+    features: ['Eco-Friendly Core', 'Natural Teak Texture', 'Stain Resistant'],
+    applications: ['Kitchen Cabinets', 'Wardrobes', 'Office Desks'],
     specs: {
-      'Material': 'Premium Phenolic Kraft',
-      'Surface Finish': 'Super Matt / Texture',
-      'Scratch Rating': '4H Hardness'
+      'Material': 'Eco Phenolic Kraft',
+      'Surface Finish': 'Natural Teak Matte',
+      'Heat Resistance': 'Up to 180°C'
     },
-    heroSub: 'EXOTIC TEXTURES. PREMIUM FINISHES.',
-    heroTitle: 'INDIGO',
-    heroDesc: 'Exquisite designs that redefine luxury with outstanding durability, premium textures, and anti-fingerprint technology for high-end interiors.',
+    heroSub: 'ECO LUXURY. NATURAL TEAK TEXTURE.',
+    heroTitle: 'GREEN',
+    heroDesc: 'Green Laminates combine eco-friendly raw materials with authentic wood grain aesthetics and high durability.',
     heroTags: [
-      { text: 'Super Matt Finish', icon: 'sparkles' },
-      { text: 'Anti-Fingerprint', icon: 'sparkles' },
+      { text: 'Eco-Friendly Core', icon: 'leaf' },
+      { text: 'Natural Teak', icon: 'wood' },
       { text: 'Stain Resistant', icon: 'shield' }
     ],
     overviewFeatures: [
-      { title: 'Super Matt Finish', desc: 'Ultra smooth low-glare elegance', icon: 'sparkles' },
-      { title: 'Anti-Fingerprint', desc: 'Stays clean and smudge-free', icon: 'sparkles' },
-      { title: 'Stain Resistant', desc: 'Wipes clean with simple cloth', icon: 'shield' },
-      { title: 'Scratch Proof', desc: 'High-grade durable acrylic coat', icon: 'calibrate' },
-      { title: 'German Tech', desc: 'Precision engineered sheets', icon: 'gear' }
+      { title: 'Eco-Friendly', desc: 'Sourced from sustainable timber matrices', icon: 'leaf' },
+      { title: 'Natural Grain', desc: 'Authentic warm teak finish', icon: 'wood' },
+      { title: 'Stain Proof', desc: 'Wipes clean with simple cloth', icon: 'shield' },
+      { title: 'High Durability', desc: 'Long-lasting structural surface', icon: 'calibrate' },
+      { title: 'Zero Toxins', desc: 'Low VOC emission certified', icon: 'sparkles' }
     ]
   },
   {
     id: 14,
-    brandId: 'indigo-exotic-3',
+    brandId: 'marine-laminates',
     category: 'Laminates',
     pageNumLeft: 11,
     pageNumRight: 12,
-    hideFromIndex: true,
-    parentBrandId: 'indigo-exotic',
-    badge: 'Premium Textures',
-    title: 'Luxurious\nPatterns.',
-    tagline: 'Stunning designs inspired by natural woods and stones',
-    image: laminates3Img,
-    brandName: 'Indigo',
-    desc: 'Indigo Luxurious Laminates offer textured suede finishes that emulate wood grains and stone patterns, bringing nature into your interiors.',
-    thicknesses: ['0.8mm', '1.0mm', '1.2mm'],
+    badge: 'Waterproof Grade',
+    title: 'Oceanic\nMarble.',
+    tagline: 'Moisture-proof laminates for high-humidity areas',
+    image: marineLaminateImg,
+    brandName: 'Marine',
+    desc: 'Marine Laminates feature specialized waterproof resin backing and glossy stone marble patterns for wet areas and kitchens.',
+    thicknesses: ['1.0mm', '1.2mm', '1.5mm'],
     defaultThickness: '1.0mm',
-    features: ['Textured Finishes', 'Heat Resistant', 'Eco Sourced'],
-    applications: ['Tabletops', 'Cabinets', 'Accent Walls'],
+    features: ['Waterproof Resin', 'Oceanic Marble Pattern', 'High Gloss Finish'],
+    applications: ['Kitchen Countertops', 'Bathroom Cabinets', 'Vanities'],
     specs: {
-      'Material': 'Phenolic Resin Kraft',
-      'Surface Finish': 'Textured / Woodgrain',
+      'Material': 'Marine Resin Kraft',
+      'Surface Finish': 'Glossy Oceanic Marble',
       'Heat Resistance': 'Up to 180°C'
     },
-    heroSub: 'LUXURIOUS PATTERNS. TEXTURED FINISHES.',
-    heroTitle: 'INDIGO',
-    heroDesc: 'Indigo Luxurious Laminates offer textured suede finishes that emulate wood grains and stone patterns, bringing nature into your interiors.',
+    heroSub: 'WATERPROOF GRADE. OCEANIC MARBLE.',
+    heroTitle: 'MARINE',
+    heroDesc: 'Marine Laminates feature specialized waterproof resin backing and glossy stone marble patterns for wet areas and kitchens.',
     heroTags: [
-      { text: 'Textured Finishes', icon: 'sparkles' },
-      { text: 'Heat Resistant', icon: 'shield' },
-      { text: 'Eco Sourced', icon: 'leaf' }
+      { text: 'Waterproof Resin', icon: 'droplet' },
+      { text: 'Oceanic Marble', icon: 'sparkles' },
+      { text: 'High Gloss', icon: 'sparkles' }
     ],
     overviewFeatures: [
-      { title: 'Textured Finish', desc: 'Natural woodgrain and stone details', icon: 'sparkles' },
-      { title: 'Heat Proof', desc: 'Resists hot items up to 180°C', icon: 'droplet' },
-      { title: 'Anti-Fingerprint', desc: 'Stays clean and smudge-free', icon: 'sparkles' },
-      { title: 'High Durability', desc: 'Long-lasting structural surface', icon: 'shield' },
-      { title: 'Eco Friendly', desc: 'Sustainable organic core resins', icon: 'leaf' }
+      { title: 'Waterproof Resin', desc: '100% boiling-water-proof bond', icon: 'droplet' },
+      { title: 'Marble Pattern', desc: 'Sleek oceanic stone aesthetics', icon: 'sparkles' },
+      { title: 'High Gloss', desc: 'Reflective mirror-like shine', icon: 'sparkles' },
+      { title: 'Scratch Proof', desc: 'Resists kitchen cookware scuffs', icon: 'shield' },
+      { title: 'UV Stabilized', desc: 'Color remains vibrant over time', icon: 'shield' }
+    ]
+  },
+  {
+    id: 25,
+    brandId: 'vista-laminates',
+    category: 'Laminates',
+    pageNumLeft: 13,
+    pageNumRight: 14,
+    badge: 'Contemporary Collection',
+    title: 'Warm\nWalnut.',
+    tagline: 'Sophisticated walnut wood grains for modern interiors',
+    image: vistaLaminateImg,
+    brandName: 'Vista',
+    desc: 'Vista Laminates highlight deep walnut tones and golden grain accents, creating a warm and luxurious atmosphere.',
+    thicknesses: ['0.8mm', '1.0mm', '1.2mm'],
+    defaultThickness: '1.0mm',
+    features: ['Warm Walnut Grain', 'Anti-Fingerprint', 'Impact Resistant'],
+    applications: ['Executive Offices', 'Living Room Consoles', 'Feature Walls'],
+    specs: {
+      'Material': 'Phenolic Resin Kraft',
+      'Surface Finish': 'Walnut Woodgrain',
+      'Heat Resistance': 'Up to 180°C'
+    },
+    heroSub: 'CONTEMPORARY STYLE. WARM WALNUT.',
+    heroTitle: 'VISTA',
+    heroDesc: 'Vista Laminates highlight deep walnut tones and golden grain accents, creating a warm and luxurious atmosphere.',
+    heroTags: [
+      { text: 'Warm Walnut', icon: 'wood' },
+      { text: 'Anti-Fingerprint', icon: 'sparkles' },
+      { text: 'Impact Resistant', icon: 'shield' }
+    ],
+    overviewFeatures: [
+      { title: 'Walnut Texture', desc: 'Deep warm woodgrain details', icon: 'wood' },
+      { title: 'Anti-Fingerprint', desc: 'Smudge-free ultra smooth feel', icon: 'sparkles' },
+      { title: 'Impact Resistant', desc: 'High resistance to physical knocks', icon: 'shield' },
+      { title: 'Thermal Stability', desc: 'Resists temperature shifts', icon: 'droplet' },
+      { title: 'Easy Maintenance', desc: 'Cleans effortlessly with damp cloth', icon: 'sparkles' }
+    ]
+  },
+  {
+    id: 26,
+    brandId: 'croma-laminates',
+    category: 'Laminates',
+    pageNumLeft: 15,
+    pageNumRight: 16,
+    badge: 'Metallic Series',
+    title: 'Brushed\nCopper.',
+    tagline: 'Ultra-modern metallic chrome laminates for futuristic design',
+    image: cromaLaminateImg,
+    brandName: 'Croma',
+    desc: 'Croma Metallic Laminates deliver brushed copper and chrome textures, adding a high-tech industrial aesthetic to spaces.',
+    thicknesses: ['0.8mm', '1.0mm'],
+    defaultThickness: '1.0mm',
+    features: ['Brushed Copper Finish', 'Metallic Texture', 'Scratch Resistant'],
+    applications: ['Commercial Bar Countertops', 'Reception Desks', 'Accent Panels'],
+    specs: {
+      'Material': 'Metallic Foil & Phenolic Kraft',
+      'Surface Finish': 'Brushed Copper Chrome',
+      'Heat Resistance': 'Up to 180°C'
+    },
+    heroSub: 'METALLIC SERIES. BRUSHED COPPER.',
+    heroTitle: 'CROMA',
+    heroDesc: 'Croma Metallic Laminates deliver brushed copper and chrome textures, adding a high-tech industrial aesthetic to spaces.',
+    heroTags: [
+      { text: 'Brushed Copper', icon: 'sparkles' },
+      { text: 'Metallic Texture', icon: 'gear' },
+      { text: 'Scratch Resistant', icon: 'shield' }
+    ],
+    overviewFeatures: [
+      { title: 'Brushed Metallic', desc: 'Real copper foil surface layer', icon: 'sparkles' },
+      { title: 'Industrial Design', desc: 'Futuristic metallic sheen', icon: 'gear' },
+      { title: 'Scratch Proof', desc: 'Coated for heavy daily commercial use', icon: 'shield' },
+      { title: 'Fire Retardant', desc: 'Enhanced fire resistance properties', icon: 'shield' },
+      { title: 'Anti-Corrosion', desc: 'Protective top clear sealant layer', icon: 'droplet' }
     ]
   },
   {
