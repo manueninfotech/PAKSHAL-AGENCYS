@@ -50,7 +50,9 @@ import slidingChannelsImg from '../assets/slidingchannels.png';
 import gurjanStarImg from '../assets/gurjanstar.png';
 import tandemBoxImg from '../assets/tandembox.png';
 import fancyDoorsImg from '../assets/fancydoors.png';
+import designerDoorImg from '../assets/homepage-designerdoor.png';
 import doorFittingsImg from '../assets/door_fittings.png';
+import plywoodKingImg from '../assets/plywood-image.png';
 import veneer2Img from '../assets/veneer2.png';
 import veneer3Img from '../assets/veneer3.png';
 import veneer4Img from '../assets/veneer4.png';
@@ -622,7 +624,7 @@ const SPREADS = [
     badge: 'Exotic Timber',
     title: 'Natural\nGrains.',
     tagline: 'Handpicked real wood veneers for architectural wonders',
-    image: doorFittingsImg,
+    image: veneer2Img,
     brandName: 'Architecture',
     desc: 'Exquisite hand-selected natural wood veneers featuring rich textures and authentic wood grains from sustainable forests.',
     thicknesses: ['0.5mm', '4mm', '6mm'],
@@ -768,6 +770,87 @@ const SPREADS = [
     ]
   },
   {
+    id: 40,
+    brandId: 'fancy-doors',
+    category: 'Fancy Doors',
+    pageNumLeft: 31,
+    pageNumRight: 32,
+    badge: 'Designer Collection',
+    title: 'Designer\nDoors.',
+    tagline: 'Designer doors for stylish spaces',
+    image: fancyDoorsImg,
+    brandName: 'Fancy Doors',
+    desc: 'Premium solid core designer doors crafted with seasoned hardwoods, acoustic sound insulation, and luxury contemporary finishes.',
+    thicknesses: ['30mm', '32mm', '35mm', '38mm', '40mm'],
+    defaultThickness: '35mm',
+    thicknessLabel: 'Standard Thicknesses',
+    features: ['Solid Timber Core', 'Zero Warpage Guarantee', 'Termite & Borer Proof', 'Sound Insulating Core', 'BWP Resin Bonded'],
+    applications: ['Main Entrance Doors', 'Bedroom Doors', 'Luxury Villas', 'Commercial Spaces', 'Pooja Room Doors'],
+    specs: {
+      'Core Type': 'Kiln-Seasoned Solid Pine',
+      'Bonding Adhesive': 'BWP Phenolic Synthetic Resin',
+      'Face Veneer': 'Natural Teak & Hardwood',
+      'Moisture Content': '8% - 12% Seasoned Timber',
+      'Warranty': '15 Years Guarantee',
+      'Certification': 'IS: 2202 Flush Doors'
+    },
+    heroSub: 'DESIGNER DOORS FOR STYLISH SPACES',
+    heroTitle: 'FANCY DOORS',
+    heroDesc: 'Crafted with premium seasoned hardwoods and designer surface finishes, our luxury doors combine acoustic privacy, thermal stability, and timeless architectural aesthetics.',
+    heroTags: [
+      { text: 'Solid Timber Core', icon: 'wood' },
+      { text: '100% Seasoned', icon: 'calibrate' },
+      { text: '15-Year Warranty', icon: 'shield' }
+    ],
+    overviewFeatures: [
+      { title: 'Solid Seasoned Core', desc: 'Kiln dried treated pine prevents warping & bending', icon: 'wood' },
+      { title: 'BWP Resin Bonded', desc: 'Resin bonded under high heat & hydraulic pressure', icon: 'droplet' },
+      { title: 'Sound Insulation', desc: 'High density internal core dampens sound & vibrations', icon: 'shield' },
+      { title: 'Multiple Finishes', desc: 'Available in veneer, laminate, and polishable skins', icon: 'sparkles' },
+      { title: 'Termite & Borer Proof', desc: 'Chemically vacuum impregnated against insects', icon: 'shield' }
+    ]
+  },
+  {
+    id: 41,
+    brandId: 'carved-timber-doors',
+    category: 'Fancy Doors',
+    pageNumLeft: 33,
+    pageNumRight: 34,
+    badge: 'Solid Timber',
+    title: 'Carved\nTimber Doors.',
+    tagline: 'Handcrafted solid wood doors with traditional & modern carvings',
+    image: designerDoorImg,
+    brandName: 'Carved Timber Doors',
+    desc: 'Handcrafted solid timber doors featuring intricate architectural carvings, rich grain aesthetics, and exceptional structural durability for grand entrance ways.',
+    thicknesses: ['35mm', '40mm', '45mm', '50mm'],
+    defaultThickness: '40mm',
+    thicknessLabel: 'Standard Thicknesses',
+    features: ['100% Solid Teak/Hardwood', 'Handcrafted 3D Carvings', 'Weather Resistant Coating', 'Deep Grain Finish', 'Heavy-Duty Core'],
+    applications: ['Grand Main Entrances', 'Bungalows & Villas', 'Pooja Rooms', 'Heritage Projects'],
+    specs: {
+      'Wood Species': 'Selected Burma Teak / Sal',
+      'Carving Style': 'Architectural 3D Relief',
+      'Surface Coating': 'Multi-Layer PU Polish',
+      'Hardware Compatibility': 'Heavy Duty Mortise & Smart Locks',
+      'Warranty': 'Lifetime Durability'
+    },
+    heroSub: 'SOLID TIMBER. TIMELESS ELEGANCE.',
+    heroTitle: 'CARVED TIMBER DOORS',
+    heroDesc: 'Handcrafted solid timber doors featuring intricate architectural carvings, rich grain aesthetics, and exceptional structural durability for grand entrance ways.',
+    heroTags: [
+      { text: 'Solid Burma Teak', icon: 'wood' },
+      { text: '3D Relief Carving', icon: 'sparkles' },
+      { text: 'Lifetime Durability', icon: 'shield' }
+    ],
+    overviewFeatures: [
+      { title: '100% Solid Hardwood', desc: 'Sourced from genuine sustainable teak timber', icon: 'wood' },
+      { title: 'Precision 3D Carvings', desc: 'High relief decorative CNC & hand carved details', icon: 'sparkles' },
+      { title: 'Weather Shield PU', desc: 'UV and rainwater proof protective polish coat', icon: 'droplet' },
+      { title: 'Heavy Duty Core', desc: 'Handles high traffic and heavy security hardware', icon: 'shield' },
+      { title: 'Bespoke Sizing', desc: 'Customizable heights up to 10 feet for grand entries', icon: 'calibrate' }
+    ]
+  },
+  {
     id: 6,
     brandId: 'steel-wood',
     category: 'Architectural Hardware',
@@ -850,7 +933,7 @@ const SPREADS = [
     badge: 'Premium Calibrated',
     title: 'The King of\nPlywoods.',
     tagline: 'Double-pressed flat surfaces for modular designs',
-    image: fancyDoorsImg,
+    image: plywoodKingImg,
     brandName: 'Gurjan King',
     desc: 'Double-pressed calibrated plywood offering unmatched flat surfaces and zero-core gaps. The ultimate choice for modular kitchens.',
     thicknesses: ['6mm', '9mm', '12mm', '16mm', '19mm'],
@@ -1506,11 +1589,11 @@ export const ProductsPage = ({ onNavigate, search }) => {
   }, []);
 
   const getCatalogScale = () => {
-    if (windowDimensions.width < 320) return { scale: 0.3, marginBot: -420, leftOffset: 0 };
+    if (windowDimensions.width < 320) return { scale: 0.3, marginBot: -580, leftOffset: 0 };
 
     const isMobile = windowDimensions.width < 768;
     const targetWidth = isMobile ? 960 : 1352;
-    const padding = isMobile ? 32 : 48;
+    const padding = isMobile ? 24 : 48;
     const scaleWidth = (windowDimensions.width - padding) / targetWidth;
 
     const targetHeight = 720;
@@ -1519,12 +1602,14 @@ export const ProductsPage = ({ onNavigate, search }) => {
     let scale = Math.min(scaleWidth, scaleHeight);
     scale = Math.min(1.0, Math.max(0.3, scale));
 
-    const heightReduction = 600 * (1 - scale);
-    const marginBot = -heightReduction + 16;
+    // The inner container includes the book, navigation controls, and brochure button = ~840px on mobile
+    const contentHeight = isMobile ? 840 : 740;
+    const heightReduction = contentHeight * (1 - scale);
+    const marginBot = -heightReduction + (isMobile ? 8 : 16);
 
     const parentContentWidth = Math.min(windowDimensions.width, 1360) - padding;
     const visualWidth = (isMobile ? 960 : 1320) * scale;
-    const leftOffset = (parentContentWidth - visualWidth) / 2;
+    const leftOffset = Math.round(((parentContentWidth - visualWidth) / 2) - (isMobile ? 5 : 0));
 
     return { scale, marginBot, leftOffset };
   };
@@ -1591,6 +1676,8 @@ export const ProductsPage = ({ onNavigate, search }) => {
       lowerBrand.includes('plywood') ||
       lowerBrand.includes('laminate') ||
       lowerBrand.includes('veneer') ||
+      lowerBrand.includes('doors') ||
+      lowerCat === 'fancy doors' ||
       lowerBrand.includes('hardware&fittings')
     ) {
       return brand;
@@ -1645,6 +1732,29 @@ export const ProductsPage = ({ onNavigate, search }) => {
           title: 'LUXURY FURNITURE',
           desc: 'Tabletops, TV consoles & premium joinery',
           image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80'
+        }
+      ];
+    } else if (cat === 'Fancy Doors') {
+      return [
+        {
+          title: 'MAIN ENTRANCE',
+          desc: 'Luxury grand designer entrance doors',
+          image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80'
+        },
+        {
+          title: 'BEDROOM DOORS',
+          desc: 'Acoustic sound-dampening flush doors',
+          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80'
+        },
+        {
+          title: 'VILLAS & BUNGALOWS',
+          desc: 'High-height designer carved double doors',
+          image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80'
+        },
+        {
+          title: 'PUJA & BALCONY',
+          desc: 'Water-resistant moisture-proof designer doors',
+          image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80'
         }
       ];
     } else {
@@ -1715,6 +1825,26 @@ export const ProductsPage = ({ onNavigate, search }) => {
           { title: 'Heat Proof', desc: 'Resists thermal damage up to 180°C', icon: 'water-proof' },
           { title: 'UV Stabilized', desc: 'No color fading under standard indoor sunlight', icon: 'finish' },
           { title: 'Eco Friendly', desc: 'Sourced from sustainable wood pulp matrices', icon: 'tree' }
+        ]
+      };
+    } else if (cat === 'Fancy Doors') {
+      return {
+        specs: [
+          { label: 'Core Material', value: spread.specs['Core Type'] || 'Kiln-Seasoned Pine / Hardwood Core', icon: 'tree' },
+          { label: 'Bonding Adhesive', value: spread.specs['Bonding Adhesive'] || 'BWP Synthetic Resin Adhesive', icon: 'glue' },
+          { label: 'Standard Thickness', value: spread.defaultThickness || '35mm', icon: 'ruler' },
+          { label: 'Surface Finish', value: spread.specs['Face Veneer'] || 'Natural Veneer / Laminated / Polishable', icon: 'finish' },
+          { label: 'Moisture Content', value: spread.specs['Moisture Content'] || '8% - 12% Seasoned Timber', icon: 'moisture' },
+          { label: 'Warpage Rating', value: 'Zero Warpage Tested', icon: 'grade' },
+          { label: 'Warranty', value: spread.specs['Warranty'] || '15 Years Warranty', icon: 'warranty' },
+          { label: 'Standard Certification', value: spread.specs['Certification'] || 'IS: 2202 Flush Doors', icon: 'cert' }
+        ],
+        highlights: [
+          { title: 'Solid Seasoned Core', desc: '100% kiln-dried timber blocks eliminate twisting', icon: 'water-proof' },
+          { title: 'BWP Resin Bonded', desc: 'Hydraulically pressed with boiling water proof resin', icon: 'cert' },
+          { title: 'Sound Insulation', desc: 'High acoustic density dampens corridor noise', icon: 'strength' },
+          { title: 'Termite Proof', desc: 'Vacuum pressure treated against borer and termites', icon: 'grade' },
+          { title: 'Smooth Edge Finish', desc: 'Solid hardwood lipping for secure lock fitting', icon: 'finish' }
         ]
       };
     } else {
@@ -1813,23 +1943,43 @@ export const ProductsPage = ({ onNavigate, search }) => {
     const params = new URLSearchParams(searchStr || '');
     const category = params.get('category');
     if (!category) return 0;
-    const catLower = category.toLowerCase();
+    const catLower = category.toLowerCase().trim();
     const foundIdx = SPREADS.findIndex(s => s.category.toLowerCase().replace(/[\s&]+/g, '-') === catLower.replace(/[\s&]+/g, '-'));
     if (foundIdx !== -1) return foundIdx;
     switch (catLower) {
       case 'plywood': return 0;
-      case 'laminates': return 3;
-      case 'fancy-doors': return 24;
-      case 'hardware': return 19;
-      case 'hardware-fittings': return 19;
-      case 'hardware&fittings': return 19;
-      case 'door-fittings': return 12;
+      case 'laminates': {
+        const lIdx = SPREADS.findIndex(s => s.category === 'Laminates');
+        return lIdx !== -1 ? lIdx : 0;
+      }
+      case 'fancy-doors':
+      case 'doors':
+      case 'fancy-door': {
+        const fdIdx = SPREADS.findIndex(s => s.category === 'Fancy Doors' || s.brandId === 'fancy-doors');
+        return fdIdx !== -1 ? fdIdx : 0;
+      }
+      case 'hardware':
+      case 'hardware-fittings':
+      case 'hardware&fittings': {
+        const hfIdx = SPREADS.findIndex(s => s.category === 'Hardware&Fittings' || s.category === 'Hardware & Fittings');
+        return hfIdx !== -1 ? hfIdx : 0;
+      }
+      case 'door-fittings': {
+        const dfIdx = SPREADS.findIndex(s => s.brandId === 'astdax-hardwares' || s.brandId === 'steel-wood');
+        return dfIdx !== -1 ? dfIdx : 0;
+      }
       case 'kitchen-accessories': {
         const kaIdx = SPREADS.findIndex(s => s.category === 'Kitchen Accessories');
         return kaIdx !== -1 ? kaIdx : 0;
       }
-      case 'sliding-channels': return 20;
-      case 'tandem-boxes': return 22;
+      case 'sliding-channels': {
+        const scIdx = SPREADS.findIndex(s => s.brandId === 'drawer-channel');
+        return scIdx !== -1 ? scIdx : 0;
+      }
+      case 'tandem-boxes': {
+        const tbIdx = SPREADS.findIndex(s => s.brandId === 'tandem-box');
+        return tbIdx !== -1 ? tbIdx : 0;
+      }
       default: return 0;
     }
   };
@@ -2028,8 +2178,8 @@ export const ProductsPage = ({ onNavigate, search }) => {
           <img
             alt={spread.brandName}
             className={`w-full h-full ${spread.category === 'Kitchen Accessories' || spread.imageFit === 'contain'
-                ? 'object-contain'
-                : 'object-cover'
+              ? 'object-contain'
+              : 'object-cover'
               }`}
             src={spread.image}
           />
@@ -2179,7 +2329,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
   const renderSidebarContent = () => {
     return (
-      <div className="space-y-4 flex-grow overflow-y-auto pr-1 pb-4 min-h-0 custom-scrollbar max-h-[calc(100vh-180px)] lg:max-h-[calc(100vh-280px)]">
+      <div className="space-y-4 flex-1 overflow-y-auto pr-1 pb-6 min-h-0 no-scrollbar">
         {Object.entries(categories).map(([catName, items]) => {
           const isExpanded = !!expandedCategories[catName];
           return (
@@ -2204,7 +2354,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
 
               {/* Brands List (Dropdown Content) */}
               <div
-                className={`space-y-1 transition-all duration-300 overflow-hidden ${isExpanded ? 'max-h-60 opacity-100 mt-1 pb-1' : 'max-h-0 opacity-0 pointer-events-none'
+                className={`space-y-1 transition-all duration-300 overflow-hidden ${isExpanded ? 'max-h-[500px] opacity-100 mt-1 pb-1' : 'max-h-0 opacity-0 pointer-events-none'
                   }`}
               >
                 {items.map(({ spread, idx }) => {
@@ -2235,7 +2385,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#F8F8F6] font-sans pt-[86px] pb-4 select-none text-slate-800">
+    <div className="w-full min-h-screen bg-[#F8F8F6] font-sans pt-0 pb-4 select-none text-slate-800">
 
       {/* Toast Notification */}
       {toastMsg && (
@@ -2247,49 +2397,114 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </div>
       )}
 
-      {/* Dynamic Catalog Hero Banner (Full Bleed) */}
-      <div className="w-full bg-[#F5EDE0] text-slate-800 relative min-h-[260px] flex items-stretch border-b border-[#FAF2DF] animate-fade-in mb-12 shadow-xs">
-        {/* Centered layout container to align contents with page grid */}
-        <div className="max-w-[1280px] mx-auto w-full px-6 flex flex-col md:flex-row items-stretch relative">
+      {/* Dynamic Catalog Hero Banner (Full Bleed) - Already existing section below navbar */}
+      <div className="w-full bg-[#F5EDE0] text-slate-800 relative min-h-[260px] flex flex-col justify-center border-b border-[#FAF2DF] animate-fade-in mb-8 sm:mb-12 shadow-xs pt-[98px] sm:pt-[102px] md:pt-[105px]">
+        {/* Centered layout container */}
+        <div className="max-w-[1280px] mx-auto w-full px-3 sm:px-6 pt-2 sm:pt-3 pb-5 md:py-6 flex flex-col relative z-20">
 
-          {/* Left side text contents - solid background is defined on parent wrapper */}
-          <div className="flex-1 py-10 md:py-14 flex flex-col justify-center text-left relative z-20 md:max-w-[42%] lg:max-w-[45%]">
-            <span className="text-[10px] text-[#8c6d23] tracking-[0.25em] font-black uppercase mb-2 block animate-pulse">
-              {activeSpread.heroSub || 'PREMIUM QUALITY. TIMELESS STRENGTH.'}
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-900 leading-tight uppercase tracking-tight font-sans">
-              {activeSpread.heroTitle || activeSpread.brandName}
-            </h2>
-            <p className="text-slate-650 font-medium text-xs sm:text-sm leading-relaxed mt-4 max-w-xl">
-              {activeSpread.heroDesc || activeSpread.desc}
-            </p>
+          {/* All Brands of this Category - Displayed in an organized manner */}
+          <div className="w-full mb-4 sm:mb-6 pb-1 sm:pb-2">
+            <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#8c6d23]">
+                  {activeSpread.category === 'Hardware&Fittings' ? 'Hardware & Fittings' : activeSpread.category}
+                </span>
+              </div>
+              <span className="text-[11px] text-slate-500 font-bold hidden sm:inline">
+                Click any brand to explore its catalogue & specifications
+              </span>
+            </div>
 
-            {/* Row of dynamic tags */}
-            <div className="flex flex-wrap gap-4 mt-6">
-              {(activeSpread.heroTags || []).map((tag, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-white border border-[#C9A44C]/35 flex items-center justify-center shrink-0 shadow-xs">
-                    {renderHeroTagIcon(tag.icon)}
-                  </div>
-                  <span className="text-[11px] font-bold text-slate-700 tracking-wide">{tag.text}</span>
-                </div>
-              ))}
+            {/* Organized Brands Pills / Cards */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+              {(categories[activeSpread.category] || []).map(({ spread, idx }) => {
+                const isBrandActive =
+                  idx === currentSpreadIdx ||
+                  (activeSpread.parentBrandId && activeSpread.parentBrandId === spread.brandId) ||
+                  (activeSpread.brandName === spread.brandName);
+
+                return (
+                  <button
+                    key={spread.id}
+                    onClick={() => handleThumbnailClick(idx)}
+                    className={`group flex items-center gap-2.5 px-3 sm:px-4 py-2 rounded-xl border transition-all duration-200 cursor-pointer ${
+                      isBrandActive
+                        ? 'bg-gradient-to-r from-[#006e2f] to-[#0A4D2E] text-white border-[#006e2f] shadow-md ring-2 ring-[#C9A44C]/60 scale-105 font-black'
+                        : 'bg-white hover:bg-[#FAF8F5] text-slate-800 border-[#C9A44C]/35 hover:border-[#006e2f] shadow-2xs hover:shadow-xs'
+                    }`}
+                  >
+                    {/* Small brand thumbnail image */}
+                    <div className={`w-6 h-6 rounded-md overflow-hidden shrink-0 border ${
+                      isBrandActive ? 'border-amber-300' : 'border-slate-200'
+                    }`}>
+                      <img
+                        src={spread.image}
+                        alt={spread.brandName}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <span className={`text-xs sm:text-[13px] font-black tracking-tight ${
+                      isBrandActive ? 'text-white' : 'text-slate-800 group-hover:text-[#006e2f]'
+                    }`}>
+                      {spread.brandName}
+                    </span>
+                    {spread.badge && (
+                      <span className={`text-[9px] font-bold uppercase tracking-wider hidden md:inline px-1.5 py-0.5 rounded ${
+                        isBrandActive ? 'bg-white/20 text-amber-200' : 'bg-slate-100 text-slate-500'
+                      }`}>
+                        {spread.badge}
+                      </span>
+                    )}
+                    {isBrandActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-300 ml-0.5 animate-pulse" />
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Right side image showcase with slanted cut matching the user's line */}
-          <div
-            className="hidden md:block absolute right-0 top-0 bottom-0 w-[55%] overflow-hidden pointer-events-none z-10"
-            style={{ clipPath: 'polygon(12% 0, 100% 0, 100% 100%, 0 100%)' }}
-          >
-            <img
-              src={activeSpread.image}
-              className={`w-full h-full ${activeSpread.category === 'Kitchen Accessories' || activeSpread.imageFit === 'contain'
+          {/* Active Brand Content Row: Left Text + Right Image */}
+          <div className="flex flex-col md:flex-row items-stretch relative">
+            {/* Left side text contents */}
+            <div className="flex-1 py-2 md:py-4 flex flex-col justify-center text-left relative z-20 md:max-w-[48%] lg:max-w-[50%]">
+              <span className="text-[10px] text-[#8c6d23] tracking-[0.25em] font-black uppercase mb-1.5 block">
+                {activeSpread.heroSub || 'PREMIUM QUALITY. TIMELESS STRENGTH.'}
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-black text-slate-900 leading-tight uppercase tracking-tight font-sans">
+                {activeSpread.heroTitle || activeSpread.brandName}
+              </h2>
+              <p className="text-slate-650 font-medium text-xs sm:text-sm leading-relaxed mt-2.5 max-w-xl">
+                {activeSpread.heroDesc || activeSpread.desc}
+              </p>
+
+              {/* Row of dynamic tags */}
+              <div className="flex flex-wrap gap-3 sm:gap-4 mt-4">
+                {(activeSpread.heroTags || []).map((tag, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full bg-white border border-[#C9A44C]/35 flex items-center justify-center shrink-0 shadow-xs">
+                      {renderHeroTagIcon(tag.icon)}
+                    </div>
+                    <span className="text-[11px] font-bold text-slate-700 tracking-wide">{tag.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right side image showcase with slanted cut */}
+            <div
+              className="hidden md:block absolute right-0 top-0 bottom-0 w-[48%] overflow-hidden pointer-events-none z-10 rounded-2xl"
+              style={{ clipPath: 'polygon(12% 0, 100% 0, 100% 100%, 0 100%)' }}
+            >
+              <img
+                src={activeSpread.image}
+                className={`w-full h-full ${activeSpread.category === 'Kitchen Accessories' || activeSpread.imageFit === 'contain'
                   ? 'object-contain p-6 bg-white/40'
                   : 'object-cover'
-                } object-center transform hover:scale-[1.03] transition-transform duration-10000`}
-              alt={activeSpread.brandName}
-            />
+                  } object-center transform hover:scale-[1.03] transition-transform duration-10000`}
+                alt={activeSpread.brandName}
+              />
+            </div>
           </div>
 
         </div>
@@ -2312,7 +2527,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
       </div>
 
       <div
-        className="max-w-[1360px] mx-auto px-6 relative"
+        className="max-w-[1360px] mx-auto px-3 sm:px-6 relative"
         style={windowDimensions.width >= 320 ? {
           marginBottom: `${marginBot}px`
         } : {}}
@@ -2497,7 +2712,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
         if (!isPlywoodOrBoard) {
           // Render the standard Product Overview card for Laminates, Hardware, Veneers, etc.
           return (
-            <div className="max-w-[1280px] mx-auto px-4 mt-16 mb-16 animate-fade-in">
+            <div className="max-w-[1280px] mx-auto px-4 mt-4 md:mt-16 mb-12 md:mb-16 animate-fade-in">
               <div className="bg-white rounded-[32px] border border-slate-200/60 shadow-sm p-8 md:p-12 hover:shadow-md transition-all duration-300">
                 <div className="text-center mb-12">
                   <span className="text-[11px] font-black tracking-[0.25em] text-[#006e2f] uppercase block mb-2">
@@ -2613,7 +2828,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
         };
 
         return (
-          <div className="max-w-[1280px] mx-auto px-4 mt-16 mb-16 animate-fade-in text-center">
+          <div className="max-w-[1280px] mx-auto px-4 mt-4 md:mt-16 mb-12 md:mb-16 animate-fade-in text-center">
             <div className="bg-white rounded-[32px] border border-slate-200/50 shadow-xl p-6 sm:p-10 md:p-12">
 
               {/* HEADER SECTION */}
@@ -3081,14 +3296,15 @@ export const ProductsPage = ({ onNavigate, search }) => {
         </div>
       </div>
       {/* Floating Action Buttons */}
-      <div className="fixed right-6 bottom-8 z-[100] flex flex-col gap-3">
+      <div className="fixed right-3.5 bottom-6 sm:right-6 sm:bottom-8 z-[40] flex flex-col gap-2.5 sm:gap-3">
         {/* Mobile Sidebar Index Toggle */}
         <button
           onClick={() => setShowSidebar(true)}
-          className="md:hidden w-14 h-14 bg-[#006e2f] text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
+          className="md:hidden w-10 h-10 sm:w-12 sm:h-12 bg-[#006e2f] hover:bg-[#005223] text-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           title="Browse Catalogue Index"
+          aria-label="Browse Catalogue Index"
         >
-          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </button>
@@ -3096,28 +3312,31 @@ export const ProductsPage = ({ onNavigate, search }) => {
           href="https://wa.me/919247449522"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 bg-[#25d366] text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
+          className="w-10 h-10 sm:w-12 sm:h-12 bg-[#25d366] hover:bg-[#1ebd59] text-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           title="WhatsApp Support"
+          aria-label="WhatsApp Support"
         >
-          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.493 4.904 1.495 5.182 0 9.4-4.216 9.403-9.397.001-2.51-1-4.87-2.817-6.649-1.817-1.778-4.23-2.757-6.79-2.758-5.186 0-9.409 4.217-9.412 9.4-.002 1.942.506 3.843 1.472 5.513L2.26 21.53l4.387-1.376zM18.04 14.99c-.32-.16-1.89-.93-2.18-1.04-.3-.1-.51-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.9-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.15-.14.32-.32.48-.48.16-.16.21-.27.32-.48.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.38-.26-.64-.53-.55-.72-.56l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.12 1.1-1.12 2.68s1.15 3.1 1.31 3.32c.16.22 2.27 3.46 5.5 4.86.76.33 1.36.53 1.83.68.77.24 1.47.21 2.03.12.62-.09 1.89-.77 2.15-1.51.26-.74.26-1.38.18-1.51-.08-.13-.3-.21-.62-.37z" />
           </svg>
         </a>
         <a
           href="tel:+919247449522"
-          className="w-14 h-14 bg-slate-900 text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
+          className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 hover:bg-slate-800 text-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           title="Call Direct"
+          aria-label="Call Direct"
         >
-          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current" viewBox="0 0 24 24">
             <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z" />
           </svg>
         </a>
         <button
           onClick={handleGetQuote}
-          className="w-14 h-14 bg-white text-slate-800 border border-slate-200 rounded-2xl flex items-center justify-center shadow-xl hover:scale-105 transition-transform cursor-pointer"
+          className="w-10 h-10 sm:w-12 sm:h-12 bg-white hover:bg-amber-50 text-slate-800 hover:text-[#0F5C3B] border border-slate-200 hover:border-[#0F5C3B]/40 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           title="Inquiry Form"
+          aria-label="Inquiry Form"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
           </svg>
         </button>
@@ -3132,7 +3351,7 @@ export const ProductsPage = ({ onNavigate, search }) => {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
           />
           {/* Slide-over panel */}
-          <div className="absolute top-0 bottom-0 left-0 w-80 bg-[#FAF8F5] shadow-2xl p-6 flex flex-col animate-fade-in text-left border-r border-slate-200/50">
+          <div className="absolute top-0 bottom-0 left-0 w-80 max-w-[85vw] bg-[#FAF8F5] shadow-2xl p-6 flex flex-col animate-fade-in text-left border-r border-slate-200/50 overflow-hidden">
             <div className="flex justify-between items-center mb-5 border-b border-slate-200/60 pb-3 flex-shrink-0">
               <div className="flex flex-col text-left">
                 <span className="text-sm font-black uppercase tracking-widest text-[#C9A44C]">Catalogue Index</span>
@@ -3141,12 +3360,14 @@ export const ProductsPage = ({ onNavigate, search }) => {
               <button
                 onClick={() => setShowSidebar(false)}
                 className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center cursor-pointer transition-colors"
+                aria-label="Close Catalogue Index"
               >
                 <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
+            {renderSidebarContent()}
           </div>
         </div>
       )}
